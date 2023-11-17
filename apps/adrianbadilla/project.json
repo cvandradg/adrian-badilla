@@ -1,0 +1,149 @@
+{
+  "name": "adrianbadilla",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "adrian-badilla-ws",
+  "sourceRoot": "apps/adrianbadilla/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/adrianbadilla/browser",
+        "index": "apps/adrianbadilla/src/index.html",
+        "main": "apps/adrianbadilla/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/adrianbadilla/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/adrianbadilla/src/favicon.ico",
+          "apps/adrianbadilla/src/assets"
+        ],
+        "styles": ["apps/adrianbadilla/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "adrianbadilla:build:production"
+        },
+        "development": {
+          "buildTarget": "adrianbadilla:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "adrianbadilla:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/adrianbadilla/**/*.ts",
+          "apps/adrianbadilla/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/adrianbadilla/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "adrianbadilla:build"
+      }
+    },
+    "server": {
+      "dependsOn": ["build"],
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/adrianbadilla/server",
+        "main": "apps/adrianbadilla/server.ts",
+        "tsConfig": "apps/adrianbadilla/tsconfig.server.json",
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@angular-devkit/build-angular:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "adrianbadilla:build:development",
+          "serverTarget": "adrianbadilla:server:development"
+        },
+        "production": {
+          "browserTarget": "adrianbadilla:build:production",
+          "serverTarget": "adrianbadilla:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@angular-devkit/build-angular:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "adrianbadilla:build:development",
+          "serverTarget": "adrianbadilla:server:development"
+        },
+        "production": {
+          "browserTarget": "adrianbadilla:build:production",
+          "serverTarget": "adrianbadilla:server:production"
+        }
+      },
+      "defaultConfiguration": "production"
+    }
+  }
+}
