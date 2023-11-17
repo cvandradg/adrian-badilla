@@ -1,0 +1,13 @@
+<div class="signup-animation">
+  <button
+    mat-button
+    disableRipple="true"
+    (click)="onSubmit()"
+    (keyup.enter)="onSubmit()"
+  >
+    <div class="signup-button" [ngClass]="{ padding: !small }">
+      <fa-icon [icon]="fontawesomeIcon"></fa-icon>
+      <p>{{ buttonText }}</p>
+    </div>
+  </button>
+</div>

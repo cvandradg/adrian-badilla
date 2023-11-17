@@ -1,0 +1,29 @@
+<div
+  class="horizontal-animation clase"
+  [ngClass]="{ 'enabled-button': enable }"
+>
+  <button
+    mat-button
+    [disabled]="!enable"
+    (click)="onSubmit()"
+    (keyup.enter)="enable && onSubmit()"
+  >
+    <div class="login-button">
+      <p>{{ buttonText }}</p>
+      <fa-icon
+        *ngIf="loading"
+        [icon]="['fas', 'arrow-right']"
+        style="--fa-animation-iteration-count: 2"
+        class="icon fa-xl fa-shake"
+        style="--fa-animation-iteration-count: 2"
+      ></fa-icon>
+
+      <fa-icon
+        *ngIf="!loading"
+        [icon]="['fas', 'spinner-third']"
+        class="icon fa-xl fa-spin"
+        style="--fa-animation-duration: 1s"
+      ></fa-icon>
+    </div>
+  </button>
+</div>

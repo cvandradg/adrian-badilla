@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <div class="container">
+    <fa-icon
+      (click)="facade.toggleSidenavbar()"
+      [icon]="['fas', 'bars']"
+      class="fa-stack-2x fa-beat"
+      style="--fa-animation-iteration-count: 2"
+    />
+    <span [routerLink]="'/'" class="trim-dots">
+      <p *ngIf="screenWidth <= 600; else elseBlock">AB</p>
+      <ng-template #elseBlock>Adrian Badilla</ng-template>
+    </span>
+    <span class="example-spacer"></span>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,43 @@
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 160deg;
+  inherits: false;
+}
+
+.login-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  border-radius: 0.3rem;
+  width: 100%;
+  background: transparent !important;
+  height: 4rem !important;
+}
+
+.horizontal-animation {
+  color: white;
+  background: linear-gradient(to left, rgb(126, 156, 255), rgb(143, 18, 18))
+    right;
+  background-size: 200%;
+  transition: 1s ease-out;
+  border-bottom-right-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+  background-position: left;
+}
+
+.enabled-button {
+  background-size: 400%;
+  background-position: 100%;
+}
+
+:host ::ng-deep {
+  .mdc-button__label {
+    font-family: 'Roboto', sans-serif;
+    padding: 0 3.3rem;
+    width: 80%;
+  }
+}

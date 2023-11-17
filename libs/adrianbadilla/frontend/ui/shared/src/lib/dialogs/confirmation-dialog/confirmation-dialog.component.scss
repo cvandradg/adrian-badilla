@@ -1,0 +1,7 @@
+button {
+  margin-right: 8px;
+}
+
+:host ::ng-deep .mat-mdc-button .mdc-button__label {
+  color: #333;
+}

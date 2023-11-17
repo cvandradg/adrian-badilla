@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@environments/*": [
-        "libs/adrianbadilla/frontend/ui/shared/src/lib/environments/*"
-      ],
+      "@adrianbadilla/app": ["libs/adrianbadilla/frontend/ui/app/src/index.ts"],
       "@adrianbadilla/shared": [
         "libs/adrianbadilla/frontend/ui/shared/src/index.ts"
       ],
@@ -43,8 +41,8 @@
       "@dietasadrian/frontend/app": [
         "libs/dietasadrian/frontend/ui/app/src/index.ts"
       ],
-      "@enviroments/*": [
-        "libs/dietasadrian/frontend/shared/shared-module/src/lib/environments/*"
+      "@environments/*": [
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/environments/*"
       ],
       "@guards/*": [
         "libs/dietasadrian/frontend/shared/shared-module/src/lib/guards/*"

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .margin {
+    margin: 0.7rem;
+  }
+
+  p.vulnerable {
+    color: #ff105f;
+  }
+
+  p.debil {
+    color: #ff7c10;
+  }
+
+  p.semisegura {
+    color: #ffa500;
+  }
+
+  p.segura {
+    color: rgba(108, 211, 11, 0.932);
+  }
+
+  p.fuerte {
+    color: rgba(0, 255, 0, 0.932);
+  }
+}
+
+.container h2 {
+  color: #f2f2f2;
+  font-weight: 500;
+}
+
+.container.inputBox {
+  position: relative;
+  width: 100;
+}
+
+.container.inputBox input {
+  position: relative;
+  width: 100%;
+  background: #222;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.strenyMeter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #222;
+}
+
+.strenyMeter::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  transition: 0.5s;
+}
+
+.vulnerable.strenyMeter::before {
+  width: 20%;
+  height: 3px;
+  background: #ff105f;
+  filter: drop-shadow(0 0 5px #ff105f) drop-shadow(0 0 10px #f00)
+    drop-shadow(0 0 10px #f00);
+}
+
+.debil.strenyMeter::before {
+  width: 40%;
+  height: 3px;
+  background: #ff7c10;
+  filter: drop-shadow(0 0 5px #ff7c10) drop-shadow(0 0 10px #ff7c10)
+    drop-shadow(0 0 10px #ff7c10);
+}
+
+.semisegura.strenyMeter::before {
+  width: 60%;
+  height: 3px;
+  background: #ffa500;
+  filter: drop-shadow(0 0 5px #ffa500) drop-shadow(0 0 10px #ffa500)
+    drop-shadow(0 0 10px #ffa500);
+}
+
+.segura.strenyMeter::before {
+  width: 80%;
+  height: 3px;
+  background: rgba(108, 211, 11, 0.932);
+  filter: drop-shadow(0 0 5px rgba(108, 211, 11, 0.932))
+    drop-shadow(0 0 2rem rgba(108, 211, 11, 0.932))
+    drop-shadow(0 0 10px rgba(108, 211, 11, 0.932));
+}
+
+.fuerte.strenyMeter::before {
+  width: 100%;
+  height: 3px;
+  background: #0f0;
+  filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 2rem #0f0)
+    drop-shadow(0 0 10px #0f0);
+}

@@ -1,0 +1,60 @@
+<div class="dialog-container">
+  <div class="dialog-inputs-container">
+    <h1 mat-dialog-title>Ingrediente</h1>
+    <div mat-dialog-content>
+      <p>¿Qué ingrediente deseas agregar?</p>
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Escribe el ingrediente</mat-label>
+          <input
+            matInput
+            required
+            aria-label="State"
+            [matAutocomplete]="ingredients"
+            [formControl]="stateCtrl"
+          />
+          <mat-autocomplete #ingredients="matAutocomplete">
+            <mat-option
+              *ngFor="let state of filteredStates | async"
+              [value]="state.name"
+            >
+              <!-- Useful information about the ingredient can go in here -->
+              <span>{{ state.name }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Cantidad en gramos</mat-label>
+          <input
+            required
+            type="text"
+            placeholder="Escoge una cantidad"
+            aria-label="Number"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="quatity"
+          />
+          <mat-autocomplete #quatity="matAutocomplete">
+            <mat-option
+              *ngFor="let quatity of filteredOptions | async"
+              [value]="quatity"
+            >
+              {{ quatity + 'g' }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Gracias</button>
+    <button
+      [disabled]="stateCtrl.errors || myControl.errors"
+      mat-button
+      (click)="onOkClick()"
+    >
+      Ok
+    </button>
+  </div>
+</div>

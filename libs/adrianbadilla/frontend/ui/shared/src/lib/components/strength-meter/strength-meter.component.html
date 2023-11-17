@@ -1,0 +1,10 @@
+<div class="container">
+  <ng-container *ngIf="password.length">
+    <p [ngClass]="result" *ngIf="result === 'vulnerable'">
+      Debe contener al menos 5 caracteres
+    </p>
+    <p [ngClass]="result" class="margin">Su contraseña es {{ result }}</p>
+
+    <div class="strenyMeter" [ngClass]="result"></div>
+  </ng-container>
+</div>

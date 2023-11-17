@@ -1,0 +1,82 @@
+.dialog-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.dialog-inputs-container {
+  width: 90%;
+}
+
+::ng-deep .dialog-size {
+  width: 30%;
+  max-width: 60vw;
+  max-height: 60vh;
+  height: 60%;
+}
+
+.example-form {
+  width: 100%;
+  min-width: 150px;
+  max-width: 500px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir='rtl'] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+mat-option {
+  color: black;
+}
+
+:host ::ng-deep .mat-mdc-button:not(:disabled) {
+  color: #333;
+}
+
+:host ::ng-deep .mat-mdc-button:disabled {
+  color: rgb(161, 161, 161);
+}
+
+:host ::ng-deep .mat-mdc-dialog-container {
+  padding: 24px 0px 24px 0px;
+  overflow: hidden;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  background-color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  ::ng-deep .dialog-size {
+    width: 60%;
+    height: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dialog-container {
+    width: 100%;
+    height: 40%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  ::ng-deep .dialog-size {
+    width: 95%;
+    height: 90%;
+  }
+}
