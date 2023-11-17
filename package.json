@@ -2,6 +2,9 @@
   "name": "@adrian-badilla-ws/source",
   "version": "0.0.0",
   "license": "MIT",
+  "scripts": {
+    "build": "npx nx build adrianbadilla"
+  },
   "private": true,
   "dependencies": {
     "@angular-extensions/lint-rules": "~1.2.1",
