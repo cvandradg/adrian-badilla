@@ -17,10 +17,19 @@
         "tsConfig": "apps/adrianbadilla/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/adrianbadilla/src/favicon.ico",
+          "apps/adrianbadilla/src/dbicon.ico",
           "apps/adrianbadilla/src/assets"
         ],
-        "styles": ["apps/adrianbadilla/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/adrianbadilla/src/styles.scss",
+          "libs/adrianbadilla/frontend/assets/styles/general-styles/general-styles.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/adrianbadilla/frontend/assets/styles/general-styles"
+          ]
+        },
         "scripts": []
       },
       "configurations": {
