@@ -1,0 +1,51 @@
+.mdc-text-field:not(.mdc-text-field--disabled) {
+  .mdc-text-field__input::placeholder {
+    color: #88898e !important;
+  }
+
+  .mdc-floating-label {
+    color: #88898e !important;
+    text-align: center !important;
+  }
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled)
+  .mdc-floating-label--float-above {
+  color: #88898e !important;
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  color: #9da8eb !important;
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #f44336 !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled),
+.mdc-text-field--disabled.mdc-text-field--filled {
+  padding: 0.6rem;
+  background-color: #222222c9 !important;
+}
+
+input {
+  color: #fff !important;
+}
+
+mat-form-field {
+  height: 100%;
+}
+
+::ng-deep .mdc-button,
+.mdc-text-field--filled {
+  background-color: #222222 !important;
+  color: #fff !important;
+  z-index: 1;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align {
+  display: none;
+}

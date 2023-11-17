@@ -14,7 +14,78 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@environments/*": [
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/environments/*"
+      ],
+      "@adrianbadilla/shared": [
+        "libs/adrianbadilla/frontend/ui/shared/src/index.ts"
+      ],
+      "@appStore/*": ["libs/dietasadrian/frontend/ui/app/src/lib/+state/*"],
+      "@authHelper": [
+        "libs/dietasadrian/frontend/ui/app/src/lib/classes/firebaseAuthHelper.ts"
+      ],
+      "@classes/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/classes/*"
+      ],
+      "@decorators/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/decorators/*"
+      ],
+      "@dialogs/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/dialogs/*"
+      ],
+      "@dietas-adrian-nx-workspace/dietasadrian/frontend/ui/dietas": [
+        "libs/dietasadrian/frontend/ui/dietas/src/index.ts"
+      ],
+      "@dietas-adrian-nx-workspace/dietasadrian/frontend/ui/login": [
+        "libs/dietasadrian/frontend/ui/login/src/index.ts"
+      ],
+      "@dietasadrian/frontend/app": [
+        "libs/dietasadrian/frontend/ui/app/src/index.ts"
+      ],
+      "@enviroments/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/environments/*"
+      ],
+      "@guards/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/guards/*"
+      ],
+      "@helperFunctionsService": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/services/helperFunctions.service.ts"
+      ],
+      "@interfaces/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/interfaces/*"
+      ],
+      "@libs/client/*": ["libs/dietasadrian/frontend/ui/client/src/lib/*"],
+      "@libs/dashboard": [
+        "libs/dietasadrian/frontend/ui/dashboard/src/lib/lib.routes.ts"
+      ],
+      "@libs/dietas": [
+        "libs/dietasadrian/frontend/ui/dietas/src/lib/lib.routes.ts"
+      ],
+      "@libs/dietas/*": ["libs/dietasadrian/frontend/ui/dietas/src/lib/*"],
+      "@libs/landing-page/*": ["libs/dietasadrian/frontend/ui/login/src/lib/*"],
+      "@libs/login": ["libs/dietasadrian/frontend/ui/login/src/lib/routes.ts"],
+      "@materialFunctions": [
+        "libs/dietasadrian/frontend/shared/materialFunctions.ts"
+      ],
+      "@services/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/services/*"
+      ],
+      "@shared-modules": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/index.ts"
+      ],
+      "@shared-modules/*": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/*"
+      ],
+      "client": ["libs/dietasadrian/frontend/ui/client/src/index.ts"],
+      "dashboard": ["libs/dietasadrian/frontend/ui/dashboard/src/index.ts"],
+      "landing-page": [
+        "libs/dietasadrian/frontend/ui/landing-page/src/index.ts"
+      ],
+      "types": [
+        "libs/dietasadrian/frontend/shared/shared-module/src/lib/types/types.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
