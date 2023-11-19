@@ -1,4 +1,5 @@
 import { Validators } from '@angular/forms';
+import { FirebaseError } from 'firebase/app';
 
 export type Class = new (any: any) => any;
 
@@ -27,4 +28,8 @@ export type AppError = {
 export interface BaseComponentState extends Object {
   error: AppError | null;
   loading: boolean;
+}
+
+export interface AngularFireError extends Error {
+  rejection: FirebaseError;
 }

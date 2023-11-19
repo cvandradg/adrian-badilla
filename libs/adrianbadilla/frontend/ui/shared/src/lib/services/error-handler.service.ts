@@ -1,10 +1,8 @@
 import { Injectable, ErrorHandler, Injector } from '@angular/core';
-import { SharedStoreFacade } from '../../+state/shared-store.facade';
+import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { FirebaseError } from 'firebase/app';
 
-interface AngularFireError extends Error {
-  rejection: FirebaseError;
-}
+import { AngularFireError } from "../types/types";
 
 function errorIsAngularFireError(err: AngularFireError): boolean {
   return err.rejection && err.rejection.name === 'FirebaseError';

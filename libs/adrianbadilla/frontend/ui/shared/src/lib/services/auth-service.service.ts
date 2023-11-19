@@ -6,7 +6,7 @@ import { from, of, catchError, NEVER, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, User } from '@angular/fire/auth';
 import { ErrorHandlerService } from './error-handler.service';
-import { SharedStoreFacade } from '../../+state/shared-store.facade';
+import { SharedStoreFacade } from '../+state/shared-store.facade';
 
 @Injectable({
   providedIn: 'root',
