@@ -1,6 +1,9 @@
 import { Route } from '@angular/router';
 import { canActivate } from '@angular/fire/auth-guard';
-import { unverifiedTo, verifiedTo } from "@adrianbadilla/shared/services/helperFunctions.service";
+import {
+    unverifiedTo,
+    verifiedTo,
+} from '@adrianbadilla/shared/services/helperFunctions.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { OobcodeCheckerComponent } from './components/oobcode-checker/oobcode-checker.component';
@@ -26,7 +29,7 @@ export const loginRoutes: Route[] = [
         path: 'dashboard',
         pathMatch: 'prefix',
         ...canActivate(redirectUnauthorized),
-        loadChildren: () => import('@libs/dashboard').then((r) => r.routes),
+        loadChildren: () => import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
     },
     {
         path: 'register',
