@@ -9,30 +9,87 @@ import {
 } from './shared-store.reducer';
 
 describe('SharedStore Reducer', () => {
-  const createSharedStoreEntity = (
-    id: string,
-    name = ''
-  ): SharedStoreEntity => ({
-    id,
-    name: name || `name-${id}`,
-  });
-
   describe('valid SharedStore actions', () => {
-    it('loadSharedStoreSuccess should return the list of known SharedStore', () => {
-      const sharedStore = [
-        createSharedStoreEntity('PRODUCT-AAA'),
-        createSharedStoreEntity('PRODUCT-zzz'),
-      ];
-      const action = SharedStoreActions.loadSharedStoreSuccess({ sharedStore });
+
+    it('should show as loading', () => {
+      const action = SharedStoreActions.showLoading();
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
         action
       );
 
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
+      expect(result.loading).toBe(true);
     });
+
+    it('should not be loading', () => {
+      const action = SharedStoreActions.hideLoading()
+
+      const result: SharedStoreState = sharedStoreReducer(
+        initialSharedStoreState,
+        action
+      );
+
+      expect(result.loading).toBe(false);
+    });
+
+    it('should toggle sidenavbar', () => {
+      const action = SharedStoreActions.toggleSidenavbar()
+
+      const result: SharedStoreState = sharedStoreReducer(
+        initialSharedStoreState,
+        action
+      );
+
+      expect(result.toggleSidenavbar).toBe(false);
+    });
+
+    it('should store user info', () => {
+      const action = SharedStoreActions.storeUserInfo({ userInfo: { id: 1 } })
+
+      const result: SharedStoreState = sharedStoreReducer(
+        initialSharedStoreState,
+        action
+      );
+
+      expect(result.userInfo).toStrictEqual({ id: 1 });
+    });
+
+    it('should store user info after getting a session', () => {
+      const action = SharedStoreActions.getSessionSuccess({ userInfo: { id: 1 } })
+
+      const result: SharedStoreState = sharedStoreReducer(
+        initialSharedStoreState,
+        action
+      );
+
+      expect(result.userInfo).toStrictEqual({ id: 1 });
+    });
+
+    it('should store the failure of an action', () => {
+      const action = SharedStoreActions.actionFailure(
+        {
+          error: { msj: 'test' },
+          message: 'test',
+          status: true,
+        }
+      )
+
+      const result: SharedStoreState = sharedStoreReducer(
+        initialSharedStoreState,
+        action
+      );
+
+      expect(result.error).toStrictEqual(
+        {
+          status: true,
+          message: 'test',
+          error: { msj: 'test' }
+        }
+      );
+    });
+
+
   });
 
   describe('unknown action', () => {

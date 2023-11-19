@@ -1,104 +1,83 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-import { readFirst } from '@nx/angular/testing';
-
-import * as SharedStoreActions from './shared-store.actions';
-import { SharedStoreEffects } from './shared-store.effects';
+import { StoreModule } from '@ngrx/store';
 import { SharedStoreFacade } from './shared-store.facade';
-import { SharedStoreEntity } from './shared-store.models';
 import {
   SHARED_STORE_FEATURE_KEY,
-  SharedStoreState,
-  initialSharedStoreState,
   sharedStoreReducer,
 } from './shared-store.reducer';
-import * as SharedStoreSelectors from './shared-store.selectors';
-
-interface TestSchema {
-  sharedStore: SharedStoreState;
-}
+import { firstValueFrom } from 'rxjs';
 
 describe('SharedStoreFacade', () => {
   let facade: SharedStoreFacade;
-  let store: Store<TestSchema>;
-  const createSharedStoreEntity = (
-    id: string,
-    name = ''
-  ): SharedStoreEntity => ({
-    id,
-    name: name || `name-${id}`,
-  });
 
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
           StoreModule.forFeature(SHARED_STORE_FEATURE_KEY, sharedStoreReducer),
-          EffectsModule.forFeature([SharedStoreEffects]),
         ],
-        providers: [SharedStoreFacade],
+        providers: [
+          SharedStoreFacade,
+        ],
       })
-      class CustomFeatureModule {}
+      class CustomFeatureModule { }
 
       @NgModule({
         imports: [
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
-        ],
+        ]
       })
-      class RootModule {}
-      TestBed.configureTestingModule({ imports: [RootModule] });
+      class RootModule { }
 
-      store = TestBed.inject(Store);
+      TestBed.configureTestingModule({
+        imports: [
+          RootModule
+        ],
+        providers: [
+          SharedStoreFacade,
+
+        ]
+      });
+
       facade = TestBed.inject(SharedStoreFacade);
     });
 
-    /**
-     * The initially generated facade::loadAll() returns empty array
-     */
-    it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allSharedStore$);
-      let isLoaded = await readFirst(facade.loaded$);
-
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(false);
-
-      facade.init();
-
-      list = await readFirst(facade.allSharedStore$);
-      isLoaded = await readFirst(facade.loaded$);
-
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(true);
+    it('should start to load', async () => {
+      facade.showLoader();
+      const loading = await firstValueFrom(facade.loading$);
+      expect(loading).toBe(true);
     });
 
-    /**
-     * Use `loadSharedStoreSuccess` to manually update list
-     */
-    it('allSharedStore$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allSharedStore$);
-      let isLoaded = await readFirst(facade.loaded$);
+    it('should hide the load', async () => {
+      facade.hideLoader();
+      const loading = await firstValueFrom(facade.loading$);
+      expect(loading).toBe(false);
+    });
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(false);
+    it('should toggle side bar', async () => {
+      facade.toggleSidenavbar();
+      const toogle = await firstValueFrom(facade.showSidenavbar$);
+      expect(toogle).toBe(false);
+    });
 
-      store.dispatch(
-        SharedStoreActions.loadSharedStoreSuccess({
-          sharedStore: [
-            createSharedStoreEntity('AAA'),
-            createSharedStoreEntity('BBB'),
-          ],
-        })
-      );
+    it('should set an error', async () => {
+      facade.setError({
+        status: true,
+        message: 'error',
+        error: { code: 'error' }
+      })
 
-      list = await readFirst(facade.allSharedStore$);
-      isLoaded = await readFirst(facade.loaded$);
+      const error = await firstValueFrom(facade.error$);
 
-      expect(list.length).toBe(2);
-      expect(isLoaded).toBe(true);
+      expect(error).toStrictEqual({
+        status: true,
+        message: 'error',
+        error: { code: 'error' }
+      });
     });
   });
-});
+})
