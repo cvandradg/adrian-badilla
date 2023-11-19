@@ -1,0 +1,44 @@
+<div
+  class="container"
+  *ngrxLet="{
+    error: emailVerificationStore.error$ | ngrxPush,
+    loading: emailVerificationStore.loading$ | ngrxPush,
+    user: facade.userInfo$ | ngrxPush
+  } as vm"
+>
+  <div class="title">Verificacion de cuenta</div>
+  <fa-icon
+    *ngIf=" !vm.error?.status && !vm.user?.emailVerified"
+    [icon]="['fas', 'spinner-third']"
+    class="icon fa-spin fa-2xl default-color"
+    style="--fa-animation-duration: 1s"
+  />
+  <div class="description">
+    <div
+      class="success-message centered"
+      *ngIf="vm.user?.emailVerified && !vm.loading"
+      [routerLink]="'/'"
+    >
+      <div>
+        <p>Verificación completada correctamente.</p>
+        <p><strong> Click aqui</strong> para entrar.</p>
+      </div>
+
+      <fa-icon
+        [icon]="['fas', 'check']"
+        style="--fa-animation-iteration-count: 2"
+        class="icon fa-xl fa-shake"
+        style="--fa-animation-iteration-count: 2"
+      />
+    </div>
+
+    <div class="error-message" *ngIf="vm.error?.status">
+      <p>{{ vm.error?.message }}</p>
+      <fa-icon
+        [icon]="['fas', 'xmark']"
+        style="--fa-animation-iteration-count: 2"
+        class="icon fa-xl fa-shake"
+      />
+    </div>
+  </div>
+</div>

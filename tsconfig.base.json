@@ -16,18 +16,24 @@
     "baseUrl": ".",
     "paths": {
       "@adrianbadilla/app": ["libs/adrianbadilla/frontend/ui/app/src/index.ts"],
-      "@adrianbadilla/shared": [
-        "libs/adrianbadilla/frontend/ui/shared/src/index.ts"
+      "@adrianbadilla/frontend/app": [
+        "libs/adrianbadilla/frontend/ui/app/src/index.ts"
+      ],
+      "@adrianbadilla/login": [
+        "libs/adrianbadilla/frontend/ui/login/src/index.ts"
+      ],
+      "@adrianbadilla/shared/*": [
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/*"
       ],
       "@appStore/*": ["libs/adrianbadilla/frontend/ui/app/src/lib/+state/*"],
       "@authHelper": [
         "libs/adrianbadilla/frontend/ui/app/src/lib/classes/firebaseAuthHelper.ts"
       ],
       "@classes/*": [
-        "libs/adrianbadilla/frontend/shared/shared-module/src/lib/classes/*"
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/classes/*"
       ],
       "@decorators/*": [
-        "libs/adrianbadilla/frontend/shared/shared-module/src/lib/decorators/*"
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/decorators/*"
       ],
       "@dialogs/*": [
         "libs/adrianbadilla/frontend/shared/shared-module/src/lib/dialogs/*"
@@ -37,9 +43,6 @@
       ],
       "@dietas-adrian-nx-workspace/adrianbadilla/frontend/ui/login": [
         "libs/adrianbadilla/frontend/ui/login/src/index.ts"
-      ],
-      "@adrianbadilla/frontend/app": [
-        "libs/adrianbadilla/frontend/ui/app/src/index.ts"
       ],
       "@environments/*": [
         "libs/adrianbadilla/frontend/ui/shared/src/lib/environments/*"
@@ -61,7 +64,9 @@
         "libs/adrianbadilla/frontend/ui/dietas/src/lib/lib.routes.ts"
       ],
       "@libs/dietas/*": ["libs/adrianbadilla/frontend/ui/dietas/src/lib/*"],
-      "@libs/landing-page/*": ["libs/adrianbadilla/frontend/ui/login/src/lib/*"],
+      "@libs/landing-page/*": [
+        "libs/adrianbadilla/frontend/ui/login/src/lib/*"
+      ],
       "@libs/login": ["libs/adrianbadilla/frontend/ui/login/src/lib/routes.ts"],
       "@materialFunctions": [
         "libs/adrianbadilla/frontend/shared/materialFunctions.ts"
@@ -75,13 +80,13 @@
       "@shared-modules/*": [
         "libs/adrianbadilla/frontend/shared/shared-module/src/lib/*"
       ],
+      "@types": [
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/types/types.ts"
+      ],
       "client": ["libs/adrianbadilla/frontend/ui/client/src/index.ts"],
       "dashboard": ["libs/adrianbadilla/frontend/ui/dashboard/src/index.ts"],
       "landing-page": [
         "libs/adrianbadilla/frontend/ui/landing-page/src/index.ts"
-      ],
-      "@types": [
-        "libs/adrianbadilla/frontend/ui/shared/src/lib/types/types.ts"
       ]
     }
   },

@@ -1,0 +1,96 @@
+<div
+  class="login-container"
+  *ngrxLet="{
+    loading: loginStore.loading$ | ngrxPush,
+    user: facade.userInfo$ | ngrxPush,
+    error: loginStore.error$ | ngrxPush,
+  } as vm"
+>
+  <div class="container">
+    <div class="title">Accede a Tu Cuenta</div>
+    <div class="description">
+      Cambia Tu vida con la guía de Adrian Badilla y su repertorio de dietas y
+      rutinas que decenas de personas por dia estan adquiriendo.
+    </div>
+    <div class="login-components-container">
+      <div class="manual-login-inputs">
+        <form [formGroup]="loginInputForm" class="form-login-inputs">
+          <mat-form-field>
+            <mat-label>Correo</mat-label>
+            <input
+              matInput
+              placeholder="algunCorreo@dominio.com"
+              type="email"
+              formControlName="user"
+              (keyup.enter)="loginStore.accessAccount$(credentials)"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              placeholder="EjemploDeClave1!"
+              type="password"
+              formControlName="pass"
+              (keyup.enter)="loginStore.accessAccount$(credentials)"
+            />
+          </mat-form-field>
+        </form>
+
+        <ng-container #loginComponents *ngrxLet="vm.user">
+          <adrianbadilla-primary-animated-button
+            #loginButton
+            (submitEvent)="loginStore.accessAccount$(credentials)"
+            [enable]="!loginInputForm.invalid"
+            [loading]="!vm.loading"
+            [buttonText]="'Accede a Tu Cuenta'"
+          />
+          <div
+            class="warning-message aligment"
+            *ngIf="
+              !vm.loading &&
+              vm.user?.emailVerified === false &&
+              !vm.error?.status
+            "
+          >
+            <fa-icon
+              [icon]="['fal', 'envelope-circle-check']"
+              style="--fa-animation-iteration-count: 2"
+              class="icon fa-xl fa-shake"
+            />
+            <p>Verifica tu cuenta, te hemos enviado un link al correo.</p>
+          </div>
+
+          <div class="error-message" *ngIf="!vm.loading && vm.error?.status">
+            <p>{{ vm.error?.message }}</p>
+            <fa-icon
+              [icon]="['fas', 'xmark']"
+              style="--fa-animation-iteration-count: 2"
+              class="icon fa-xl fa-shake"
+            />
+          </div>
+        </ng-container>
+      </div>
+      <div class="divison">/</div>
+      <div class="automatic-signin-tools">
+        <adrianbadilla-secondary-animated-button
+          (submitEvent)="loginStore.googleSignin$()"
+          [buttonText]="'Accede con Google'"
+          [fontawesomeIcon]="['fab', 'google']"
+        />
+
+        <adrianbadilla-secondary-animated-button
+          [routerLink]="'/register'"
+          [buttonText]="'Crear Cuenta'"
+          [fontawesomeIcon]="['fas', 'user']"
+        />
+      </div>
+    </div>
+
+    <adrianbadilla-pass-reset [user]="credentials.user" />
+  </div>
+  <footer class="login-footer">
+    <p>Privacy Policy</p>
+    <p>Copyright &#64;AdrianBadilla 2022</p>
+  </footer>
+</div>

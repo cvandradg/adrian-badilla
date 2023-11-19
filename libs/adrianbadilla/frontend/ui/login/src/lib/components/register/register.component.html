@@ -1,0 +1,127 @@
+<div
+  class="container"
+  *ngrxLet="{
+    error: registerStore.error$ | ngrxPush,
+    enableButton: enableButton$ | ngrxPush,
+    userInfo: registerStore.user$ | ngrxPush,
+    loading: registerStore.loading$ | ngrxPush,
+  } as vm"
+>
+  <div class="title">Crea tu cuenta</div>
+  <div class="description">Recuerda crear una contraseña segura.</div>
+
+  <div class="register-login-inputs">
+    <form [formGroup]="loginInputForm" class="form-register-inputs">
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input
+          matInput
+          placeholder="AlgunCorreo@dominio.com"
+          type="email"
+          required="true"
+          formControlName="user"
+          (keyup.enter)="
+            vm.enableButton && registerStore.createAccount$(loginInputForm)
+          "
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          placeholder="EjemploDeClave1!"
+          type="password"
+          required="true"
+          formControlName="pass"
+          (keyup.enter)="
+            vm.enableButton && registerStore.createAccount$(loginInputForm)
+          "
+        />
+      </mat-form-field>
+    </form>
+
+    <div
+      class="horizontal-animation clase"
+      [ngClass]="{
+        'enabled-button': vm.enableButton || vm.userInfo
+      }"
+    >
+      <button
+        mat-button
+        [disabled]="!vm.enableButton && vm.loading && vm.userInfo"
+        (click)="
+          vm.enableButton &&
+            !vm.userInfo &&
+            registerStore.createAccount$(loginInputForm)
+        "
+        (keyup.enter)="
+          vm.enableButton &&
+            !vm.userInfo &&
+            registerStore.createAccount$(loginInputForm)
+        "
+      >
+        <div class="register-button">
+          <p>Crear Cuenta</p>
+          <fa-icon
+            *ngIf="!vm.loading && !vm.userInfo"
+            [icon]="['fas', 'arrow-right']"
+            style="--fa-animation-iteration-count: 2"
+            class="icon fa-xl fa-shake"
+            style="--fa-animation-iteration-count: 2"
+          />
+
+          <fa-icon
+            *ngIf="vm.loading"
+            [icon]="['fas', 'spinner-third']"
+            class="icon fa-xl fa-spin"
+            style="--fa-animation-duration: 1s"
+          />
+
+          <fa-icon
+            *ngIf="!vm.loading && vm.userInfo"
+            [icon]="['fas', 'check']"
+            style="--fa-animation-iteration-count: 2"
+            class="icon fa-xl fa-shake"
+            style="--fa-animation-iteration-count: 2"
+          />
+        </div>
+      </button>
+    </div>
+    <div class="centered">
+      <div class="warning-message" *ngIf="!vm.loading && vm.userInfo">
+        <p>Revisa tu correo para activar tu cuenta</p>
+        <fa-icon
+          [icon]="['fas', 'message-exclamation']"
+          style="--fa-animation-iteration-count: 2"
+          class="icon fa-xl fa-shake"
+          style="--fa-animation-iteration-count: 2"
+        />
+      </div>
+      <div class="success-message" *ngIf="!vm.loading && vm.userInfo">
+        <p>Creaste una nueva cuenta.</p>
+        <fa-icon
+          [icon]="['fas', 'check']"
+          style="--fa-animation-iteration-count: 2"
+          class="icon fa-xl fa-shake"
+          style="--fa-animation-iteration-count: 2"
+        />
+      </div>
+    </div>
+
+    <div class="error-message" *ngIf="!vm.loading && vm.error?.status">
+      <p>
+        {{ vm.error?.message }}
+      </p>
+      <fa-icon
+        [icon]="['fas', 'xmark']"
+        style="--fa-animation-iteration-count: 2"
+        class="icon fa-xl fa-shake"
+        style="--fa-animation-iteration-count: 2"
+      />
+    </div>
+    <adrianbadilla-strength-meter
+      [password]="loginInputForm.get('pass')?.value || ''"
+      (enableButton)="isPassStrong$.next($event)"
+    />
+  </div>
+</div>

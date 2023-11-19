@@ -1,0 +1,84 @@
+@import 'general-styles.scss';
+
+.default-color {
+  color: rgb(126, 156, 255);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 5rem auto;
+}
+
+.container {
+  color: #fff;
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 4% 0;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    max-width: 70%;
+    color: #88898e;
+    margin-bottom: 5%;
+  }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  gap: 0.5rem;
+  width: 100%;
+  color: rgb(235, 116, 116);
+}
+
+.success-message {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  gap: 1.3rem;
+  width: 100%;
+  color: rgb(126, 207, 160);
+}
+
+.centered {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+p {
+  margin: 0.2rem;
+}
+
+::ng-deep {
+  .mdc-button__label {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: white;
+    font-weight: 300;
+    line-height: 1.5rem;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+  .container {
+    .description {
+      margin-bottom: 3rem;
+      margin-top: 0.7rem;
+    }
+  }
+}

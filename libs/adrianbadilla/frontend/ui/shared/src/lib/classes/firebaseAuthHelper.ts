@@ -1,13 +1,13 @@
 import { Directive, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth/auth-service.service';
-import { ErrorHandlerService } from '../services/error-handler/error-handler.service';
+import { AuthService } from '../services/auth-service.service';
+import { ErrorHandlerService } from '../services/error-handler.service';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Credentials, validations } from '../types/types';
 
 @Directive({
-  providers: [],
+  providers: [AuthService, ErrorHandlerService, SharedStoreFacade],
 })
 export class firebaseAuthHelper {
   router = inject(Router);

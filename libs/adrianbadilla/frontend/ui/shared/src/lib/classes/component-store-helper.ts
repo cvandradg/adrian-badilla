@@ -5,8 +5,8 @@ import { Directive, inject } from '@angular/core';
 import { OperatorFunction, pipe, tap } from 'rxjs';
 import { ComponentStore } from '@ngrx/component-store';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
-import { AuthService } from '../services/auth/auth-service.service';
-import { ErrorHandlerService } from '../services/error-handler/error-handler.service';
+import { AuthService } from '../services/auth-service.service';
+import { ErrorHandlerService } from '../services/error-handler.service';
 
 export interface GenericState extends Object {
   error?: AppError | null;

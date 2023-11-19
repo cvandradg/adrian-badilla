@@ -1,0 +1,39 @@
+<div
+  class="container"
+  *ngrxLet="{
+    error: oobCodeCheckerStore.error$ | ngrxPush,
+  } as vm"
+>
+  <!-- <span [routerLink]="'/'" class="trim-dots">
+  <p *ngIf="screenWidth <= 600; else elseBlock">AB</p>
+  <ng-template #elseBlock>Adrian Badilla</ng-template>
+</span> -->
+  <ng-container *ngIf="!vm.error?.status; else elseBlock" #name>
+    <div class="title">Procesando</div>
+    <p>No cierres esta ventana.</p>
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <div class="title">Error</div>
+    <div class="description"></div>
+  </ng-template>
+
+  <fa-icon
+    *ngIf="!vm.error?.status"
+    [icon]="['fas', 'spinner-third']"
+    class="icon fa-spin fa-2xl"
+    style="--fa-animation-duration: 1s"
+  />
+
+  <div class="error-message centered" *ngIf="vm.error?.status">
+    <p>
+      {{ vm.error?.message }}
+    </p>
+    <fa-icon
+      [icon]="['fas', 'xmark']"
+      style="--fa-animation-iteration-count: 2"
+      class="icon fa-xl fa-shake"
+      style="--fa-animation-iteration-count: 2"
+    />
+  </div>
+</div>
