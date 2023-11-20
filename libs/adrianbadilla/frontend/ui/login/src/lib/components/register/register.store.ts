@@ -2,7 +2,7 @@ import { User } from 'firebase/auth';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { tapResponse } from '@ngrx/component-store';
-import { Credentials } from '@shared-modules/types/types';
+import { Credentials } from '@adrianbadilla/shared/types/types';
 import { Observable, switchMap } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
 

@@ -6,9 +6,7 @@ import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Credentials, validations } from '../types/types';
 
-@Directive({
-  providers: [AuthService, ErrorHandlerService, SharedStoreFacade],
-})
+@Directive()
 export class firebaseAuthHelper {
   router = inject(Router);
   authService = inject(AuthService);

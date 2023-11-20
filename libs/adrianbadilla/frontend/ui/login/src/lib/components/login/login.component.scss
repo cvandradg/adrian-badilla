@@ -1,0 +1,228 @@
+@import 'general-styles.scss';
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 160deg;
+  inherits: false;
+}
+
+.login-container {
+  color: #fff;
+  height: 80%;
+  max-width: 100%;
+}
+
+.container,
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container {
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 5.5% 0;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    max-width: 55%;
+    color: #88898e;
+    margin-bottom: 5%;
+  }
+}
+
+.login-header,
+.login-components-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-components-container {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 17rem;
+
+  .divison {
+    width: 13%;
+    text-align: center;
+    align-self: flex-start;
+    margin-top: 6rem;
+  }
+
+  .manual-login-inputs,
+  .form-login-inputs,
+  .automatic-signin-tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-start;
+  }
+
+  .form-login-inputs {
+    width: 100%;
+  }
+
+  .automatic-signin-tools {
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .manual-login-inputs {
+    gap: 0.007rem;
+    width: 100%;
+  }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  gap: 0.5rem;
+  width: 100%;
+  color: rgb(235, 116, 116);
+}
+
+.success-message {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0rem 2rem;
+  gap: 0.5rem;
+  width: 100%;
+  color: rgb(126, 207, 160);
+}
+
+.warning-message {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  gap: 0.5rem;
+  width: 100%;
+  color: rgb(207, 199, 126);
+}
+
+.aligment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  bottom: 0;
+  position: fixed;
+  color: #7b7d81;
+}
+
+/// Media Queries///
+@media screen and (max-width: 768px) {
+  .container .description {
+    font-size: 1.2rem;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 670px) {
+  .signup-button p {
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container .description {
+    font-size: 1.2rem;
+    margin-bottom: 10%;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 650px) {
+    .container,
+    .login-container {
+      width: 95%;
+    }
+
+    .container {
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .description {
+        max-width: 70%;
+        font-size: 0.8rem;
+      }
+    }
+
+    footer {
+      margin-top: 5rem;
+      gap: 8rem;
+      position: initial;
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 40px) and (max-width: 600px) {
+    .container,
+    .login-container {
+      width: 95%;
+    }
+
+    .container {
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .description {
+        text-align: right;
+        font-size: 0.8rem;
+        max-width: 90%;
+      }
+    }
+
+    .login-components-container {
+      flex-direction: column;
+    }
+
+    .divison {
+      display: none;
+    }
+
+    .manual-login-inputs {
+      width: 100%;
+    }
+
+    footer {
+      margin-top: 5rem;
+      gap: 8rem;
+      position: initial;
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

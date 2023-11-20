@@ -8,7 +8,9 @@ import { GoogleAuthProvider, User } from '@angular/fire/auth';
 import { ErrorHandlerService } from './error-handler.service';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   facade = inject(SharedStoreFacade);
   firebaseAuth = inject(AngularFireAuth);

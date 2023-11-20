@@ -5,7 +5,9 @@ import * as actions from './shared-store.actions';
 import * as selectors from './shared-store.selectors';
 import { deepCopy, generalError } from '../types/types';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SharedStoreFacade {
   private readonly store = inject(Store);
 

@@ -7,6 +7,7 @@ import { LoginStore } from './login.store';
 import { firebaseAuthHelper } from '@adrianbadilla/shared/classes/firebaseAuthHelper';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Fontawesome } from "@adrianbadilla/shared/classes/fontawesome";
 import { PrimaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/primary-animated-button/primary-animated-button.component';
 import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
 
@@ -25,7 +26,7 @@ import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/componen
     SecondaryAnimatedButtonComponent,
     MODULES,
   ],
-  providers: [LoginStore],
+  providers: [LoginStore, Fontawesome],
 })
 export class LoginComponent extends firebaseAuthHelper {
   readonly loginStore = inject(LoginStore);
