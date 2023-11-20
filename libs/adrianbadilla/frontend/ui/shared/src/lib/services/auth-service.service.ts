@@ -9,7 +9,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: null,
 })
 export class AuthService {
   facade = inject(SharedStoreFacade);

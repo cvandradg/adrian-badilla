@@ -10,14 +10,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedStoreEffects } from '@adrianbadilla/shared/+state/shared-store.effects';
 import * as fromSharedStore from '@adrianbadilla/shared/+state/shared-store.reducer';
 
-import { getAuth } from 'firebase/auth';
-import { provideAuth } from '@angular/fire/auth';
-import { provideFirebaseApp } from '@angular/fire/app';
-import { initializeApp } from 'firebase/app';
 import { ErrorComponent } from './components/error/error.component';
 import { SharedStoreFacade } from '@adrianbadilla/shared/+state/shared-store.facade';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, StoreRootModule } from '@ngrx/store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {  getAuth, provideAuth } from '@angular/fire/auth';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { AuthService } from '@adrianbadilla/shared/services/auth-service.service';
+import { ErrorHandlerService } from '@adrianbadilla/shared/services/error-handler.service';
 
 export const appRoutes: Route[] = [
   {
@@ -27,10 +27,12 @@ export const appRoutes: Route[] = [
     providers: [
       CommonModule,
       SharedStoreFacade,
-      
+      AuthService,
+      ErrorHandlerService,
       importProvidersFrom(
         FontAwesomeModule,
-        // EffectsModule.forFeature([SharedStoreEffects]),
+        EffectsModule.forFeature(SharedStoreEffects),
+        StoreRootModule,
         StoreModule.forFeature(
           fromSharedStore.SHARED_STORE_FEATURE_KEY,
           fromSharedStore.sharedStoreReducer

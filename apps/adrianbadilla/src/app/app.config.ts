@@ -9,7 +9,7 @@ import {
 import { appRoutes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 
-import { StoreModule } from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
@@ -20,21 +20,19 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    provideStore({},
+      {
+        metaReducers: [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
+      }),
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
       EffectsModule.forRoot([]),
       StoreRouterConnectingModule.forRoot({ routerState: RouterState.Full }),
-      StoreModule.forRoot(
-        {},
-        {
-          metaReducers: [],
-          runtimeChecks: {
-            strictActionImmutability: true,
-            strictStateImmutability: true,
-          },
-        }
-      )
     ),
     {
       provide: ErrorHandler,
