@@ -1,7 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
 import { NavbarComponent } from '@adrianbadilla/shared/components/navbar/navbar.component';
-import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'adrianbadilla-navbar',
+  standalone: true,
+  template: ` <ng-content></ng-content>`,
+})
+class NavbarComponentMockComponent { }
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -9,7 +16,14 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NavbarComponent, RouterModule],
+      imports: [AppComponent],
+    }).overrideComponent(AppComponent, {
+      remove: {
+        imports: [NavbarComponent],
+      },
+      add: {
+        imports: [NavbarComponentMockComponent],
+      },
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
