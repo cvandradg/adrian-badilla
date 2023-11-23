@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "npx nx build adrianbadilla && npx nx run-many -t test"
+    "build": "npx nx build adrianbadilla && npx nx run-many -t test",
+    "serve": "npx nx build adrianbadilla && npx nx run-many -t test && npx nx serve adrianbadilla"
   },
   "private": true,
   "dependencies": {
