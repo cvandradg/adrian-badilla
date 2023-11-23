@@ -52,7 +52,7 @@ export class EmailVerificationStore
 
         if (userInfo?.emailVerified) {
           this.facade.storeUserInfo(userInfo);
-          // this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
           return;
         }
       },

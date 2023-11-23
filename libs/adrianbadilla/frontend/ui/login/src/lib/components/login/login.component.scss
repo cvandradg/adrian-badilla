@@ -124,8 +124,6 @@
   width: 100%;
 }
 
-
-
 footer {
   display: flex;
   flex-direction: row;
@@ -143,86 +141,50 @@ footer {
     font-size: 1.2rem;
     margin-bottom: 10%;
   }
-}
 
-@media screen and (min-width: 600px) and (max-width: 670px) {
-  .signup-button p {
-    padding: 0 1rem;
+  .container,
+  .login-container {
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 650px) {
-  .container .description {
-    font-size: 1.2rem;
-    margin-bottom: 10%;
+@media screen and (max-width: 1000px) {
+  .container,
+  .login-container {
+    width: 95%;
   }
 
-  @media screen and (min-width: 601px) and (max-width: 650px) {
-    .container,
-    .login-container {
-      width: 95%;
+  .container {
+    .title {
+      font-size: 1.5rem;
     }
 
-    .container {
-      .title {
-        font-size: 1.5rem;
-      }
-
-      .description {
-        max-width: 70%;
-        font-size: 0.8rem;
-      }
-    }
-
-    footer {
-      margin-top: 5rem;
-      gap: 8rem;
-      position: initial;
-
-      p {
-        font-size: 0.8rem;
-      }
+    .description {
+      text-align: right;
+      font-size: 0.8rem;
+      max-width: 90%;
     }
   }
 
-  @media screen and (min-width: 40px) and (max-width: 600px) {
-    .container,
-    .login-container {
-      width: 95%;
-    }
+  .login-components-container {
+    flex-direction: column;
+  }
 
-    .container {
-      .title {
-        font-size: 1.5rem;
-      }
+  .divison {
+    display: none;
+  }
 
-      .description {
-        text-align: right;
-        font-size: 0.8rem;
-        max-width: 90%;
-      }
-    }
+  .manual-login-inputs {
+    width: 100%;
+  }
 
-    .login-components-container {
-      flex-direction: column;
-    }
+  footer {
+    margin-top: 5rem;
+    gap: 8rem;
+    position: initial;
 
-    .divison {
-      display: none;
-    }
-
-    .manual-login-inputs {
-      width: 100%;
-    }
-
-    footer {
-      margin-top: 5rem;
-      gap: 8rem;
-      position: initial;
-
-      p {
-        font-size: 0.8rem;
-      }
+    p {
+      font-size: 0.8rem;
     }
   }
 }
