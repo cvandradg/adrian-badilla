@@ -63,17 +63,6 @@ p {
   margin: 0.2rem;
 }
 
-::ng-deep {
-  .mdc-button__label {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: white;
-    font-weight: 300;
-    line-height: 1.5rem;
-    width: 100%;
-  }
-}
-
 @media screen and (min-width: 0px) and (max-width: 600px) {
   .container {
     .description {

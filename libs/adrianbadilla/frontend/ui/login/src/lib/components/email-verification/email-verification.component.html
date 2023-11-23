@@ -16,7 +16,7 @@
   <div class="description">
     <div
       class="success-message centered"
-      *ngIf="vm.user?.emailVerified && !vm.loading"
+      *ngIf="vm.user?.emailVerified && !vm.loading && !vm.error?.status"
       [routerLink]="'/'"
     >
       <div>
