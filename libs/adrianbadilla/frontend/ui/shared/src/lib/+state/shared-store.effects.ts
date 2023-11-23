@@ -7,6 +7,8 @@ import {
   Observable,
   startWith,
   filter,
+  delay,
+  concatMap,
 } from 'rxjs';
 import * as actions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
@@ -26,7 +28,7 @@ export class SharedStoreEffects implements OnInitEffects {
   getSession$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.getSession),
-      switchMap(() => this.auth.getUserSession()),
+      concatMap(() => this.auth.getUserSession()),
       map((response: any) => {
         const userInfo = deepCopy(response?.multiFactor.user);
 
@@ -102,6 +104,8 @@ export const catchSwitchMapError =
   <T>(source: Observable<T>) =>
     source.pipe(
       catchError((error, innerSource) =>
-        innerSource.pipe(startWith(errorAction(error)))
+        innerSource.pipe(
+          delay(0),
+          startWith(errorAction(error)))
       )
     );
