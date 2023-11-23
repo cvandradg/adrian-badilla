@@ -1,17 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
-import { provideMockStore } from '@ngrx/store/testing';
 import { cold, hot } from 'jasmine-marbles';
-import { } from 'rxjs/testing';  // Import 'marbles' from 'rxjs-marbles/jest'
+import { TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { provideMockActions } from '@ngrx/effects/testing';
 
-import { Observable, from, of } from 'rxjs';
-import * as SharedStoreActions from './shared-store.actions';
+import { Observable, of } from 'rxjs';
+import { Injectable, } from '@angular/core';
+import { FirebaseError } from 'firebase/app';
 import { SharedStoreEffects } from './shared-store.effects';
-import { Injectable, NO_ERRORS_SCHEMA } from '@angular/core';
+import * as SharedStoreActions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
 import { ErrorHandlerService } from '../services/error-handler.service';
-import { FirebaseError } from 'firebase/app';
 
 @Injectable({
     providedIn: null,
@@ -19,16 +18,10 @@ import { FirebaseError } from 'firebase/app';
 export class AuthServiceMockService {
     getUserSession() {
         return of({
-            multiFactor: {
-                user: {
-                    name: 'test',
-                },
-            }
-
+            multiFactor: { user: { name: 'test' } }
         })
     }
 }
-
 
 @Injectable({
     providedIn: null,
