@@ -2,7 +2,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RegisterStore } from './register.store';
 import { Subject, map, combineLatest } from 'rxjs';
-import { firebaseAuthHelper } from '@classes/firebaseAuthHelper';
+import { BaseComponent } from '@classes/base-component';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
@@ -21,7 +21,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   ],
   providers: [RegisterStore],
 })
-export class RegisterComponent extends firebaseAuthHelper {
+export class RegisterComponent extends BaseComponent {
   readonly registerStore = inject(RegisterStore);
 
   isPassStrong$ = new Subject<boolean>();

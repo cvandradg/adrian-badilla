@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { firebaseAuthHelper } from '@classes/firebaseAuthHelper';
+import { BaseComponent } from '@classes/base-component';
 import { OobcodeCheckerStore } from './oobcode-checker.store';
 import { provideComponentStore } from '@ngrx/component-store';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
@@ -15,6 +15,6 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   imports: [CommonModule, FontAwesomeModule, COMPONENTS],
   providers: [provideComponentStore(OobcodeCheckerStore)],
 })
-export class OobcodeCheckerComponent extends firebaseAuthHelper {
+export class OobcodeCheckerComponent extends BaseComponent {
   oobCodeCheckerStore = inject(OobcodeCheckerStore);
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { combineLatest, map, Subject } from 'rxjs';
-import { firebaseAuthHelper } from '@classes/firebaseAuthHelper';
+import { BaseComponent } from '@classes/base-component';
 import { RequestPassResetStore } from './request-pass-reset.store';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { provideComponentStore } from '@ngrx/component-store';
@@ -18,7 +18,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   imports: [CommonModule, RouterModule, StrengthMeterComponent, MODULES, COMPONENTS],
   providers: [provideComponentStore(RequestPassResetStore)],
 })
-export class RequestPassResetComponent extends firebaseAuthHelper {
+export class RequestPassResetComponent extends BaseComponent {
   compStore = inject(RequestPassResetStore);
 
   isPassStrong$ = new Subject<boolean>();

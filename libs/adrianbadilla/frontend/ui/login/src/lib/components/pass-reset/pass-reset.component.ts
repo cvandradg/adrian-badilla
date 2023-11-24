@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { passResetStore } from './pass-reset.store';
 import { Component, inject, Input } from '@angular/core';
-import { firebaseAuthHelper } from '@classes/firebaseAuthHelper';
+import { BaseComponent } from '@classes/base-component';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 
@@ -13,7 +13,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   imports: [CommonModule, MODULES, COMPONENTS],
   providers: [passResetStore],
 })
-export class PassResetComponent extends firebaseAuthHelper {
+export class PassResetComponent extends BaseComponent {
   @Input()
   public user!: string;
 

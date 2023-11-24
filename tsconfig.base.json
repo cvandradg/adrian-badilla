@@ -29,9 +29,6 @@
         "libs/adrianbadilla/frontend/ui/shared/src/lib/*"
       ],
       "@appStore/*": ["libs/adrianbadilla/frontend/ui/app/src/lib/+state/*"],
-      "@authHelper": [
-        "libs/adrianbadilla/frontend/ui/app/src/lib/classes/firebaseAuthHelper.ts"
-      ],
       "@classes/*": ["libs/adrianbadilla/frontend/ui/shared/src/lib/classes/*"],
       "@decorators/*": [
         "libs/adrianbadilla/frontend/ui/shared/src/lib/decorators/*"

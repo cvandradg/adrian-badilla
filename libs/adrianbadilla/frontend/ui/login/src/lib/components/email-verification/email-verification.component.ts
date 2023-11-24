@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { provideComponentStore } from '@ngrx/component-store';
-import { firebaseAuthHelper } from '@classes/firebaseAuthHelper';
+import { BaseComponent } from '@classes/base-component';
 import { EmailVerificationStore } from './email-verification.store';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NavbarComponent } from '@adrianbadilla/shared/components/navbar/navbar.component';
@@ -25,6 +25,6 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   ],
   providers: [provideComponentStore(EmailVerificationStore)],
 })
-export class EmailVerificationComponent extends firebaseAuthHelper {
+export class EmailVerificationComponent extends BaseComponent {
   emailVerificationStore = inject(EmailVerificationStore);
 }

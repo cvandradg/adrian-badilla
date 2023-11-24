@@ -8,7 +8,7 @@ import { Credentials, validations } from '../types/types';
 import { Fontawesome } from './fontawesome';
 
 @Directive()
-export class firebaseAuthHelper extends Fontawesome {
+export class BaseComponent extends Fontawesome {
   router = inject(Router);
   authService = inject(AuthService);
   formBuilder = inject(FormBuilder);

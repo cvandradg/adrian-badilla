@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { PassResetComponent } from '../pass-reset/pass-reset.component';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
-import { firebaseAuthHelper } from '@adrianbadilla/shared/classes/firebaseAuthHelper';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 
 @Component({
   selector: 'adrianbadilla-ws-login',
@@ -23,6 +23,6 @@ import { firebaseAuthHelper } from '@adrianbadilla/shared/classes/firebaseAuthHe
   ],
   providers: [LoginStore],
 })
-export class LoginComponent extends firebaseAuthHelper {
+export class LoginComponent extends BaseComponent {
   readonly loginStore = inject(LoginStore);
 }
