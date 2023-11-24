@@ -1,9 +1,9 @@
 import { User } from 'firebase/auth';
 import { Injectable } from '@angular/core';
-import { tapResponse } from '@ngrx/component-store';
 import { deepCopy, Credentials } from '@types';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { tapResponse } from '@ngrx/component-store';
 import { Observable, switchMap, pipe } from 'rxjs';
+import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
 
 @Injectable()
 export class LoginStore extends ComponentStoreMixinHelper<object> {
@@ -21,7 +21,6 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
 
               this.facade.storeUserInfo(userInfo);
               userInfo.emailVerified && this.router.navigate(['/dashboard']);
-              
             }, this.handleError)
           )
         )
@@ -33,16 +32,16 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
     (credentials$: Observable<Credentials>) =>
       credentials$.pipe(
         this.responseHandler(
-          switchMap((credentials:Credentials) =>
+          switchMap((credentials: Credentials) =>
             this.authService.auth(credentials).pipe(
               tapResponse((user: User) => {
                 const userInfo = user;
 
                 this.facade.storeUserInfo(userInfo);
 
-                if(userInfo.emailVerified){
+                if (userInfo.emailVerified) {
                   this.router.navigate(['/dashboard']);
-                  return
+                  return;
                 }
 
                 this.authService.sendEmailVerification(user);

@@ -1,5 +1,7 @@
 import {
-  ApplicationConfig, importProvidersFrom, ErrorHandler,
+  ApplicationConfig,
+  importProvidersFrom,
+  ErrorHandler,
   isDevMode,
 } from '@angular/core';
 import {
@@ -19,20 +21,23 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideClientHydration(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
-    provideStore({},
+    provideClientHydration(),
+    provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    provideStore(
+      {},
       {
         metaReducers: [],
         runtimeChecks: {
           strictActionImmutability: true,
           strictStateImmutability: true,
         },
-      }),
+      }
+    ),
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
       EffectsModule.forRoot([]),
-      StoreRouterConnectingModule.forRoot({ routerState: RouterState.Full }),
+      StoreRouterConnectingModule.forRoot({ routerState: RouterState.Full })
     ),
     {
       provide: ErrorHandler,

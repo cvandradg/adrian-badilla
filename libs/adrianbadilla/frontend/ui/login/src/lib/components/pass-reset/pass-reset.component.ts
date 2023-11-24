@@ -11,10 +11,9 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
   styleUrls: ['./pass-reset.component.scss'],
   standalone: true,
   imports: [CommonModule, MODULES, FontAwesomeModule],
-  providers: [passResetStore, ],
+  providers: [passResetStore],
 })
 export class PassResetComponent extends firebaseAuthHelper {
-
   @Input()
   public user!: string;
 

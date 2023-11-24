@@ -8,7 +8,7 @@
 >
   <div class="title">Verificacion de cuenta</div>
   <fa-icon
-    *ngIf=" !vm.error?.status && !vm.user?.emailVerified"
+    *ngIf="!vm.error?.status && !vm.user?.emailVerified"
     [icon]="['fas', 'spinner-third']"
     class="icon fa-spin fa-2xl default-color"
     style="--fa-animation-duration: 1s"

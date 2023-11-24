@@ -104,8 +104,6 @@ export const catchSwitchMapError =
   <T>(source: Observable<T>) =>
     source.pipe(
       catchError((error, innerSource) =>
-        innerSource.pipe(
-          delay(0),
-          startWith(errorAction(error)))
+        innerSource.pipe(delay(0), startWith(errorAction(error)))
       )
     );

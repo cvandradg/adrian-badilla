@@ -1,0 +1,26 @@
+<span [ngSwitch]="type">
+  <div class="error-message" *ngSwitchCase="'error'">
+    <p>{{ message }}</p>
+    <fa-icon
+      [icon]="icon"
+      class="icon fa-xl fa-shake"
+      style="--fa-animation-iteration-count: 2"
+    />
+  </div>
+  <div class="success-message" *ngSwitchCase="'success'">
+    <p>{{ message }}</p>
+    <fa-icon
+      [icon]="icon"
+      class="icon fa-xl fa-shake"
+      style="--fa-animation-iteration-count: 2"
+    />
+  </div>
+  <div class="warning-message aligment" *ngSwitchCase="'warning'">
+    <fa-icon
+      [icon]="icon"
+      class="icon fa-xl fa-shake"
+      style="--fa-animation-iteration-count: 2"
+    />
+    <p>{{ message }}</p>
+  </div>
+</span>

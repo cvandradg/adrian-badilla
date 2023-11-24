@@ -8,7 +8,7 @@ import { NavbarComponent } from '@adrianbadilla/shared/components/navbar/navbar.
   standalone: true,
   template: ` <ng-content></ng-content>`,
 })
-class NavbarComponentMockComponent { }
+class NavbarComponentMockComponent {}
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -17,14 +17,16 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-    }).overrideComponent(AppComponent, {
-      remove: {
-        imports: [NavbarComponent],
-      },
-      add: {
-        imports: [NavbarComponentMockComponent],
-      },
-    }).compileComponents();
+    })
+      .overrideComponent(AppComponent, {
+        remove: {
+          imports: [NavbarComponent],
+        },
+        add: {
+          imports: [NavbarComponentMockComponent],
+        },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;

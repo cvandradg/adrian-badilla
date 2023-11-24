@@ -14,7 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { SharedStoreFacade } from '@adrianbadilla/shared/+state/shared-store.facade';
 import { StoreModule, StoreRootModule } from '@ngrx/store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {  getAuth, provideAuth } from '@angular/fire/auth';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { AuthService } from '@adrianbadilla/shared/services/auth-service.service';
 import { ErrorHandlerService } from '@adrianbadilla/shared/services/error-handler.service';
@@ -50,7 +50,8 @@ export const appRoutes: Route[] = [
       {
         path: '',
         pathMatch: 'prefix',
-        loadChildren: () => import('@adrianbadilla/login').then((r) => r.loginRoutes),
+        loadChildren: () =>
+          import('@adrianbadilla/login').then((r) => r.loginRoutes),
       },
       {
         path: '**',

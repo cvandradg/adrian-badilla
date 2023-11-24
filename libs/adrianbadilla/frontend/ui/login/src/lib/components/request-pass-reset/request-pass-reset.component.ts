@@ -14,12 +14,7 @@ import { StrengthMeterComponent } from '@adrianbadilla/shared/components/strengt
   styleUrls: ['./request-pass-reset.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    RouterModule,
-    StrengthMeterComponent,
-    MODULES
-  ],
+  imports: [CommonModule, RouterModule, StrengthMeterComponent, MODULES],
   providers: [provideComponentStore(RequestPassResetStore)],
 })
 export class RequestPassResetComponent extends firebaseAuthHelper {

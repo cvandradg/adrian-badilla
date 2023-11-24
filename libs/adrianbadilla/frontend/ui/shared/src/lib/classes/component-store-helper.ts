@@ -18,8 +18,8 @@ export class ComponentStoreMixinHelper<
   T extends GenericState
 > extends ComponentStore<T> {
   router = inject(Router);
-  authService = inject(AuthService);
   facade = inject(SharedStoreFacade);
+  authService = inject(AuthService);
   errorHelperService = inject(ErrorHandlerService);
 
   readonly error$ = this.select((state) => state.error);
@@ -38,6 +38,11 @@ export class ComponentStoreMixinHelper<
 
   get handleError() {
     return (error: FirebaseError) => {
+      console.log(
+        'null?,',
+        this.errorHelperService.firebaseErrorHandler(error)
+      );
+
       return this.setError(this.errorHelperService.firebaseErrorHandler(error));
     };
   }

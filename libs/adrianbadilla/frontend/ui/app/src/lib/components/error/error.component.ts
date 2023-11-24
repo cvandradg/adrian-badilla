@@ -8,11 +8,7 @@ import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/componen
   selector: 'adrianbadilla-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
-  imports: [
-    CommonModule,
-    SecondaryAnimatedButtonComponent,
-    RouterModule,
-  ],
+  imports: [CommonModule, SecondaryAnimatedButtonComponent, RouterModule],
 })
 export class ErrorComponent {
   location = inject(Location);

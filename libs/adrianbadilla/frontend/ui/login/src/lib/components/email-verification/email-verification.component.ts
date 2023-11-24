@@ -19,7 +19,7 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
     NavbarComponent,
     RouterModule,
     FontAwesomeModule,
-    MODULES
+    MODULES,
   ],
   providers: [provideComponentStore(EmailVerificationStore)],
 })

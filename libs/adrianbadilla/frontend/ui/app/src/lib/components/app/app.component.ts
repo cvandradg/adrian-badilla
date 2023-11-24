@@ -9,10 +9,6 @@ import { NavbarComponent } from '@adrianbadilla/shared/components/navbar/navbar.
   styleUrls: ['./app.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    RouterModule,
-    NavbarComponent
-  ],
+  imports: [CommonModule, RouterModule, NavbarComponent],
 })
-export class AppComponent { }
+export class AppComponent {}

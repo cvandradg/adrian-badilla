@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RouterModule } from '@angular/router';
-import { PassResetComponent } from '../pass-reset/pass-reset.component';
 import { LoginStore } from './login.store';
-import { firebaseAuthHelper } from '@adrianbadilla/shared/classes/firebaseAuthHelper';
-import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Fontawesome } from "@adrianbadilla/shared/classes/fontawesome";
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { PassResetComponent } from '../pass-reset/pass-reset.component';
+import { firebaseAuthHelper } from '@adrianbadilla/shared/classes/firebaseAuthHelper';
 import { PrimaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/primary-animated-button/primary-animated-button.component';
 import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
 
@@ -26,7 +25,7 @@ import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/componen
     SecondaryAnimatedButtonComponent,
     MODULES,
   ],
-  providers: [LoginStore, Fontawesome],
+  providers: [LoginStore],
 })
 export class LoginComponent extends firebaseAuthHelper {
   readonly loginStore = inject(LoginStore);
