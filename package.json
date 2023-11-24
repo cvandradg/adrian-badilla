@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "test": "npx nx run-many -t test",
+    "build:only": "npx nx build adrianbadilla",
     "build": "npx nx build adrianbadilla && npx nx run-many -t test",
     "serve": "npx nx build adrianbadilla && npx nx run-many -t test && npx nx serve adrianbadilla"
   },

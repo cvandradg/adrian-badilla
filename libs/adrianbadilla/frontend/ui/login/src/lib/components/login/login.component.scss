@@ -1,11 +1,5 @@
 @import 'general-styles.scss';
 
-@property --gradient-angle {
-  syntax: '<angle>';
-  initial-value: 160deg;
-  inherits: false;
-}
-
 .login-container {
   color: #fff;
   height: 80%;
