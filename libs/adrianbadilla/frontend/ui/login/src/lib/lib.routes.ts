@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { OobcodeCheckerComponent } from './components/oobcode-checker/oobcode-checker.component';
 import { RequestPassResetComponent } from './components/request-pass-reset/request-pass-reset.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
 const redirectLoggedIn = () => verifiedTo(['landing']);
 const redirectUnauthorized = () => unverifiedTo(['login']);
@@ -36,6 +37,7 @@ export const loginRoutes: Route[] = [
     path: 'register',
     component: RegisterComponent,
     pathMatch: 'full',
+    providers: [MODULES],
   },
   {
     path: 'code',

@@ -1,9 +1,9 @@
 <div
   class="container"
   *ngrxLet="{
+    user: facade.userInfo$ | ngrxPush,
     error: emailVerificationStore.error$ | ngrxPush,
-    loading: emailVerificationStore.loading$ | ngrxPush,
-    user: facade.userInfo$ | ngrxPush
+    loading: emailVerificationStore.loading$ | ngrxPush
   } as vm"
 >
   <div class="title">Verificacion de cuenta</div>
@@ -14,31 +14,21 @@
     style="--fa-animation-duration: 1s"
   />
   <div class="description">
-    <div
-      class="success-message centered"
-      *ngIf="vm.user?.emailVerified && !vm.loading && !vm.error?.status"
+    <adrianbadilla-status-message
+      [type]="'success'"
       [routerLink]="'/'"
+      [icon]="['fas', 'check']"
+      [message]="'Verificación completada correctamente'"
+      [display]="vm.user?.emailVerified && !vm.loading && !vm.error?.status"
     >
-      <div>
-        <p>Verificación completada correctamente.</p>
-        <p><strong> Click aqui</strong> para entrar.</p>
-      </div>
+      <p><strong> Click aqui</strong> para entrar.</p>
+    </adrianbadilla-status-message>
 
-      <fa-icon
-        [icon]="['fas', 'check']"
-        style="--fa-animation-iteration-count: 2"
-        class="icon fa-xl fa-shake"
-        style="--fa-animation-iteration-count: 2"
-      />
-    </div>
-
-    <div class="error-message" *ngIf="vm.error?.status">
-      <p>{{ vm.error?.message }}</p>
-      <fa-icon
-        [icon]="['fas', 'xmark']"
-        style="--fa-animation-iteration-count: 2"
-        class="icon fa-xl fa-shake"
-      />
-    </div>
+    <adrianbadilla-status-message
+      [type]="'error'"
+      [icon]="['fas', 'exclamation-triangle']"
+      [message]="'Error al verificar la cuenta'"
+      [display]="vm.error?.status && !vm.loading"
+    />
   </div>
 </div>

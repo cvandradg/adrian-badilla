@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { MODULES } from '../../exports/export-modules';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Fontawesome } from '../../classes/fontawesome';
 
 @Component({
@@ -9,6 +9,7 @@ import { Fontawesome } from '../../classes/fontawesome';
   templateUrl: './primary-animated-button.component.html',
   styleUrls: ['./primary-animated-button.component.scss'],
   imports: [CommonModule, MODULES],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PrimaryAnimatedButtonComponent extends Fontawesome {
   @Input() enable = false;

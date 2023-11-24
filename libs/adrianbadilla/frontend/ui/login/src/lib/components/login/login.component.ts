@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { LoginStore } from './login.store';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { PassResetComponent } from '../pass-reset/pass-reset.component';
+import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 import { firebaseAuthHelper } from '@adrianbadilla/shared/classes/firebaseAuthHelper';
-import { PrimaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/primary-animated-button/primary-animated-button.component';
-import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
 
 @Component({
   selector: 'adrianbadilla-ws-login',
@@ -19,10 +17,8 @@ import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/componen
   imports: [
     CommonModule,
     RouterModule,
-    FontAwesomeModule,
     PassResetComponent,
-    PrimaryAnimatedButtonComponent,
-    SecondaryAnimatedButtonComponent,
+    COMPONENTS,
     MODULES,
   ],
   providers: [LoginStore],

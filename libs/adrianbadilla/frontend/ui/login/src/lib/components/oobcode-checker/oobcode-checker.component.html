@@ -4,19 +4,16 @@
     error: oobCodeCheckerStore.error$ | ngrxPush,
   } as vm"
 >
-  <!-- <span [routerLink]="'/'" class="trim-dots">
-  <p *ngIf="screenWidth <= 600; else elseBlock">AB</p>
-  <ng-template #elseBlock>Adrian Badilla</ng-template>
-</span> -->
-  <ng-container *ngIf="!vm.error?.status; else elseBlock" #name>
-    <div class="title">Procesando</div>
-    <p>No cierres esta ventana.</p>
-  </ng-container>
+  @if (vm.error?.status) {
 
-  <ng-template #elseBlock>
-    <div class="title">Error</div>
-    <div class="description"></div>
-  </ng-template>
+  <div class="title">Procesando</div>
+  <p>No cierres esta ventana.</p>
+
+  } @else {
+
+  <div class="title">Error</div>
+  <div class="description"></div>
+  }
 
   <fa-icon
     *ngIf="!vm.error?.status"
@@ -25,15 +22,10 @@
     style="--fa-animation-duration: 1s"
   />
 
-  <div class="error-message centered" *ngIf="vm.error?.status">
-    <p>
-      {{ vm.error?.message }}
-    </p>
-    <fa-icon
-      [icon]="['fas', 'xmark']"
-      style="--fa-animation-iteration-count: 2"
-      class="icon fa-xl fa-shake"
-      style="--fa-animation-iteration-count: 2"
-    />
-  </div>
+  <adrianbadilla-status-message
+    [type]="'error'"
+    [icon]="['fas', 'message-exclamation']"
+    [message]="vm.error?.message"
+    [display]="vm.error?.status"
+  />
 </div>

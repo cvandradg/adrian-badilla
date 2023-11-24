@@ -65,7 +65,6 @@
           <fa-icon
             *ngIf="!vm.loading && !vm.userInfo"
             [icon]="['fas', 'arrow-right']"
-            style="--fa-animation-iteration-count: 2"
             class="icon fa-xl fa-shake"
             style="--fa-animation-iteration-count: 2"
           />
@@ -80,7 +79,6 @@
           <fa-icon
             *ngIf="!vm.loading && vm.userInfo"
             [icon]="['fas', 'check']"
-            style="--fa-animation-iteration-count: 2"
             class="icon fa-xl fa-shake"
             style="--fa-animation-iteration-count: 2"
           />
@@ -88,35 +86,28 @@
       </button>
     </div>
     <div class="centered">
-      <div class="warning-message" *ngIf="!vm.loading && vm.userInfo">
-        <p>Revisa tu correo para activar tu cuenta</p>
-        <fa-icon
-          [icon]="['fas', 'message-exclamation']"
-          style="--fa-animation-iteration-count: 2"
-          class="icon fa-xl fa-shake"
-        />
-      </div>
-      <div class="success-message" *ngIf="!vm.loading && vm.userInfo">
-        <p>Creaste una nueva cuenta.</p>
-        <fa-icon
-          [icon]="['fas', 'check']"
-          style="--fa-animation-iteration-count: 2"
-          class="icon fa-xl fa-shake"
-        />
-      </div>
-    </div>
+      <adrianbadilla-status-message
+        [type]="'warning'"
+        [icon]="['fas', 'message-exclamation']"
+        [message]="'Revisa tu correo para activar tu cuenta.'"
+        [display]="!vm.loading && vm.userInfo"
+      />
 
-    <div class="error-message" *ngIf="!vm.loading && vm.error?.status">
-      <p>
-        {{ vm.error?.message }}
-      </p>
-      <fa-icon
-        [icon]="['fas', 'xmark']"
-        style="--fa-animation-iteration-count: 2"
-        class="icon fa-xl fa-shake"
-        style="--fa-animation-iteration-count: 2"
+      <adrianbadilla-status-message
+        [type]="'success'"
+        [icon]="['fas', 'check']"
+        [message]="'Creaste una nueva cuenta.'"
+        [display]="!vm.loading && vm.userInfo"
       />
     </div>
+
+    <adrianbadilla-status-message
+      [type]="'error'"
+      [icon]="['fas', 'xmark']"
+      [message]="vm.error?.message"
+      [display]="!vm.loading && vm.error?.status"
+    />
+
     <adrianbadilla-strength-meter
       [password]="loginInputForm.get('pass')?.value || ''"
       (enableButton)="isPassStrong$.next($event)"

@@ -4,9 +4,8 @@ import { RegisterStore } from './register.store';
 import { Subject, map, combineLatest } from 'rxjs';
 import { firebaseAuthHelper } from '@classes/firebaseAuthHelper';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { NavbarComponent } from '@adrianbadilla/shared/components/navbar/navbar.component';
-import { StrengthMeterComponent } from '@adrianbadilla/shared/components/strength-meter/strength-meter.component';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 
 @Component({
   selector: 'adrianbadilla-register',
@@ -16,9 +15,8 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    NavbarComponent,
     RouterModule,
-    StrengthMeterComponent,
+    COMPONENTS,
     MODULES,
   ],
   providers: [RegisterStore],

@@ -15,24 +15,19 @@
     />
   </div>
 
-  <div
-    class="success-message aligment"
-    *ngIf="vm.requested && !vm.loading && !vm.error?.status"
-  >
-    <p>Si el correo es válido te llegará un link para cambiar tu contraseña.</p>
-    <fa-icon
-      [icon]="['fas', 'check']"
-      style="--fa-animation-iteration-count: 2"
-      class="icon fa-xl fa-shake"
-      style="--fa-animation-iteration-count: 2"
-    />
-  </div>
-  <div class="error-message" *ngIf="!vm.loading && vm.error?.status">
-    <p>{{ vm.error?.message }}</p>
-    <fa-icon
-      [icon]="['fas', 'xmark']"
-      style="--fa-animation-iteration-count: 2"
-      class="icon fa-xl fa-shake"
-    />
-  </div>
+  <adrianbadilla-status-message
+    [type]="'success'"
+    [icon]="['fas', 'check']"
+    [message]="
+      'Si el correo es válido te llegará un link para cambiar tu contraseña.'
+    "
+    [display]="vm.requested && !vm.loading && !vm.error?.status"
+  />
+
+  <adrianbadilla-status-message
+    [type]="'error'"
+    [icon]="['fas', 'xmark']"
+    [message]="vm.error?.message"
+    [display]="!vm.loading && vm.error?.status"
+  />
 </ng-container>

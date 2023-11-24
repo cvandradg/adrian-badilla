@@ -45,30 +45,24 @@
             [loading]="!vm.loading"
             [buttonText]="'Accede a Tu Cuenta'"
           />
-          <div
-            class="warning-message aligment"
-            *ngIf="
-              !vm.loading &&
-              vm.user?.emailVerified === false &&
-              !vm.error?.status
-            "
-          >
-            <fa-icon
-              [icon]="['fal', 'envelope-circle-check']"
-              style="--fa-animation-iteration-count: 2"
-              class="icon fa-xl fa-shake"
-            />
-            <p>Verifica tu cuenta, te hemos enviado un link al correo.</p>
-          </div>
 
-          <div class="error-message" *ngIf="!vm.loading && vm.error?.status">
-            <p>{{ vm.error?.message }}</p>
-            <fa-icon
-              [icon]="['fas', 'xmark']"
-              style="--fa-animation-iteration-count: 2"
-              class="icon fa-xl fa-shake"
-            />
-          </div>
+          <adrianbadilla-status-message
+            [type]="'warning'"
+            [icon]="['fal', 'envelope-circle-check']"
+            [message]="
+              'Verifica tu cuenta, te hemos enviado un link al correo.'
+            "
+            [display]="
+              !vm.loading && !vm.user?.emailVerified && !vm.error?.status
+            "
+          />
+
+          <adrianbadilla-status-message
+            [type]="'error'"
+            [icon]="['fas', 'xmark']"
+            [message]="vm.error?.message"
+            [display]="!vm.loading && vm.error?.status"
+          />
         </ng-container>
       </div>
       <div class="divison">/</div>

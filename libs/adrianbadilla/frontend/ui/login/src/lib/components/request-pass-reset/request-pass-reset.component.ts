@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { provideComponentStore } from '@ngrx/component-store';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { StrengthMeterComponent } from '@adrianbadilla/shared/components/strength-meter/strength-meter.component';
+import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 
 @Component({
   selector: 'adrianbadilla-request-pass-reset',
@@ -14,7 +15,7 @@ import { StrengthMeterComponent } from '@adrianbadilla/shared/components/strengt
   styleUrls: ['./request-pass-reset.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, StrengthMeterComponent, MODULES],
+  imports: [CommonModule, RouterModule, StrengthMeterComponent, MODULES, COMPONENTS],
   providers: [provideComponentStore(RequestPassResetStore)],
 })
 export class RequestPassResetComponent extends firebaseAuthHelper {

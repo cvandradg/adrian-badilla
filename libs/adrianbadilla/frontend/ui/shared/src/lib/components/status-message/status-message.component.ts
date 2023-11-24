@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { NothingOr } from '@adrianbadilla/shared/types/types';
 
 @Component({
   standalone: true,
@@ -11,8 +12,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatusMessageComponent {
-  @Input() display = true;
-  @Input() message = 'Some Text';
   @Input() icon: IconProp = ['fas', 'user'];
+  @Input() display: NothingOr<boolean> = false;
+  @Input() message: NothingOr<string> = 'Some Text';
   @Input() type: 'success' | 'error' | 'warning' | 'info' = 'error';
 }

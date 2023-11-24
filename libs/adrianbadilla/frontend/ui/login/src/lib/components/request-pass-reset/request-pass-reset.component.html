@@ -69,32 +69,26 @@
         </div>
       </button>
     </div>
-    <div [routerLink]="'/'">
-      <div class="success-message centered" *ngIf="!vm.loading && vm.reseted">
-        <p>Creaste una nueva contraseña.</p>
-        <fa-icon
-          [icon]="['fas', 'check']"
-          style="--fa-animation-iteration-count: 2"
-          class="icon fa-xl fa-shake"
-          style="--fa-animation-iteration-count: 2"
-        />
-      </div>
+
+    <adrianbadilla-status-message
+      [type]="'success'"
+      [icon]="['fas', 'check']"
+      [routerLink]="'/'"
+      [message]="'Creaste una nueva contraseña..'"
+      [display]="!vm.loading && vm.reseted"
+    >
       <div class="success-message centered" *ngIf="!vm.loading && vm.reseted">
         Click aca para acceder
       </div>
-    </div>
+    </adrianbadilla-status-message>
 
-    <div class="error-message centered" *ngIf="!vm.loading && vm.error?.status">
-      <p>
-        {{ vm.error?.message }}
-      </p>
-      <fa-icon
-        [icon]="['fas', 'xmark']"
-        style="--fa-animation-iteration-count: 2"
-        class="icon fa-xl fa-shake"
-        style="--fa-animation-iteration-count: 2"
-      />
-    </div>
+    <adrianbadilla-status-message
+      [type]="'error'"
+      [icon]="['fas', 'xmark']"
+      [message]="'vm.error?.message'"
+      [display]="!vm.loading && vm.error?.status"
+    />
+
     <adrianbadilla-strength-meter
       [password]="loginInputForm.get('pass')?.value || ''"
       (enableButton)="isPassStrong$.next($event)"

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { MODULES } from '../../exports/export-modules';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -15,7 +14,7 @@ import { Fontawesome } from '../../classes/fontawesome';
   selector: 'adrianbadilla-secondary-animated-button',
   templateUrl: './secondary-animated-button.component.html',
   styleUrls: ['./secondary-animated-button.component.scss'],
-  imports: [CommonModule, MODULES],
+  imports: [MODULES],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SecondaryAnimatedButtonComponent extends Fontawesome {

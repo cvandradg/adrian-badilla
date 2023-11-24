@@ -33,3 +33,5 @@ export interface BaseComponentState extends Object {
 export interface AngularFireError extends Error {
   rejection: FirebaseError;
 }
+
+export type NothingOr<T> = T | null | undefined;

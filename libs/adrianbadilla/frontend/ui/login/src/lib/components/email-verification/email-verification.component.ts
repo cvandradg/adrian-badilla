@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NavbarComponent } from '@adrianbadilla/shared/components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 
 @Component({
   templateUrl: './email-verification.component.html',
@@ -20,6 +21,7 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
     RouterModule,
     FontAwesomeModule,
     MODULES,
+    COMPONENTS
   ],
   providers: [provideComponentStore(EmailVerificationStore)],
 })

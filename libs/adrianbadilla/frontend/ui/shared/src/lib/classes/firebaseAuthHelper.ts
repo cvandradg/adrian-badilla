@@ -5,9 +5,10 @@ import { ErrorHandlerService } from '../services/error-handler.service';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Credentials, validations } from '../types/types';
+import { Fontawesome } from './fontawesome';
 
 @Directive()
-export class firebaseAuthHelper {
+export class firebaseAuthHelper extends Fontawesome {
   router = inject(Router);
   authService = inject(AuthService);
   formBuilder = inject(FormBuilder);
