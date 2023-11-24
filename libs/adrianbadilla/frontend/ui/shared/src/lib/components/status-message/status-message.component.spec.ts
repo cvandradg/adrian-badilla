@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StatusMessageComponent } from './status-message.component';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
 describe('StatusMessageComponent', () => {
   let component: StatusMessageComponent;
@@ -7,7 +8,7 @@ describe('StatusMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StatusMessageComponent],
+      imports: [MODULES],
     }).compileComponents();
 
     fixture = TestBed.createComponent(StatusMessageComponent);
