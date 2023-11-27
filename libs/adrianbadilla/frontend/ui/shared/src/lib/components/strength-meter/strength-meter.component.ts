@@ -4,6 +4,8 @@ import {
   Output,
   OnChanges,
   EventEmitter,
+  ChangeDetectionStrategy,
+  SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +14,7 @@ import { CommonModule } from '@angular/common';
   selector: 'adrianbadilla-strength-meter',
   templateUrl: './strength-meter.component.html',
   styleUrls: ['./strength-meter.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
 })
 export class StrengthMeterComponent implements OnChanges {
@@ -27,7 +30,7 @@ export class StrengthMeterComponent implements OnChanges {
     test: (pass: string) => {
       return pass.length >= 5;
     },
-  };
+  } as RegExp;
 
   validationFlags = [
     this.symbols,
@@ -37,14 +40,15 @@ export class StrengthMeterComponent implements OnChanges {
     this.passLength,
   ];
 
-  ngOnChanges(changes: any): void {
-    this.passStrengthMeter(changes?.password?.currentValue);
+  ngOnChanges(changes: SimpleChanges): void {
+    this.passStrengthMeter(changes['password'].currentValue);
   }
 
   passStrengthMeter(
     pass: string
   ): 'vulnerable' | 'debil' | 'semisegura' | 'segura' | 'fuerte' {
-    const result = this.validationFlags.filter((regexFlags: any) => {
+
+    const result = this.validationFlags.filter((regexFlags: RegExp) => {
       if (regexFlags.test(pass)) {
         return true;
       }

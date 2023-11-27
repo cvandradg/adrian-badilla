@@ -1,6 +1,6 @@
-import { User } from 'firebase/auth';
+import { UserCredential } from 'firebase/auth';
 import { Injectable } from '@angular/core';
-import { deepCopy, Credentials } from '@types';
+import { Credentials } from '@types';
 import { tapResponse } from '@ngrx/component-store';
 import { Observable, switchMap, pipe } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
@@ -16,11 +16,9 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
       this.responseHandler(
         switchMap(() =>
           this.authService.googleSignin().pipe(
-            tapResponse((response: any) => {
-              const userInfo = deepCopy(response);
-
+            tapResponse((userInfo: UserCredential) => {
               this.facade.storeUserInfo(userInfo);
-              userInfo.emailVerified && this.router.navigate(['/dashboard']);
+              userInfo.user.emailVerified && this.router.navigate(['/dashboard']);
             }, this.handleError)
           )
         )
@@ -33,18 +31,16 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
       credentials$.pipe(
         this.responseHandler(
           switchMap((credentials: Credentials) =>
-            this.authService.auth(credentials).pipe(
-              tapResponse((user: User) => {
-                const userInfo = user;
-
+            this.authService.login(credentials).pipe(
+              tapResponse((userInfo: UserCredential) => {
                 this.facade.storeUserInfo(userInfo);
 
-                if (userInfo.emailVerified) {
+                if (userInfo.user.emailVerified) {
                   this.router.navigate(['/dashboard']);
                   return;
                 }
 
-                this.authService.sendEmailVerification(user);
+                this.authService.sendEmailVerification(userInfo.user);
               }, this.handleError)
             )
           )

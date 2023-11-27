@@ -7,13 +7,16 @@ import {
   Observable,
   startWith,
   filter,
-  delay,
   concatMap,
 } from 'rxjs';
 import * as actions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
 import { ErrorHandlerService } from '../services/error-handler.service';
-import { deepCopy } from '../types/types';
+import { NothingOr, deepCopy } from '../types/types';
+import { User } from 'firebase/auth';
+import { TypedAction } from '@ngrx/store/src/models';
+import { FirebaseError } from 'firebase/app';
+import { createAction } from '@ngrx/store';
 
 @Injectable()
 export class SharedStoreEffects implements OnInitEffects {
@@ -28,9 +31,9 @@ export class SharedStoreEffects implements OnInitEffects {
   getSession$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.getSession),
-      concatMap(() => this.auth.getUserSession()),
-      map((response: any) => {
-        const userInfo = deepCopy(response?.multiFactor.user);
+      concatMap(() => this.auth.authState$),
+      map((response: NothingOr<User>) => {
+        const userInfo = deepCopy(response);
 
         return actions.storeUserInfo({ userInfo });
       }),
@@ -46,13 +49,8 @@ export class SharedStoreEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(actions.requestPassReset),
       switchMap((action) => this.auth.recoverPassword(action.email)),
-      catchSwitchMapError((error) => {
-        if (
-          error.code !== 'auth/missing-email' &&
-          error.code !== 'auth/invalid-email'
-        )
-          return;
-
+      map(() => createAction('')),
+      catchSwitchMapError((error: FirebaseError) => {
         return actions.actionFailure(
           this.errorHelperService.firebaseErrorHandler(error)
         );
@@ -100,10 +98,12 @@ export class SharedStoreEffects implements OnInitEffects {
 }
 
 export const catchSwitchMapError =
-  (errorAction: (error: any) => any) =>
-  <T>(source: Observable<T>) =>
-    source.pipe(
-      catchError((error, innerSource) =>
-        innerSource.pipe(delay(0), startWith(errorAction(error)))
-      )
-    );
+  (errorAction: (error: FirebaseError) =>
+    TypedAction<"[SharedStore Page] On Action Failure">) =>
+    <T>(source: Observable<T>) =>
+      source.pipe(
+        catchError((error, innerSource) =>
+          innerSource.pipe(startWith(errorAction(error)))
+        )
+      );
+

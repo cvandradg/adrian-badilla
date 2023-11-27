@@ -16,9 +16,9 @@ import { ErrorHandlerService } from '../services/error-handler.service';
   providedIn: null,
 })
 export class AuthServiceMockService {
-  getUserSession() {
+  get authState$() {
     return of({
-      multiFactor: { user: { name: 'test' } },
+      user: { name: 'test' },
     });
   }
 }
@@ -56,20 +56,16 @@ describe('SharedStoreEffects', () => {
   });
 
   describe('getSession$', () => {
-    const mockResponse = {
-      multiFactor: {
-        user: {
-          name: 'test',
-        },
+    const userInfo = {
+      user: {
+        name: 'test',
       },
     };
     it('should work', () => {
       actions = hot('-a-|', { a: SharedStoreActions.getSession() });
 
       const expected = cold('-b-|', {
-        b: SharedStoreActions.storeUserInfo({
-          userInfo: mockResponse.multiFactor.user,
-        }),
+        b: SharedStoreActions.storeUserInfo({ userInfo }),
       });
 
       expect(effects.getSession$).toBeObservable(expected);

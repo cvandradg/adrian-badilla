@@ -4,7 +4,7 @@
     error: oobCodeCheckerStore.error$ | ngrxPush,
   } as vm"
 >
-  @if (vm.error?.status) {
+  @if (!vm.error?.status) {
 
   <div class="title">Procesando</div>
   <p>No cierres esta ventana.</p>

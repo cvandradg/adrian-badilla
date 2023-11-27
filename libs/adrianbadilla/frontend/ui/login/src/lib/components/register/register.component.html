@@ -90,14 +90,14 @@
         [type]="'warning'"
         [icon]="['fas', 'message-exclamation']"
         [message]="'Revisa tu correo para activar tu cuenta.'"
-        [display]="!vm.loading && vm.userInfo"
+        [display]="!vm.loading && !!vm.userInfo"
       />
 
       <adrianbadilla-status-message
         [type]="'success'"
         [icon]="['fas', 'check']"
         [message]="'Creaste una nueva cuenta.'"
-        [display]="!vm.loading && vm.userInfo"
+        [display]="!vm.loading && !!vm.userInfo"
       />
     </div>
 

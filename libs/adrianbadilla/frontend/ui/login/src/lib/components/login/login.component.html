@@ -2,7 +2,7 @@
   class="login-container"
   *ngrxLet="{
     loading: loginStore.loading$ | ngrxPush,
-    user: facade.userInfo$ | ngrxPush,
+    userInfo: facade.userInfo$ | ngrxPush,
     error: loginStore.error$ | ngrxPush,
   } as vm"
 >
@@ -37,7 +37,7 @@
           </mat-form-field>
         </form>
 
-        <ng-container #loginComponents *ngrxLet="vm.user">
+        <ng-container #loginComponents *ngrxLet="vm.userInfo?.user">
           <adrianbadilla-primary-animated-button
             #loginButton
             (submitEvent)="loginStore.accessAccount$(credentials)"
@@ -45,7 +45,6 @@
             [loading]="!vm.loading"
             [buttonText]="'Accede a Tu Cuenta'"
           />
-
           <adrianbadilla-status-message
             [type]="'warning'"
             [icon]="['fal', 'envelope-circle-check']"
@@ -53,7 +52,9 @@
               'Verifica tu cuenta, te hemos enviado un link al correo.'
             "
             [display]="
-              !vm.loading && !vm.user?.emailVerified && !vm.error?.status
+              !vm.loading &&
+              vm.userInfo?.user?.emailVerified === false &&
+              !vm.error?.status
             "
           />
 
