@@ -5,8 +5,8 @@ import { Directive, inject } from '@angular/core';
 import { OperatorFunction, pipe, tap } from 'rxjs';
 import { ComponentStore } from '@ngrx/component-store';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
-import { AuthService } from '../services/auth/auth-service.service';
-import { ErrorHandlerService } from '../services/error-handler/error-handler.service';
+import { AuthService } from '../services/auth-service.service';
+import { ErrorHandlerService } from '../services/error-handler.service';
 
 export interface GenericState extends Object {
   error?: AppError | null;
@@ -18,8 +18,8 @@ export class ComponentStoreMixinHelper<
   T extends GenericState
 > extends ComponentStore<T> {
   router = inject(Router);
-  authService = inject(AuthService);
   facade = inject(SharedStoreFacade);
+  authService = inject(AuthService);
   errorHelperService = inject(ErrorHandlerService);
 
   readonly error$ = this.select((state) => state.error);
@@ -38,6 +38,11 @@ export class ComponentStoreMixinHelper<
 
   get handleError() {
     return (error: FirebaseError) => {
+      console.log(
+        'null?,',
+        this.errorHelperService.firebaseErrorHandler(error)
+      );
+
       return this.setError(this.errorHelperService.firebaseErrorHandler(error));
     };
   }

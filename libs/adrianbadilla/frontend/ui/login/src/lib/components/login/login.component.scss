@@ -1,0 +1,152 @@
+@import 'general-styles.scss';
+
+.login-container {
+  color: #fff;
+  height: 80%;
+  max-width: 100%;
+}
+
+.container,
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container {
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 5.5% 0;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    max-width: 55%;
+    color: #88898e;
+    margin-bottom: 5%;
+  }
+}
+
+.login-header,
+.login-components-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-components-container {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 17rem;
+
+  .divison {
+    width: 13%;
+    text-align: center;
+    align-self: flex-start;
+    margin-top: 6rem;
+  }
+
+  .manual-login-inputs,
+  .form-login-inputs,
+  .automatic-signin-tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-start;
+  }
+
+  .form-login-inputs {
+    width: 100%;
+  }
+
+  .automatic-signin-tools {
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .manual-login-inputs {
+    gap: 0.007rem;
+    width: 100%;
+  }
+}
+
+.aligment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  bottom: 0;
+  position: fixed;
+  color: #7b7d81;
+}
+
+/// Media Queries///
+@media screen and (max-width: 768px) {
+  .container .description {
+    font-size: 1.2rem;
+    margin-bottom: 10%;
+  }
+
+  .container,
+  .login-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container,
+  .login-container {
+    width: 95%;
+  }
+
+  .container {
+    .title {
+      font-size: 1.5rem;
+    }
+
+    .description {
+      text-align: right;
+      font-size: 0.8rem;
+      max-width: 90%;
+    }
+  }
+
+  .login-components-container {
+    flex-direction: column;
+  }
+
+  .divison {
+    display: none;
+  }
+
+  .manual-login-inputs {
+    width: 100%;
+  }
+
+  footer {
+    margin-top: 5rem;
+    gap: 8rem;
+    position: initial;
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}

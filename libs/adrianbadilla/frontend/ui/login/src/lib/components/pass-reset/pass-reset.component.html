@@ -1,0 +1,33 @@
+<ng-container
+  *ngrxLet="{
+    error: passResetStore.error$ | ngrxPush,
+    loading: passResetStore.loading$ | ngrxPush,
+    requested: passResetStore.requested$ | ngrxPush
+  } as vm"
+>
+  <div class="forgot-password" (click)="passResetStore.passReset(user)">
+    <p>Recuperar Contraseña</p>
+    <fa-icon
+      *ngIf="vm.loading"
+      [icon]="['fas', 'spinner-third']"
+      class="icon fa-xl fa-spin"
+      style="--fa-animation-duration: 1s"
+    />
+  </div>
+
+  <adrianbadilla-status-message
+    [type]="'success'"
+    [icon]="['fas', 'check']"
+    [message]="
+      'Si el correo es válido te llegará un link para cambiar tu contraseña.'
+    "
+    [display]="vm.requested && !vm.loading && !vm.error?.status"
+  />
+
+  <adrianbadilla-status-message
+    [type]="'error'"
+    [icon]="['fas', 'xmark']"
+    [message]="vm.error?.message"
+    [display]="!vm.loading && vm.error?.status"
+  />
+</ng-container>

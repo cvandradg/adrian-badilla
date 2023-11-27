@@ -3,9 +3,12 @@ import { select, Store } from '@ngrx/store';
 
 import * as actions from './shared-store.actions';
 import * as selectors from './shared-store.selectors';
-import { deepCopy, generalError } from '../types/types';
+import { Credentials, deepCopy, generalError } from '../types/types';
+import { UserCredential } from 'firebase/auth';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SharedStoreFacade {
   private readonly store = inject(Store);
 
@@ -25,7 +28,7 @@ export class SharedStoreFacade {
     this.store.dispatch(actions.getSession());
   }
 
-  accessAccount(credentials: any) {
+  accessAccount(credentials: Credentials) {
     this.store.dispatch(actions.accessAccount(credentials));
   }
 
@@ -33,7 +36,7 @@ export class SharedStoreFacade {
     this.store.dispatch(actions.requestPassReset({ email }));
   }
 
-  storeUserInfo(userInfo: any) {
+  storeUserInfo(userInfo: UserCredential) {
     userInfo = deepCopy(userInfo);
     this.store.dispatch(actions.storeUserInfo({ userInfo }));
   }

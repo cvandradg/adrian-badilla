@@ -2,12 +2,13 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { SharedStoreEntity } from '../+state/shared-store.models';
 import * as SharedStoreActions from './shared-store.actions';
-import { AppError } from '../types/types';
+import { AppError, NothingOr } from '../types/types';
+import { UserCredential } from 'firebase/auth';
 
 export const SHARED_STORE_FEATURE_KEY = 'sharedStore';
 
 export interface SharedStoreState {
-  userInfo: any;
+  userInfo: NothingOr<UserCredential>;
   loading: boolean;
   toggleSidenavbar: boolean;
   error: AppError;

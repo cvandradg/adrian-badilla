@@ -89,6 +89,7 @@ the Handler class without the need to redeclare it. Not sure if this approach is
 
 12. In the HTML of login component I'm calling a service Subject property, is this a good practice?
 13. How to test effects?
+
 ## Userfull resources:
 
 This is not a complete list, but of the things that I remeber were useful.

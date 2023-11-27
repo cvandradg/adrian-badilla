@@ -18,7 +18,7 @@ jobs:
         with:
           cmd: install
 
-      - name: 'Yarn Build'
+      - name: 'Yarn Test and Build'
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: build

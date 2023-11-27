@@ -10,7 +10,6 @@ import {
 
 describe('SharedStore Reducer', () => {
   describe('valid SharedStore actions', () => {
-
     it('should show as loading', () => {
       const action = SharedStoreActions.showLoading();
 
@@ -23,7 +22,7 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should not be loading', () => {
-      const action = SharedStoreActions.hideLoading()
+      const action = SharedStoreActions.hideLoading();
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
@@ -34,7 +33,7 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should toggle sidenavbar', () => {
-      const action = SharedStoreActions.toggleSidenavbar()
+      const action = SharedStoreActions.toggleSidenavbar();
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
@@ -45,7 +44,7 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should store user info', () => {
-      const action = SharedStoreActions.storeUserInfo({ userInfo: { id: 1 } })
+      const action = SharedStoreActions.storeUserInfo({ userInfo: { id: 1 } });
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
@@ -56,7 +55,9 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should store user info after getting a session', () => {
-      const action = SharedStoreActions.getSessionSuccess({ userInfo: { id: 1 } })
+      const action = SharedStoreActions.getSessionSuccess({
+        userInfo: { id: 1 },
+      });
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
@@ -67,29 +68,23 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should store the failure of an action', () => {
-      const action = SharedStoreActions.actionFailure(
-        {
-          error: { msj: 'test' },
-          message: 'test',
-          status: true,
-        }
-      )
+      const action = SharedStoreActions.actionFailure({
+        error: { msj: 'test' },
+        message: 'test',
+        status: true,
+      });
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
         action
       );
 
-      expect(result.error).toStrictEqual(
-        {
-          status: true,
-          message: 'test',
-          error: { msj: 'test' }
-        }
-      );
+      expect(result.error).toStrictEqual({
+        status: true,
+        message: 'test',
+        error: { msj: 'test' },
+      });
     });
-
-
   });
 
   describe('unknown action', () => {

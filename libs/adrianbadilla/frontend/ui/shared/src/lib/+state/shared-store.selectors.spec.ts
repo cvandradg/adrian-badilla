@@ -9,7 +9,6 @@ describe('SharedStore Selectors', () => {
 
   beforeEach(() => {
     state = { sharedStore: initialSharedStoreState };
-
   });
 
   describe('SharedStore Selectors', () => {

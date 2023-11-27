@@ -17,25 +17,27 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LetDirective, PushPipe } from '@ngrx/component';
+import { CommonModule } from '@angular/common';
 
 export const MODULES = [
-  MatFormFieldModule,
-  MatButtonModule,
-  MatDialogModule,
+  PushPipe,
   FormsModule,
-  MatInputModule,
-  MatAutocompleteModule,
-  ReactiveFormsModule,
-  MatToolbarModule,
+  CommonModule,
+  LetDirective,
+  MatListModule,
   MatIconModule,
   DragDropModule,
-  MatChipsModule,
-  FontAwesomeModule,
-  MatStepperModule,
   MatRadioModule,
+  MatInputModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatStepperModule,
   MatSidenavModule,
+  FontAwesomeModule,
   MatCheckboxModule,
-  MatListModule,
-  LetDirective,
-  PushPipe,
+  MatFormFieldModule,
+  ReactiveFormsModule,
+  MatAutocompleteModule,
 ];

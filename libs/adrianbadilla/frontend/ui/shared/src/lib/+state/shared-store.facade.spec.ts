@@ -18,29 +18,22 @@ describe('SharedStoreFacade', () => {
         imports: [
           StoreModule.forFeature(SHARED_STORE_FEATURE_KEY, sharedStoreReducer),
         ],
-        providers: [
-          SharedStoreFacade,
-        ],
+        providers: [SharedStoreFacade],
       })
-      class CustomFeatureModule { }
+      class CustomFeatureModule {}
 
       @NgModule({
         imports: [
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
-        ]
+        ],
       })
-      class RootModule { }
+      class RootModule {}
 
       TestBed.configureTestingModule({
-        imports: [
-          RootModule
-        ],
-        providers: [
-          SharedStoreFacade,
-
-        ]
+        imports: [RootModule],
+        providers: [SharedStoreFacade],
       });
 
       facade = TestBed.inject(SharedStoreFacade);
@@ -68,16 +61,16 @@ describe('SharedStoreFacade', () => {
       facade.setError({
         status: true,
         message: 'error',
-        error: { code: 'error' }
-      })
+        error: { code: 'error' },
+      });
 
       const error = await firstValueFrom(facade.error$);
 
       expect(error).toStrictEqual({
         status: true,
         message: 'error',
-        error: { code: 'error' }
+        error: { code: 'error' },
       });
     });
   });
-})
+});

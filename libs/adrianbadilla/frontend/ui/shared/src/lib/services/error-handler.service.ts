@@ -2,7 +2,7 @@ import { Injectable, ErrorHandler, Injector } from '@angular/core';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { FirebaseError } from 'firebase/app';
 
-import { AngularFireError } from "../types/types";
+import { AngularFireError } from '../types/types';
 
 function errorIsAngularFireError(err: AngularFireError): boolean {
   return err.rejection && err.rejection.name === 'FirebaseError';
@@ -37,6 +37,8 @@ export class ErrorHandlerService implements ErrorHandler {
         return this.errorObject(true, 'No se encontró este usuario.', error);
       case 'auth/wrong-password':
         return this.errorObject(true, 'La contraseña es incorrecta.', error);
+      case 'auth/invalid-login-credentials':
+        return this.errorObject(true, 'Credenciales inválidos.', error);
       case 'auth/user-disabled':
         return this.errorObject(true, 'El usuario está deshabilitado.', error);
       case 'auth/invalid-email':

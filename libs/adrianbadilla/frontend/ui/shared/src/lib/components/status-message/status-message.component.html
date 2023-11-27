@@ -1,0 +1,28 @@
+@if (display) { @switch (type) { @case ('error') {
+<div class="error-message">
+  <fa-icon
+    [icon]="icon"
+    class="icon fa-xl fa-shake"
+    style="--fa-animation-iteration-count: 2"
+  />
+  <p>{{ message }}</p>
+</div>
+} @case ('warning') {
+<div class="warning-message aligment">
+  <fa-icon
+    [icon]="icon"
+    class="icon fa-xl fa-shake"
+    style="--fa-animation-iteration-count: 2"
+  />
+  <p>{{ message }}</p>
+</div>
+} @case ('success') {
+<div class="success-message">
+  <fa-icon
+    [icon]="icon"
+    class="icon fa-xl fa-shake"
+    style="--fa-animation-iteration-count: 2"
+  />
+  <p>{{ message }}</p>
+</div>
+} } <ng-content></ng-content> }

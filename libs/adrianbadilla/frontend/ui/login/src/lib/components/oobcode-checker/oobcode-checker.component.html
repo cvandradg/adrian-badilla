@@ -1,0 +1,31 @@
+<div
+  class="container"
+  *ngrxLet="{
+    error: oobCodeCheckerStore.error$ | ngrxPush,
+  } as vm"
+>
+  @if (!vm.error?.status) {
+
+  <div class="title">Procesando</div>
+  <p>No cierres esta ventana.</p>
+
+  } @else {
+
+  <div class="title">Error</div>
+  <div class="description"></div>
+  }
+
+  <fa-icon
+    *ngIf="!vm.error?.status"
+    [icon]="['fas', 'spinner-third']"
+    class="icon fa-spin fa-2xl"
+    style="--fa-animation-duration: 1s"
+  />
+
+  <adrianbadilla-status-message
+    [type]="'error'"
+    [icon]="['fas', 'message-exclamation']"
+    [message]="vm.error?.message"
+    [display]="vm.error?.status"
+  />
+</div>

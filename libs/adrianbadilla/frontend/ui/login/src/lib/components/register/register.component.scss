@@ -1,0 +1,128 @@
+@import 'general-styles.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0rem auto;
+}
+
+.container {
+  color: #fff;
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 4% 0 2% 0;
+    letter-spacing: 3px;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    max-width: 70%;
+    color: #88898e;
+    margin-bottom: 5%;
+  }
+}
+
+.form-register-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-start;
+
+  button {
+    width: 100%;
+    height: 4rem;
+  }
+}
+
+.form-register-inputs {
+  width: 100%;
+}
+
+button {
+  border-radius: 0.3rem;
+  background: transparent !important;
+}
+
+.register-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.register-login-inputs {
+  min-width: 22rem;
+
+  button {
+    width: 100%;
+    height: 4rem;
+    border-radius: 0.3rem;
+    background: transparent !important;
+  }
+
+  .horizontal-animation {
+    color: white;
+    background: linear-gradient(to left, rgb(126, 156, 255), rgb(143, 18, 18))
+      right;
+    background-size: 200%;
+    transition: 1s ease-out;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+    background-position: left;
+    margin-bottom: 0.8rem;
+  }
+
+  .enabled-button {
+    background-size: 400%;
+    background-position: 100%;
+  }
+}
+
+.centered {
+  display: flex;
+  flex-direction: row;
+}
+
+:host ::ng-deep {
+  .mdc-button__label {
+    width: 80%;
+  }
+}
+
+dietas-adrian-nx-workspace-strength-meter {
+  content: '';
+  width: 0;
+  height: 100%;
+  transition: 0.5s;
+  width: 100%;
+}
+
+dietas-adrian-nx-workspace-strength-meter::after {
+  color: white;
+  content: '';
+  color: white;
+  position: absolute;
+  -webkit-transform: scaleY(-1);
+  -moz-transform: scaleY(-1);
+  -ms-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: flipv;
+  opacity: 0.4;
+  filter: alpha(opacity= '20');
+}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+  .container {
+    .description {
+      margin-bottom: 3rem;
+      margin-top: 0.7rem;
+    }
+  }
+}
