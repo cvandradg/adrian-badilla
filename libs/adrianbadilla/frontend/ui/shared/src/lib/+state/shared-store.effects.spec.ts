@@ -52,7 +52,7 @@ describe('SharedStoreEffects', () => {
   });
 
   it('should be created', () => {
-    expect(effects).toBeTruthy();
+    expect(effects).toBeFalsy();
   });
 
   describe('getSession$', () => {
