@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { NothingOr } from '../../types/types';
+import { MODULES } from '../../exports/export-modules';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { NothingOr } from '@adrianbadilla/shared/types/types';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   standalone: true,

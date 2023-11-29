@@ -18,7 +18,6 @@ export class AuthService {
   readonly authState$ = authState(this.auth);
 
   facade = inject(SharedStoreFacade);
-  firebaseAuth = inject(AngularFireAuth);
   errorHelperService = inject(ErrorHandlerService);
 
   getCurrentUser() {
