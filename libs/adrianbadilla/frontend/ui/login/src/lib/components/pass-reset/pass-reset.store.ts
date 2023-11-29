@@ -4,7 +4,9 @@ import { Observable, switchMap } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
 
 @Injectable()
-export class passResetStore extends ComponentStoreMixinHelper<PassResetState> {
+export class passResetStore extends ComponentStoreMixinHelper<{
+  requested: boolean;
+}> {
   constructor() {
     super({ requested: false });
   }
@@ -27,8 +29,4 @@ export class passResetStore extends ComponentStoreMixinHelper<PassResetState> {
       )
     )
   );
-}
-
-export interface PassResetState {
-  requested: boolean;
 }

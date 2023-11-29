@@ -6,9 +6,8 @@ import { switchMap, tap, Observable } from 'rxjs';
 
 @Injectable()
 export class OobcodeCheckerStore
-  extends ComponentStoreMixinHelper<object>
-  implements OnStoreInit
-{
+  extends ComponentStoreMixinHelper<Record<string, unknown>>
+  implements OnStoreInit {
   route = inject(ActivatedRoute);
 
   constructor() {

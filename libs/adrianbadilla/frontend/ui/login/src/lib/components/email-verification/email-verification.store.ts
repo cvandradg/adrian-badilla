@@ -8,7 +8,7 @@ import { User } from 'firebase/auth';
 
 @Injectable()
 export class EmailVerificationStore
-  extends ComponentStoreMixinHelper<object>
+  extends ComponentStoreMixinHelper<Record<string, unknown>>
   implements OnStoreInit
 {
   route = inject(ActivatedRoute);

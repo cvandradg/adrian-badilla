@@ -33,6 +33,7 @@ export class SharedStoreEffects implements OnInitEffects {
       ofType(actions.getSession),
       concatMap(() => this.auth.authState$),
       map((user: NothingOr<User>) => {
+        user = deepCopy(user);
         return actions.storeUser({ user });
       }),
       catchSwitchMapError((error) =>

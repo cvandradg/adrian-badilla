@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 
-export interface GenericState extends Object {
+export interface GenericState  extends Record<string, unknown> {
   error?: AppError | null;
   loading?: boolean;
 }
@@ -46,7 +46,7 @@ export class ComponentStoreMixinHelper<
 
 @Injectable()
 export class MockComponentStore
-  extends ComponentStoreMixinHelper<object>
+  extends ComponentStoreMixinHelper<Record<string, unknown>>
   implements OnStoreInit
 {
   constructor() {
