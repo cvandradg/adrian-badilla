@@ -21,7 +21,7 @@ export type AppError = {
   error: any;
 };
 
-export interface BaseComponentState extends  Record<string, unknown>  {
+export interface BaseComponentState extends Record<string, unknown> {
   error: AppError | null;
   loading: boolean;
 }

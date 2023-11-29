@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 
-export interface GenericState  extends Record<string, unknown> {
+export interface GenericState extends Record<string, unknown> {
   error?: AppError | null;
   loading?: boolean;
 }

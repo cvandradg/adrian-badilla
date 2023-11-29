@@ -6,7 +6,9 @@ import { Observable, switchMap, pipe } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
 
 @Injectable()
-export class LoginStore extends ComponentStoreMixinHelper<Record<string, unknown>> {
+export class LoginStore extends ComponentStoreMixinHelper<
+  Record<string, unknown>
+> {
   constructor() {
     super({});
   }

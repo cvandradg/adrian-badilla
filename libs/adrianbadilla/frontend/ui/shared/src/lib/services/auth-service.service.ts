@@ -76,5 +76,4 @@ export class AuthService {
   createAccount({ user, pass }: Credentials): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, user, pass));
   }
-
 }
