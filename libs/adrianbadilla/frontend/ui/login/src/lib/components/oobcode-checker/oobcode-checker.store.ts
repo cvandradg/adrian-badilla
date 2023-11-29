@@ -31,7 +31,7 @@ export class OobcodeCheckerStore
 
   get oobCodeCheck() {
     return {
-      next: (res: any) => {
+      next: (res: { operation: string }) => {
         switch (res.operation) {
           case 'VERIFY_EMAIL':
             this.router.navigate(['/email-verification'], {

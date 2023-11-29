@@ -3,14 +3,22 @@ import { select, Store } from '@ngrx/store';
 
 import * as actions from './shared-store.actions';
 import * as selectors from './shared-store.selectors';
-import { Credentials, deepCopy, generalError } from '../types/types';
-import { UserCredential } from 'firebase/auth';
+import { Credentials, generalError } from '../types/types';
+import { User } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedStoreFacade {
   private readonly store = inject(Store);
+
+  signOut() {
+    this.store.dispatch(actions.signOut());
+  }
+
+  getSession() {
+    this.store.dispatch(actions.getSession());
+  }
 
   showLoader() {
     this.store.dispatch(actions.showLoading());
@@ -24,10 +32,6 @@ export class SharedStoreFacade {
     this.store.dispatch(actions.toggleSidenavbar());
   }
 
-  getSession() {
-    this.store.dispatch(actions.getSession());
-  }
-
   accessAccount(credentials: Credentials) {
     this.store.dispatch(actions.accessAccount(credentials));
   }
@@ -36,17 +40,12 @@ export class SharedStoreFacade {
     this.store.dispatch(actions.requestPassReset({ email }));
   }
 
-  storeUserInfo(userInfo: UserCredential) {
-    userInfo = deepCopy(userInfo);
-    this.store.dispatch(actions.storeUserInfo({ userInfo }));
+  storeUser(user: User) {
+    this.store.dispatch(actions.storeUser({ user }));
   }
 
   setError({ status, message, error }: generalError) {
     this.store.dispatch(actions.actionFailure({ status, message, error }));
-  }
-
-  signOut() {
-    this.store.dispatch(actions.signOut());
   }
 
   error$ = this.store.pipe(select(selectors.error));

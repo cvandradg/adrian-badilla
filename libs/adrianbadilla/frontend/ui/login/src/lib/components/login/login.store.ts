@@ -17,8 +17,9 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
         switchMap(() =>
           this.authService.googleSignin().pipe(
             tapResponse((userInfo: UserCredential) => {
-              this.facade.storeUserInfo(userInfo);
-              userInfo.user.emailVerified && this.router.navigate(['/dashboard']);
+              this.facade.storeUser(userInfo.user);
+              userInfo.user.emailVerified &&
+                this.router.navigate(['/dashboard']);
             }, this.handleError)
           )
         )
@@ -33,7 +34,7 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
           switchMap((credentials: Credentials) =>
             this.authService.login(credentials).pipe(
               tapResponse((userInfo: UserCredential) => {
-                this.facade.storeUserInfo(userInfo);
+                this.facade.storeUser(userInfo.user);
 
                 if (userInfo.user.emailVerified) {
                   this.router.navigate(['/dashboard']);

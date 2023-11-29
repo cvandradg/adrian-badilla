@@ -1,9 +1,9 @@
 <div
   class="login-container"
   *ngrxLet="{
-    loading: loginStore.loading$ | ngrxPush,
-    userInfo: facade.userInfo$ | ngrxPush,
     error: loginStore.error$ | ngrxPush,
+    userInfo: facade.userInfo$ | ngrxPush,
+    loading: loginStore.loading$ | ngrxPush,
   } as vm"
 >
   <div class="container">

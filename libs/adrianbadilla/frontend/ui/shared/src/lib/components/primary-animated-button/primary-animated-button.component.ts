@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { MODULES } from '../../exports/export-modules';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Fontawesome } from '../../classes/fontawesome';
 
 @Component({

@@ -38,7 +38,7 @@ export const appRoutes: Route[] = [
           fromSharedStore.sharedStoreReducer
         ),
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-        provideAuth(() => getAuth()),
+        provideAuth(() => getAuth())
       ),
       {
         provide: FIREBASE_OPTIONS,

@@ -32,10 +32,8 @@ export class SharedStoreEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(actions.getSession),
       concatMap(() => this.auth.authState$),
-      map((response: NothingOr<User>) => {
-        const userInfo = deepCopy(response);
-
-        return actions.storeUserInfo({ userInfo });
+      map((user: NothingOr<User>) => {
+        return actions.storeUser({ user });
       }),
       catchSwitchMapError((error) =>
         actions.actionFailure(
@@ -74,7 +72,7 @@ export class SharedStoreEffects implements OnInitEffects {
       map((action) => {
         if (
           action.type === actions.actionFailure.type ||
-          action.type === actions.storeUserInfo.type
+          action.type === actions.storeUser.type
         )
           return actions.hideLoading();
 
@@ -87,7 +85,7 @@ export class SharedStoreEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(actions.signOut),
       switchMap(() => this.auth.signOut()),
-      map(() => actions.storeUserInfo({ userInfo: null })),
+      map(() => actions.storeUser({ user: null })),
       catchSwitchMapError((error) =>
         actions.actionFailure(
           this.errorHelperService.firebaseErrorHandler(error)
@@ -98,12 +96,14 @@ export class SharedStoreEffects implements OnInitEffects {
 }
 
 export const catchSwitchMapError =
-  (errorAction: (error: FirebaseError) =>
-    TypedAction<"[SharedStore Page] On Action Failure">) =>
-    <T>(source: Observable<T>) =>
-      source.pipe(
-        catchError((error, innerSource) =>
-          innerSource.pipe(startWith(errorAction(error)))
-        )
-      );
-
+  (
+    errorAction: (
+      error: FirebaseError
+    ) => TypedAction<'[SharedStore Page] On Action Failure'>
+  ) =>
+  <T>(source: Observable<T>) =>
+    source.pipe(
+      catchError((error, innerSource) =>
+        innerSource.pipe(startWith(errorAction(error)))
+      )
+    );

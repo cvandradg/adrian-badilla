@@ -44,7 +44,7 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should store user info', () => {
-      const action = SharedStoreActions.storeUserInfo({ userInfo: { id: 1 } });
+      const action = SharedStoreActions.storeUser({ userInfo: { id: 1 } });
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,

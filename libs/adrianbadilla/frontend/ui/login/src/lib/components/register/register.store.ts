@@ -7,9 +7,9 @@ import { Observable, switchMap } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
 
 @Injectable()
-export class RegisterStore extends ComponentStoreMixinHelper<
-  { user: NothingOr<UserCredential> }
-> {
+export class RegisterStore extends ComponentStoreMixinHelper<{
+  user: NothingOr<UserCredential>;
+}> {
   constructor() {
     super({ user: null });
   }
@@ -31,7 +31,7 @@ export class RegisterStore extends ComponentStoreMixinHelper<
               formGroup.controls['pass'].disable();
               formGroup.controls['user'].disable();
               this.setUser(userInfo);
-              this.facade.storeUserInfo(userInfo);
+              this.facade.storeUser(userInfo.user);
               this.authService.sendEmailVerification(userInfo.user);
             }, this.handleError)
           )

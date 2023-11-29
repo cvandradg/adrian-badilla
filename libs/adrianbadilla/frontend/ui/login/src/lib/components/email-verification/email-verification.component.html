@@ -19,7 +19,9 @@
       [routerLink]="'/'"
       [icon]="['fas', 'check']"
       [message]="'Verificación completada correctamente'"
-      [display]="vm.userInfo?.user?.emailVerified && !vm.loading && !vm.error?.status"
+      [display]="
+        vm.userInfo?.user?.emailVerified && !vm.loading && !vm.error?.status
+      "
     >
       <p><strong> Click aqui</strong> para entrar.</p>
     </adrianbadilla-status-message>

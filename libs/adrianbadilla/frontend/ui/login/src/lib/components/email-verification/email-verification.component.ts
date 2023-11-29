@@ -12,12 +12,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   selector: 'adrianbadilla-email-verification',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MODULES,
-    COMPONENTS
-  ],
+  imports: [CommonModule, RouterModule, MODULES, COMPONENTS],
   providers: [EmailVerificationStore],
 })
 export class EmailVerificationComponent extends BaseComponent {

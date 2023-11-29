@@ -22,7 +22,7 @@ export type Credentials = {
 export type AppError = {
   status: boolean;
   message: string;
-  error: any;
+  error: Error;
 };
 
 export interface BaseComponentState extends Object {

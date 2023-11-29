@@ -15,11 +15,17 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   styleUrls: ['./request-pass-reset.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, StrengthMeterComponent, MODULES, COMPONENTS],
+  imports: [
+    CommonModule,
+    RouterModule,
+    StrengthMeterComponent,
+    MODULES,
+    COMPONENTS,
+  ],
   providers: [provideComponentStore(RequestPassResetStore)],
 })
 export class RequestPassResetComponent extends BaseComponent {
-  compStore = inject(RequestPassResetStore);
+  requestPassResetStore = inject(RequestPassResetStore);
 
   isPassStrong$ = new Subject<boolean>();
 

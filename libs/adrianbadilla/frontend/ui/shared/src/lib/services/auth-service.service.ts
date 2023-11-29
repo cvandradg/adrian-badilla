@@ -1,12 +1,26 @@
-import { FirebaseError } from 'firebase/app';
+import { from, Observable } from 'rxjs';
 import { Credentials } from '../types/types';
 import { Injectable, inject } from '@angular/core';
-import { UserCredential, confirmPasswordReset, sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
-import { from, catchError, NEVER, Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Auth, GoogleAuthProvider, User, applyActionCode, authState, checkActionCode, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, user } from '@angular/fire/auth';
-import { ErrorHandlerService } from './error-handler.service';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
+import {
+  UserCredential,
+  confirmPasswordReset,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+} from 'firebase/auth';
+import {
+  Auth,
+  GoogleAuthProvider,
+  User,
+  applyActionCode,
+  authState,
+  checkActionCode,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  user,
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: null,
@@ -24,11 +38,15 @@ export class AuthService {
   }
 
   getUserSession() {
-    return this.authState$
+    return this.authState$;
   }
 
   signOut() {
     return from(signOut(this.auth));
+  }
+
+  sendEmailVerification(user: User) {
+    return from(sendEmailVerification(user));
   }
 
   verifyEmail(code: string) {
@@ -56,10 +74,7 @@ export class AuthService {
   }
 
   createAccount({ user, pass }: Credentials): Observable<UserCredential> {
-    return from(createUserWithEmailAndPassword(this.auth, user, pass))
+    return from(createUserWithEmailAndPassword(this.auth, user, pass));
   }
 
-  sendEmailVerification(userInfo: User) {
-    return from(sendEmailVerification(userInfo as User))
-  }
 }

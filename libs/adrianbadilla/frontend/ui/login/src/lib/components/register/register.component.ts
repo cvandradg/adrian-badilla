@@ -13,12 +13,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   styleUrls: ['./register.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    RouterModule,
-    COMPONENTS,
-    MODULES,
-  ],
+  imports: [CommonModule, RouterModule, COMPONENTS, MODULES],
   providers: [RegisterStore],
 })
 export class RegisterComponent extends BaseComponent {

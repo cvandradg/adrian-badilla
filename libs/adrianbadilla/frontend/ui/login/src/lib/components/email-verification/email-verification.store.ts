@@ -4,6 +4,7 @@ import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
 
 import { Injectable, inject } from '@angular/core';
 import { switchMap, from, tap, Observable, pipe } from 'rxjs';
+import { User } from 'firebase/auth';
 
 @Injectable()
 export class EmailVerificationStore
@@ -47,12 +48,10 @@ export class EmailVerificationStore
 
   get verifyEmail() {
     return {
-      next: async (userInfo: any) => {
-        await userInfo?.multiFactor?.user.reload();
-
+      next: async (userInfo: User | null) => {
         if (userInfo?.emailVerified) {
-          this.facade.storeUserInfo(userInfo);
-          // this.router.navigate(['/dashboard']);
+          this.facade.storeUser(userInfo);
+          this.router.navigate(['/dashboard']);
           return;
         }
       },
