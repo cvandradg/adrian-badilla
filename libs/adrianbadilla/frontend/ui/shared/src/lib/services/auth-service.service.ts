@@ -18,7 +18,6 @@ export class AuthService {
   readonly authState$ = authState(this.auth);
 
   facade = inject(SharedStoreFacade);
-  errorHelperService = inject(ErrorHandlerService);
 
   getCurrentUser() {
     return this.user$;
@@ -61,11 +60,6 @@ export class AuthService {
   }
 
   sendEmailVerification(userInfo: User) {
-    return from(sendEmailVerification(userInfo as User)).pipe(
-      catchError((err: FirebaseError) => {
-        this.facade.setError(this.errorHelperService.firebaseErrorHandler(err));
-        return NEVER;
-      })
-    );
+    return from(sendEmailVerification(userInfo as User))
   }
 }
