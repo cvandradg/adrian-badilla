@@ -27,12 +27,12 @@ export class RegisterStore extends ComponentStoreMixinHelper<{
       this.responseHandler(
         switchMap((formGroup) =>
           this.authService.createAccount(formGroup.value as Credentials).pipe(
-            tapResponse((userInfo: UserCredential) => {
+            tapResponse((user: UserCredential) => {
               formGroup.controls['pass'].disable();
               formGroup.controls['user'].disable();
-              this.setUser(userInfo);
-              this.facade.storeUser(userInfo.user);
-              this.authService.sendEmailVerification(userInfo.user);
+              this.setUser(user);
+              this.facade.storeUser(user.user);
+              this.authService.sendEmailVerification(user.user);
             }, this.handleError)
           )
         )

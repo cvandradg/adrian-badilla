@@ -51,6 +51,6 @@ export class SharedStoreFacade {
 
   error$ = this.store.pipe(select(selectors.error));
   loading$ = this.store.pipe(select(selectors.loading));
-  userInfo$ = this.store.pipe(select(selectors.userInfo));
+  user$ = this.store.pipe(select(selectors.user));
   showSidenavbar$ = this.store.pipe(select(selectors.toogleSidenavbar));
 }

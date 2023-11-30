@@ -18,9 +18,9 @@ export const loading = createSelector(
   (state: SharedStoreState) => state.loading
 );
 
-export const userInfo = createSelector(
+export const user = createSelector(
   selectSharedStoreState,
-  (state: SharedStoreState) => state.userInfo
+  (state: SharedStoreState) => state.user
 );
 
 export const toogleSidenavbar = createSelector(

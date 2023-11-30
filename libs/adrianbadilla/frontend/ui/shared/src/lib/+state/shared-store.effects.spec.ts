@@ -19,7 +19,7 @@ import { User } from 'firebase/auth';
 export class AuthServiceMockService {
   get authState$() {
     return of({
-      user: { name: 'test' },
+      displayName: 'test',
     });
   }
 }

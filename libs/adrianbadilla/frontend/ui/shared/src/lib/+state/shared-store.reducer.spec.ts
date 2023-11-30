@@ -1,12 +1,12 @@
 import { Action } from '@ngrx/store';
-
+import { User } from 'firebase/auth';
 import * as SharedStoreActions from './shared-store.actions';
-import { SharedStoreEntity } from './shared-store.models';
 import {
   SharedStoreState,
   initialSharedStoreState,
   sharedStoreReducer,
 } from './shared-store.reducer';
+
 
 describe('SharedStore Reducer', () => {
   describe('valid SharedStore actions', () => {
@@ -44,19 +44,19 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should store user info', () => {
-      const action = SharedStoreActions.storeUser({ userInfo: { id: 1 } });
+      const action = SharedStoreActions.storeUser({ user: { displayName: 'hola' } as User });
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
         action
       );
 
-      expect(result.userInfo).toStrictEqual({ id: 1 });
+      expect(result.user).toStrictEqual({ displayName: 'hola' });
     });
 
     it('should store user info after getting a session', () => {
       const action = SharedStoreActions.getSessionSuccess({
-        userInfo: { id: 1 },
+        user: { displayName: 'hola' } as User 
       });
 
       const result: SharedStoreState = sharedStoreReducer(
@@ -64,12 +64,12 @@ describe('SharedStore Reducer', () => {
         action
       );
 
-      expect(result.userInfo).toStrictEqual({ id: 1 });
+      expect(result.user).toStrictEqual({ displayName: 'hola' });
     });
 
     it('should store the failure of an action', () => {
       const action = SharedStoreActions.actionFailure({
-        error: { msj: 'test' },
+        error: { message: 'test', name: 'test' },
         message: 'test',
         status: true,
       });
@@ -82,7 +82,7 @@ describe('SharedStore Reducer', () => {
       expect(result.error).toStrictEqual({
         status: true,
         message: 'test',
-        error: { msj: 'test' },
+        error: { message: 'test', name: 'test' },
       });
     });
   });

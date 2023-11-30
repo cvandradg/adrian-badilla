@@ -4,8 +4,8 @@ import { FirebaseError } from 'firebase/app';
 import { Directive, inject } from '@angular/core';
 import { OperatorFunction, pipe, tap } from 'rxjs';
 import { ComponentStore } from '@ngrx/component-store';
-import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { AuthService } from '../services/auth-service.service';
+import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { ErrorHandlerService } from '../services/error-handler.service';
 
 export interface GenericState extends Record<string, unknown> {

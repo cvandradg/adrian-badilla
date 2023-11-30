@@ -48,9 +48,9 @@ export class EmailVerificationStore
 
   get verifyEmail() {
     return {
-      next: async (userInfo: User | null) => {
-        if (userInfo?.emailVerified) {
-          this.facade.storeUser(userInfo);
+      next: async (user: User | null) => {
+        if (user?.emailVerified) {
+          this.facade.storeUser(user);
           this.router.navigate(['/dashboard']);
           return;
         }

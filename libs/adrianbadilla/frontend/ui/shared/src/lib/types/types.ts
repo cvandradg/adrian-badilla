@@ -5,7 +5,6 @@ export const validations = (...validators: any[]) => [
   '',
   [Validators.required, Validators.min(5), Validators.max(30), ...validators],
 ];
-
 export const deepCopy = <T>(obj: T): T => {
   return JSON.parse(JSON.stringify(obj || ''));
 };
@@ -18,7 +17,7 @@ export type Credentials = {
 export type AppError = {
   status: boolean;
   message: string;
-  error: any;
+  error: Error;
 };
 
 export interface BaseComponentState extends Record<string, unknown> {

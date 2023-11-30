@@ -14,7 +14,7 @@ export interface GenericState extends Record<string, unknown> {
   providedIn: 'root',
 })
 export class SharedStoreFacade {
-  userInfo$ = of({ user: { emailVerified: true } });
+  user$ = of({ user: { emailVerified: true } });
 
   error$ = of({ status: 404, message: 'error', error: 'error' });
   loading$ = of(false);

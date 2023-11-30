@@ -3,7 +3,7 @@
   *ngrxLet="{
     error: registerStore.error$ | ngrxPush,
     enableButton: enableButton$ | ngrxPush,
-    userInfo: registerStore.user$ | ngrxPush,
+    user: registerStore.user$ | ngrxPush,
     loading: registerStore.loading$ | ngrxPush,
   } as vm"
 >
@@ -43,27 +43,27 @@
     <div
       class="horizontal-animation"
       [ngClass]="{
-        'enabled-button': vm.enableButton || vm.userInfo
+        'enabled-button': vm.enableButton || vm.user
       }"
     >
       <button
         mat-button
-        [disabled]="!vm.enableButton && vm.loading && vm.userInfo"
+        [disabled]="!vm.enableButton && vm.loading && vm.user"
         (click)="
           vm.enableButton &&
-            !vm.userInfo &&
+            !vm.user &&
             registerStore.createAccount$(loginInputForm)
         "
         (keyup.enter)="
           vm.enableButton &&
-            !vm.userInfo &&
+            !vm.user &&
             registerStore.createAccount$(loginInputForm)
         "
       >
         <div class="register-button">
           <p>Crear Cuenta</p>
           <fa-icon
-            *ngIf="!vm.loading && !vm.userInfo"
+            *ngIf="!vm.loading && !vm.user"
             [icon]="['fas', 'arrow-right']"
             class="icon fa-xl fa-shake"
             style="--fa-animation-iteration-count: 2"
@@ -77,7 +77,7 @@
           />
 
           <fa-icon
-            *ngIf="!vm.loading && vm.userInfo"
+            *ngIf="!vm.loading && vm.user"
             [icon]="['fas', 'check']"
             class="icon fa-xl fa-shake"
             style="--fa-animation-iteration-count: 2"
@@ -90,14 +90,14 @@
         [type]="'warning'"
         [icon]="['fas', 'message-exclamation']"
         [message]="'Revisa tu correo para activar tu cuenta.'"
-        [display]="!vm.loading && !!vm.userInfo"
+        [display]="!vm.loading && !!vm.user"
       />
 
       <adrianbadilla-status-message
         [type]="'success'"
         [icon]="['fas', 'check']"
         [message]="'Creaste una nueva cuenta.'"
-        [display]="!vm.loading && !!vm.userInfo"
+        [display]="!vm.loading && !!vm.user"
       />
     </div>
 
