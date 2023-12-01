@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   selector: 'adrian-badilla-ws-root',
-  templateUrl: './app.component.html',
+  template: `<router-outlet></router-outlet>`,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {

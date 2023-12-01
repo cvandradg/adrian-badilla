@@ -1,4 +1,5 @@
 import { Validators } from '@angular/forms';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FirebaseError } from 'firebase/app';
 
 export const validations = (...validators: any[]) => [
@@ -30,3 +31,9 @@ export interface AngularFireError extends Error {
 }
 
 export type NothingOr<T> = T | null | undefined;
+
+export type TertiaryButton = {
+  text: string,
+  icon: IconProp,
+  path: string
+}

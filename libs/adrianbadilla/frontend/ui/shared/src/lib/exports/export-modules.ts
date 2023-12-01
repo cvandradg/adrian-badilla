@@ -18,11 +18,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 export const MODULES = [
   PushPipe,
   FormsModule,
   CommonModule,
+  RouterModule,
   LetDirective,
   MatListModule,
   MatIconModule,
