@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@adrianbadilla/app": ["libs/adrianbadilla/frontend/ui/app/src/index.ts"],
+      "@adrianbadilla/client": [
+        "libs/adrianbadilla/frontend/ui/client/src/index.ts"
+      ],
       "@adrianbadilla/dashboard": [
         "libs/adrianbadilla/frontend/ui/dashboard/src/index.ts"
       ],

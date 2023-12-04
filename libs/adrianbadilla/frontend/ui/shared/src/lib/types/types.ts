@@ -35,5 +35,5 @@ export type NothingOr<T> = T | null | undefined;
 export type TertiaryButton = {
   text: string,
   icon: IconProp,
-  path: string
+  path: string | string[]
 }

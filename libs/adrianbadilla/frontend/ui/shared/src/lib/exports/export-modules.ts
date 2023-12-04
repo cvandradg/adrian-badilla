@@ -19,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LetDirective, PushPipe } from '@ngrx/component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { StoreRootModule } from '@ngrx/store';
 
 export const MODULES = [
   PushPipe,
@@ -34,6 +35,7 @@ export const MODULES = [
   MatChipsModule,
   MatDialogModule,
   MatButtonModule,
+  StoreRootModule,
   MatToolbarModule,
   MatStepperModule,
   MatSidenavModule,

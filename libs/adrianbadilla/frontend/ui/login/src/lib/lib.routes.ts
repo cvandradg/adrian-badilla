@@ -11,7 +11,7 @@ import { RequestPassResetComponent } from './components/request-pass-reset/reque
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
-const redirectLoggedIn = () => verifiedTo(['landing']);
+const redirectLoggedIn = () => verifiedTo(['dashboard']);
 const redirectUnauthorized = () => unverifiedTo(['login']);
 
 export const loginRoutes: Route[] = [

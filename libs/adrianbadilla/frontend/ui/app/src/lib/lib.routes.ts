@@ -1,23 +1,17 @@
 import { Route } from '@angular/router';
-import { AppComponent } from './components/app/app.component';
-import { CommonModule } from '@angular/common';
-import { importProvidersFrom } from '@angular/core';
-
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-
-import { environment } from '@environments/environment';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { SharedStoreEffects } from '@adrianbadilla/shared/+state/shared-store.effects';
-import * as fromSharedStore from '@adrianbadilla/shared/+state/shared-store.reducer';
-
-import { ErrorComponent } from './components/error/error.component';
-import { SharedStoreFacade } from '@adrianbadilla/shared/+state/shared-store.facade';
-import { StoreModule, StoreRootModule } from '@ngrx/store';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { importProvidersFrom } from '@angular/core';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from '@environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { AppComponent } from './components/app/app.component';
+import { ErrorComponent } from './components/error/error.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { AuthService } from '@adrianbadilla/shared/services/auth-service.service';
-import { ErrorHandlerService } from '@adrianbadilla/shared/services/error-handler.service';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { SERVICES } from '@adrianbadilla/shared/exports/export-services';
+import * as fromSharedStore from '@adrianbadilla/shared/+state/shared-store.reducer';
+import { SharedStoreEffects } from '@adrianbadilla/shared/+state/shared-store.effects';
 
 export const appRoutes: Route[] = [
   {
@@ -25,14 +19,10 @@ export const appRoutes: Route[] = [
     pathMatch: 'prefix',
     component: AppComponent,
     providers: [
-      CommonModule,
-      SharedStoreFacade,
-      AuthService,
-      ErrorHandlerService,
+      MODULES,
+      SERVICES,
       importProvidersFrom(
-        FontAwesomeModule,
         EffectsModule.forFeature(SharedStoreEffects),
-        StoreRootModule,
         StoreModule.forFeature(
           fromSharedStore.SHARED_STORE_FEATURE_KEY,
           fromSharedStore.sharedStoreReducer
@@ -49,7 +39,6 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        pathMatch: 'prefix',
         loadChildren: () =>
           import('@adrianbadilla/login').then((r) => r.loginRoutes),
       },
