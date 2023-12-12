@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { importProvidersFrom } from '@angular/core';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from '@environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { StoreModule, StoreRootModule } from '@ngrx/store';
 import { AppComponent } from './components/app/app.component';
 import { ErrorComponent } from './components/error/error.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -21,6 +21,7 @@ export const appRoutes: Route[] = [
     providers: [
       MODULES,
       SERVICES,
+      StoreRootModule,
       importProvidersFrom(
         EffectsModule.forFeature(SharedStoreEffects),
         StoreModule.forFeature(

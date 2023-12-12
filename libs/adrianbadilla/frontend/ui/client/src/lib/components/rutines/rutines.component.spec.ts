@@ -7,7 +7,7 @@ describe('RutinesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RutinesComponent],
+      imports: [RutinesComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RutinesComponent);

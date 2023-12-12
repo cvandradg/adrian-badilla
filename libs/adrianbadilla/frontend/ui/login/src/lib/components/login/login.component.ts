@@ -1,10 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { LoginStore } from './login.store';
-import { RouterModule } from '@angular/router';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { PassResetComponent } from '../pass-reset/pass-reset.component';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 
@@ -15,8 +12,6 @@ import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
-    RouterModule,
     PassResetComponent,
     COMPONENTS,
     MODULES,

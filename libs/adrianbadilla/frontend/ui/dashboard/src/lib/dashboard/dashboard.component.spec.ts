@@ -1,8 +1,23 @@
+import { Component, inject } from '@angular/core';
+import { provideMockStore } from '@ngrx/store/testing';
+import { provideComponentStore } from '@ngrx/component-store';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DashboardComponent } from './dashboard.component';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
-import { SERVICES } from '@adrianbadilla/shared/exports/export-services';
-import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+
+import {
+  BaseComponent,
+  MockComponentStore,
+} from '@adrianbadilla/shared/classes/tests-helper';
+
+@Component({
+  templateUrl: './dashboard.component.html',
+  standalone: true,
+  imports: [MODULES],
+})
+export class DashboardComponent extends BaseComponent {
+  loginStore = inject(MockComponentStore);
+}
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -10,8 +25,11 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardComponent, COMPONENTS],
-      providers: [SERVICES]
+      imports: [NoopAnimationsModule, DashboardComponent, MODULES],
+      providers: [
+        provideMockStore({}),
+        provideComponentStore(MockComponentStore),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardComponent);
