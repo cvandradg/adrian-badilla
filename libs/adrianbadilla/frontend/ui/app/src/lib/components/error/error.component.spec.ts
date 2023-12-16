@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ErrorComponent } from './error.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { CommonModule } from '@angular/common';
+import { ErrorComponent } from './error.component';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { RouterTestingModule } from "@angular/router/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
 
 @Component({
   selector: 'adrianbadilla-secondary-animated-button',
@@ -25,7 +25,7 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, ErrorComponent, RouterModule],
+      imports: [CommonModule, ErrorComponent, RouterTestingModule],
     })
       .overrideComponent(ErrorComponent, {
         remove: {
