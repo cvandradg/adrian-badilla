@@ -14,7 +14,7 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { SERVICES } from '@adrianbadilla/shared/exports/export-services';
 import * as fromSharedStore from '@adrianbadilla/shared/+state/shared-store.reducer';
 import { SharedStoreEffects } from '@adrianbadilla/shared/+state/shared-store.effects';
-import { redirectUnauthorized } from '@adrianbadilla/shared/services/helperFunctions.service';
+import { redirectLoggedIn, redirectUnauthorized } from '@adrianbadilla/shared/services/helperFunctions.service';
 
 export const appRoutes: Route[] = [
   {
@@ -44,13 +44,14 @@ export const appRoutes: Route[] = [
         path: 'login',
         loadChildren: () =>
           import('@adrianbadilla/login').then((r) => r.loginRoutes),
+        ...canActivate(redirectLoggedIn),
       },
       {
         path: '',
         pathMatch: 'prefix',
-        ...canActivate(redirectUnauthorized),
         loadChildren: () =>
-          import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
+        import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
+        ...canActivate(redirectUnauthorized),
       },
       {
         path: '**',
