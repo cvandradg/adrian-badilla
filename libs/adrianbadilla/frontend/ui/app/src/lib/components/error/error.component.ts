@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { RouterTestingModule } from '@angular/router/testing';
 import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
 
 @Component({
@@ -11,7 +10,6 @@ import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/componen
   imports: [
     CommonModule,
     SecondaryAnimatedButtonComponent,
-    RouterTestingModule,
   ],
 })
 export class ErrorComponent {
