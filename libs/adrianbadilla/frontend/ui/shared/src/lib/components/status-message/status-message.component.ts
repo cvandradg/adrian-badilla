@@ -1,4 +1,4 @@
-import { NothingOr } from '../../types/types';
+import { NothingOr } from '../../types/general-types';
 import { MODULES } from '../../exports/export-modules';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';

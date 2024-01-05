@@ -1,5 +1,5 @@
 import { from, Observable } from 'rxjs';
-import { Credentials } from '../types/types';
+import { Credentials } from '../types/general-types';
 import { Injectable, inject } from '@angular/core';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import {

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TertiaryButton } from '@adrianbadilla/shared/types/types';
+import { TertiaryButton } from '@adrianbadilla/shared/types/general-types';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { SERVICES } from '@adrianbadilla/shared/exports/export-services';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';

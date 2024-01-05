@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from 'firebase/auth';
-import { AppError, NothingOr } from '../types/types';
+import { AppError, NothingOr } from '../types/general-types';
 
 export const showLoading = createAction('[SharedStore Page] showLoading');
 export const hideLoading = createAction('[SharedStore Page] hideLoading');

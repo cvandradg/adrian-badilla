@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { combineLatest, map, Subject } from 'rxjs';
-import { BaseComponent } from '@classes/base-component';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { RequestPassResetStore } from './request-pass-reset.store';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { provideComponentStore } from '@ngrx/component-store';

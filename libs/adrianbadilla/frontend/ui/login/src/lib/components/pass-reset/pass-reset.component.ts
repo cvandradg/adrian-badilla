@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { passResetStore } from './pass-reset.store';
 import { Component, inject, Input } from '@angular/core';
-import { BaseComponent } from '@classes/base-component';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 

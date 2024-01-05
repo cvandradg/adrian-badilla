@@ -1,5 +1,5 @@
 import { Directive, Injectable, inject } from '@angular/core';
-import { AppError } from '../types/types';
+import { AppError } from '../types/general-types';
 import { ComponentStore, OnStoreInit } from '@ngrx/component-store';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';

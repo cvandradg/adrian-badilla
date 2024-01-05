@@ -1,6 +1,6 @@
 import { OnStoreInit } from '@ngrx/component-store';
 import { ActivatedRoute } from '@angular/router';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 import { Injectable, inject } from '@angular/core';
 import { switchMap, from, tap, Observable, pipe } from 'rxjs';

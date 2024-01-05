@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tapResponse } from '@ngrx/component-store';
 import { Observable, switchMap } from 'rxjs';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
 export class passResetStore extends ComponentStoreMixinHelper<{

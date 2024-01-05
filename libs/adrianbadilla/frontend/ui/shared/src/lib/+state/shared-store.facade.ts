@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import * as actions from './shared-store.actions';
 import { Injectable, inject } from '@angular/core';
 import * as selectors from './shared-store.selectors';
-import { AppError, Credentials, deepCopy } from '../types/types';
+import { AppError, Credentials, deepCopy } from '../types/general-types';
 
 @Injectable({
   providedIn: 'root',

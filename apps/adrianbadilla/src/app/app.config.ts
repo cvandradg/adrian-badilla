@@ -15,7 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideClientHydration } from '@angular/platform-browser';
-import { ErrorHandlerService } from '@services/error-handler.service';
+import { ErrorHandlerService } from '@adrianbadilla/shared/services/error-handler.service';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

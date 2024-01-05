@@ -15,8 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@types": ["libs/adrianbadilla/frontend/ui/shared/src/lib/types/types.ts"],
-      "@classes/*": ["libs/adrianbadilla/frontend/ui/shared/src/lib/classes/*"],
       "@adrianbadilla/app": ["libs/adrianbadilla/frontend/ui/app/src/index.ts"],
       "@adrianbadilla/shared/*": [
         "libs/adrianbadilla/frontend/ui/shared/src/lib/*"
@@ -35,9 +33,6 @@
       ],
       "@materialFunctions": [
         "libs/adrianbadilla/frontend/shared/materialFunctions.ts"
-      ],
-      "@services/*": [
-        "libs/adrianbadilla/frontend/ui/shared/src/lib/services/*"
       ],
       "@environments/*": [
         "libs/adrianbadilla/frontend/ui/shared/src/lib/environments/*"

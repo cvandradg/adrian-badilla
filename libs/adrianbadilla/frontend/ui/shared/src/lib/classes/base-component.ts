@@ -2,7 +2,7 @@ import { Directive, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Credentials, validations } from '../types/types';
+import { Credentials, validations } from '../types/general-types';
 import { Fontawesome } from './fontawesome';
 
 @Directive()

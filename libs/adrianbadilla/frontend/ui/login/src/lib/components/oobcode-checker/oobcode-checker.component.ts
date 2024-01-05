@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { BaseComponent } from '@classes/base-component';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { OobcodeCheckerStore } from './oobcode-checker.store';
 import { provideComponentStore } from '@ngrx/component-store';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';

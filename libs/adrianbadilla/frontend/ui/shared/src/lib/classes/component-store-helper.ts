@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AppError } from '../types/types';
+import { AppError } from '../types/general-types';
 import { FirebaseError } from 'firebase/app';
 import { Directive, inject } from '@angular/core';
 import { OperatorFunction, pipe, tap } from 'rxjs';

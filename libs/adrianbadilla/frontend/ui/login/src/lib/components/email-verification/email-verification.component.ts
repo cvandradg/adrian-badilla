@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { BaseComponent } from '@classes/base-component';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { EmailVerificationStore } from './email-verification.store';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';

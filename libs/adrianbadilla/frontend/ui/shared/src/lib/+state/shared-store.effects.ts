@@ -12,7 +12,7 @@ import {
 import * as actions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
 import { ErrorHandlerService } from '../services/error-handler.service';
-import { NothingOr, deepCopy } from '../types/types';
+import { NothingOr, deepCopy } from '../types/general-types';
 import { User } from 'firebase/auth';
 import { TypedAction } from '@ngrx/store/src/models';
 import { FirebaseError } from 'firebase/app';

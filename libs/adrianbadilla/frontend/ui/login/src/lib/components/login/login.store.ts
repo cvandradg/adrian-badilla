@@ -1,9 +1,9 @@
 import { UserCredential } from 'firebase/auth';
 import { Injectable } from '@angular/core';
-import { Credentials } from '@types';
+import { Credentials } from '@adrianbadilla/shared/types/general-types';
 import { tapResponse } from '@ngrx/component-store';
 import { Observable, switchMap, pipe } from 'rxjs';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
 export class LoginStore extends ComponentStoreMixinHelper<

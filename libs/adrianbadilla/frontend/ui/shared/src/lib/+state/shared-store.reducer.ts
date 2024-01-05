@@ -1,5 +1,5 @@
 import { User } from 'firebase/auth';
-import { AppError, NothingOr } from '../types/types';
+import { AppError, NothingOr } from '../types/general-types';
 import { createReducer, on, Action } from '@ngrx/store';
 import * as SharedStoreActions from './shared-store.actions';
 import { SharedStoreEntity } from '../+state/shared-store.models';
