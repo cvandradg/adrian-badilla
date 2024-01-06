@@ -14,7 +14,7 @@ export const routes: Route[] = [
     path: '',
     component: ClientComponent,
     children: [
-      { path: 'comida', component: FoodComponent},
+      { path: 'comida', component: FoodComponent },
       { path: 'dietas', component: DietsComponent },
       { path: 'perfil', component: ProfileComponent },
       { path: 'rutinas', component: RutinesComponent },
@@ -22,6 +22,6 @@ export const routes: Route[] = [
       { path: 'utilidades', component: UtilitiesComponent },
       { path: 'contactenos', component: ContactUsComponent },
       { path: 'suplementos', component: SuplementsComponent },
-    ]
-  }
+    ],
+  },
 ];

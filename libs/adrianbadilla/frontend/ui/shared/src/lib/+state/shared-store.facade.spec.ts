@@ -61,7 +61,7 @@ describe('SharedStoreFacade', () => {
       facade.setError({
         status: true,
         message: 'error',
-        error: { name: 'error', message: 'error'},
+        error: { name: 'error', message: 'error' },
       });
 
       const error = await firstValueFrom(facade.error$);
@@ -69,7 +69,7 @@ describe('SharedStoreFacade', () => {
       expect(error).toStrictEqual({
         status: true,
         message: 'error',
-        error: { name: 'error', message: 'error'},
+        error: { name: 'error', message: 'error' },
       });
     });
   });

@@ -10,4 +10,4 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MODULES],
 })
-export class ClientComponent { }
+export class ClientComponent {}

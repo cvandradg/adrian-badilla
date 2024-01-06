@@ -11,11 +11,7 @@ import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
   styleUrls: ['./login.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    PassResetComponent,
-    COMPONENTS,
-    MODULES,
-  ],
+  imports: [PassResetComponent, COMPONENTS, MODULES],
   providers: [LoginStore],
 })
 export class LoginComponent extends BaseComponent {

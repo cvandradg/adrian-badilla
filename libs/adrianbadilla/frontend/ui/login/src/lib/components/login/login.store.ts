@@ -20,8 +20,7 @@ export class LoginStore extends ComponentStoreMixinHelper<
           this.authService.googleSignin().pipe(
             tapResponse((user: UserCredential) => {
               this.facade.storeUser(user.user);
-              user.user.emailVerified &&
-                this.router.navigate(['']);
+              user.user.emailVerified && this.router.navigate(['']);
             }, this.handleError)
           )
         )

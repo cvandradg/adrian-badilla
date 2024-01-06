@@ -21,7 +21,11 @@ describe('SharedStore Selectors', () => {
     it('should return the current "error" state', () => {
       const result = SharedStoreSelectors.error(state);
 
-      expect(result).toStrictEqual({ status: false, message: '', error: {} as Error });
+      expect(result).toStrictEqual({
+        status: false,
+        message: '',
+        error: {} as Error,
+      });
     });
 
     it('should return the current "user info" state', () => {

@@ -14,7 +14,10 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { SERVICES } from '@adrianbadilla/shared/exports/export-services';
 import * as fromSharedStore from '@adrianbadilla/shared/+state/shared-store.reducer';
 import { SharedStoreEffects } from '@adrianbadilla/shared/+state/shared-store.effects';
-import { redirectLoggedIn, redirectUnauthorized } from '@adrianbadilla/shared/services/helperFunctions.service';
+import {
+  redirectLoggedIn,
+  redirectUnauthorized,
+} from '@adrianbadilla/shared/services/helperFunctions.service';
 
 export const appRoutes: Route[] = [
   {
@@ -50,7 +53,7 @@ export const appRoutes: Route[] = [
         path: '',
         pathMatch: 'prefix',
         loadChildren: () =>
-        import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
+          import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
         ...canActivate(redirectUnauthorized),
       },
       {
@@ -58,6 +61,6 @@ export const appRoutes: Route[] = [
         component: ErrorComponent,
         pathMatch: 'full',
       },
-    ]
+    ],
   },
 ];

@@ -3,7 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { provideComponentStore } from '@ngrx/component-store';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   BaseComponent,

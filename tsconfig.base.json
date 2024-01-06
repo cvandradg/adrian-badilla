@@ -16,27 +16,27 @@
     "baseUrl": ".",
     "paths": {
       "@adrianbadilla/app": ["libs/adrianbadilla/frontend/ui/app/src/index.ts"],
-      "@adrianbadilla/shared/*": [
-        "libs/adrianbadilla/frontend/ui/shared/src/lib/*"
-      ],
-      "@adrianbadilla/login": [
-        "libs/adrianbadilla/frontend/ui/login/src/index.ts"
-      ],
       "@adrianbadilla/client": [
         "libs/adrianbadilla/frontend/ui/client/src/index.ts"
-      ],
-      "@adrianbadilla/dietas": [
-        "libs/adrianbadilla/frontend/ui/dietas/src/index.ts"
       ],
       "@adrianbadilla/dashboard": [
         "libs/adrianbadilla/frontend/ui/dashboard/src/index.ts"
       ],
-      "@materialFunctions": [
-        "libs/adrianbadilla/frontend/shared/materialFunctions.ts"
+      "@adrianbadilla/dietas": [
+        "libs/adrianbadilla/frontend/ui/dietas/src/index.ts"
+      ],
+      "@adrianbadilla/login": [
+        "libs/adrianbadilla/frontend/ui/login/src/index.ts"
+      ],
+      "@adrianbadilla/shared/*": [
+        "libs/adrianbadilla/frontend/ui/shared/src/lib/*"
       ],
       "@environments/*": [
         "libs/adrianbadilla/frontend/ui/shared/src/lib/environments/*"
       ],
+      "@materialFunctions": [
+        "libs/adrianbadilla/frontend/shared/materialFunctions.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -7,7 +7,6 @@ import {
   sharedStoreReducer,
 } from './shared-store.reducer';
 
-
 describe('SharedStore Reducer', () => {
   describe('valid SharedStore actions', () => {
     it('should show as loading', () => {
@@ -44,7 +43,9 @@ describe('SharedStore Reducer', () => {
     });
 
     it('should store user info', () => {
-      const action = SharedStoreActions.storeUser({ user: { displayName: 'hola' } as User });
+      const action = SharedStoreActions.storeUser({
+        user: { displayName: 'hola' } as User,
+      });
 
       const result: SharedStoreState = sharedStoreReducer(
         initialSharedStoreState,
@@ -56,7 +57,7 @@ describe('SharedStore Reducer', () => {
 
     it('should store user info after getting a session', () => {
       const action = SharedStoreActions.getSessionSuccess({
-        user: { displayName: 'hola' } as User 
+        user: { displayName: 'hola' } as User,
       });
 
       const result: SharedStoreState = sharedStoreReducer(

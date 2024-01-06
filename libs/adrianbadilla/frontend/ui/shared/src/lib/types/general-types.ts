@@ -33,7 +33,7 @@ export interface AngularFireError extends Error {
 export type NothingOr<T> = T | null | undefined;
 
 export type TertiaryButton = {
-  text: string,
-  icon: IconProp,
-  path: string | string[]
-}
+  text: string;
+  icon: IconProp;
+  path: string | string[];
+};

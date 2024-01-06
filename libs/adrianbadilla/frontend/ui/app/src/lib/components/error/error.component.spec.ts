@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './error.component';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
