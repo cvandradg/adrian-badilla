@@ -19,11 +19,11 @@
       "@adrianbadilla/shared/*": [
         "libs/adrianbadilla/frontend/ui/shared/src/lib/*"
       ],
-      "@adrianbadilla/client": [
-        "libs/adrianbadilla/frontend/ui/client/src/index.ts"
-      ],
       "@adrianbadilla/login": [
         "libs/adrianbadilla/frontend/ui/login/src/index.ts"
+      ],
+      "@adrianbadilla/client": [
+        "libs/adrianbadilla/frontend/ui/client/src/index.ts"
       ],
       "@adrianbadilla/dietas": [
         "libs/adrianbadilla/frontend/ui/dietas/src/index.ts"
