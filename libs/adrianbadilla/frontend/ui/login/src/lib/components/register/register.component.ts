@@ -2,7 +2,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RegisterStore } from './register.store';
 import { Subject, map, combineLatest } from 'rxjs';
-import { BaseComponent } from '@classes/base-component';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
@@ -13,12 +13,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   styleUrls: ['./register.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    RouterModule,
-    COMPONENTS,
-    MODULES,
-  ],
+  imports: [CommonModule, RouterModule, COMPONENTS, MODULES],
   providers: [RegisterStore],
 })
 export class RegisterComponent extends BaseComponent {

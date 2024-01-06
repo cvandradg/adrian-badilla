@@ -1,13 +1,14 @@
 import { OnStoreInit } from '@ngrx/component-store';
 import { ActivatedRoute } from '@angular/router';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 import { Injectable, inject } from '@angular/core';
 import { switchMap, from, tap, Observable, pipe } from 'rxjs';
+import { User } from 'firebase/auth';
 
 @Injectable()
 export class EmailVerificationStore
-  extends ComponentStoreMixinHelper<object>
+  extends ComponentStoreMixinHelper<Record<string, unknown>>
   implements OnStoreInit
 {
   route = inject(ActivatedRoute);
@@ -47,12 +48,11 @@ export class EmailVerificationStore
 
   get verifyEmail() {
     return {
-      next: async (userInfo: any) => {
-        await userInfo?.multiFactor?.user.reload();
-
-        if (userInfo?.emailVerified) {
-          this.facade.storeUserInfo(userInfo);
-          // this.router.navigate(['/dashboard']);
+      next: async (user: User | null) => {
+        await user?.reload();
+        if (user?.emailVerified) {
+          this.facade.storeUser(user);
+          this.router.navigate(['/dashboard']);
           return;
         }
       },

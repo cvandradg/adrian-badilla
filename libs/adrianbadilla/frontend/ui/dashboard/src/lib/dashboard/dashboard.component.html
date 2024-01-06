@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [opened]="facade.showSidenavbar$ | ngrxPush"
+  >
+    <div class="options-container">
+      <adrianbadilla-tertiary-animated-button
+        *ngFor="let item of navItems"
+        [small]="true"
+        [icon]="item.icon"
+        [buttonText]="item.text"
+        [routerLink]="item.path"
+      />
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="drawer-sidenav-content test">content</div>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

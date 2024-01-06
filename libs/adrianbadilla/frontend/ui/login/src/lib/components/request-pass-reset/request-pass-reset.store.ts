@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
 import { OnStoreInit, tapResponse } from '@ngrx/component-store';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 import { Observable, switchMap, withLatestFrom } from 'rxjs';
 
 @Injectable()

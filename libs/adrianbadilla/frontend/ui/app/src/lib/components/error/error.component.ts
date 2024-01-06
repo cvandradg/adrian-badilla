@@ -1,7 +1,7 @@
-import { RouterModule } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { SecondaryAnimatedButtonComponent } from '@adrianbadilla/shared/components/secondary-animated-button/secondary-animated-button.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,

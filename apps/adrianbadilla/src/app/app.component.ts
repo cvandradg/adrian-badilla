@@ -3,10 +3,10 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [RouterModule],
-  selector: 'adrian-badilla-ws-root',
-  templateUrl: './app.component.html',
+  template: `<router-outlet></router-outlet>`,
   styleUrls: ['./app.component.scss'],
+  selector: 'adrian-badilla-ws-root',
+  imports: [RouterModule],
 })
 export class AppComponent {
   title = 'adrianbadilla';

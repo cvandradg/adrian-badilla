@@ -8,16 +8,16 @@ import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 
+import { appRoutes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ErrorHandlerService } from '@services/error-handler.service';
+import { provideClientHydration } from '@angular/platform-browser';
+import { ErrorHandlerService } from '@adrianbadilla/shared/services/error-handler.service';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [

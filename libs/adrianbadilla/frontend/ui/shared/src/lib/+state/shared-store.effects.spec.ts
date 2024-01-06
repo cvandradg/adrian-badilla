@@ -11,6 +11,7 @@ import { SharedStoreEffects } from './shared-store.effects';
 import * as SharedStoreActions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
 import { ErrorHandlerService } from '../services/error-handler.service';
+import { User } from 'firebase/auth';
 
 @Injectable({
   providedIn: null,
@@ -18,7 +19,7 @@ import { ErrorHandlerService } from '../services/error-handler.service';
 export class AuthServiceMockService {
   get authState$() {
     return of({
-      user: { name: 'test' },
+      displayName: 'test',
     });
   }
 }
@@ -56,16 +57,14 @@ describe('SharedStoreEffects', () => {
   });
 
   describe('getSession$', () => {
-    const userInfo = {
-      user: {
-        name: 'test',
-      },
-    };
+    const user: User = {
+      displayName: 'test',
+    } as User;
     it('should work', () => {
       actions = hot('-a-|', { a: SharedStoreActions.getSession() });
 
       const expected = cold('-b-|', {
-        b: SharedStoreActions.storeUserInfo({ userInfo }),
+        b: SharedStoreActions.storeUser({ user }),
       });
 
       expect(effects.getSession$).toBeObservable(expected);

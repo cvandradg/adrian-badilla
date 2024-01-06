@@ -12,7 +12,7 @@ export const COMPONENTS = [
   SecondaryAnimatedButtonComponent,
   TertiaryAnimatedButtonComponent,
   StrengthMeterComponent,
-  NavbarComponent
+  NavbarComponent,
 ] as const;
 
 export * from '../components/status-message/status-message.component';

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { tapResponse } from '@ngrx/component-store';
 import { Observable, switchMap } from 'rxjs';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
-export class passResetStore extends ComponentStoreMixinHelper<PassResetState> {
+export class passResetStore extends ComponentStoreMixinHelper<{
+  requested: boolean;
+}> {
   constructor() {
     super({ requested: false });
   }
@@ -27,8 +29,4 @@ export class passResetStore extends ComponentStoreMixinHelper<PassResetState> {
       )
     )
   );
-}
-
-export interface PassResetState {
-  requested: boolean;
 }

@@ -1,12 +1,14 @@
 import { UserCredential } from 'firebase/auth';
 import { Injectable } from '@angular/core';
-import { Credentials } from '@types';
+import { Credentials } from '@adrianbadilla/shared/types/general-types';
 import { tapResponse } from '@ngrx/component-store';
 import { Observable, switchMap, pipe } from 'rxjs';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
-export class LoginStore extends ComponentStoreMixinHelper<object> {
+export class LoginStore extends ComponentStoreMixinHelper<
+  Record<string, unknown>
+> {
   constructor() {
     super({});
   }
@@ -16,9 +18,9 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
       this.responseHandler(
         switchMap(() =>
           this.authService.googleSignin().pipe(
-            tapResponse((userInfo: UserCredential) => {
-              this.facade.storeUserInfo(userInfo);
-              userInfo.user.emailVerified && this.router.navigate(['/dashboard']);
+            tapResponse((user: UserCredential) => {
+              this.facade.storeUser(user.user);
+              user.user.emailVerified && this.router.navigate(['']);
             }, this.handleError)
           )
         )
@@ -32,15 +34,15 @@ export class LoginStore extends ComponentStoreMixinHelper<object> {
         this.responseHandler(
           switchMap((credentials: Credentials) =>
             this.authService.login(credentials).pipe(
-              tapResponse((userInfo: UserCredential) => {
-                this.facade.storeUserInfo(userInfo);
+              tapResponse((user: UserCredential) => {
+                this.facade.storeUser(user.user);
 
-                if (userInfo.user.emailVerified) {
-                  this.router.navigate(['/dashboard']);
+                if (user.user.emailVerified) {
+                  this.router.navigate(['']);
                   return;
                 }
 
-                this.authService.sendEmailVerification(userInfo.user);
+                this.authService.sendEmailVerification(user.user);
               }, this.handleError)
             )
           )

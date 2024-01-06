@@ -1,37 +1,16 @@
 import { Route } from '@angular/router';
-import { canActivate } from '@angular/fire/auth-guard';
-import {
-  unverifiedTo,
-  verifiedTo,
-} from '@adrianbadilla/shared/services/helperFunctions.service';
 import { LoginComponent } from './components/login/login.component';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { RegisterComponent } from './components/register/register.component';
 import { OobcodeCheckerComponent } from './components/oobcode-checker/oobcode-checker.component';
 import { RequestPassResetComponent } from './components/request-pass-reset/request-pass-reset.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
-import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
-
-const redirectLoggedIn = () => verifiedTo(['landing']);
-const redirectUnauthorized = () => unverifiedTo(['login']);
 
 export const loginRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'dashboard',
-  },
-  {
-    path: 'login',
-    pathMatch: 'full',
     component: LoginComponent,
-    ...canActivate(redirectLoggedIn),
-  },
-  {
-    path: 'dashboard',
-    pathMatch: 'prefix',
-    ...canActivate(redirectUnauthorized),
-    loadChildren: () =>
-      import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
   },
   {
     path: 'register',

@@ -1,15 +1,11 @@
 import { Validators } from '@angular/forms';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FirebaseError } from 'firebase/app';
-
-export type Class = new (any: any) => any;
 
 export const validations = (...validators: any[]) => [
   '',
   [Validators.required, Validators.min(5), Validators.max(30), ...validators],
 ];
-
-export type generalError = { status: boolean; message: string; error: any };
-
 export const deepCopy = <T>(obj: T): T => {
   return JSON.parse(JSON.stringify(obj || ''));
 };
@@ -22,10 +18,10 @@ export type Credentials = {
 export type AppError = {
   status: boolean;
   message: string;
-  error: any;
+  error: Error;
 };
 
-export interface BaseComponentState extends Object {
+export interface BaseComponentState extends Record<string, unknown> {
   error: AppError | null;
   loading: boolean;
 }
@@ -35,3 +31,9 @@ export interface AngularFireError extends Error {
 }
 
 export type NothingOr<T> = T | null | undefined;
+
+export type TertiaryButton = {
+  text: string;
+  icon: IconProp;
+  path: string | string[];
+};

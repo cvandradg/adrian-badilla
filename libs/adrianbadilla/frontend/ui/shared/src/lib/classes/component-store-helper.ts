@@ -1,14 +1,14 @@
 import { Router } from '@angular/router';
-import { AppError } from '../types/types';
+import { AppError } from '../types/general-types';
 import { FirebaseError } from 'firebase/app';
 import { Directive, inject } from '@angular/core';
 import { OperatorFunction, pipe, tap } from 'rxjs';
 import { ComponentStore } from '@ngrx/component-store';
-import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { AuthService } from '../services/auth-service.service';
+import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { ErrorHandlerService } from '../services/error-handler.service';
 
-export interface GenericState extends Object {
+export interface GenericState extends Record<string, unknown> {
   error?: AppError | null;
   loading?: boolean;
 }
@@ -25,26 +25,20 @@ export class ComponentStoreMixinHelper<
   readonly error$ = this.select((state) => state.error);
   readonly loading$ = this.select((state) => state.loading);
 
+  readonly setLoading = this.updater((state, loading: boolean) => ({
+    ...state,
+    loading,
+  }));
+
   readonly setError = this.updater((state, error: AppError | null) => ({
     ...state,
     loading: false,
     error,
   }));
 
-  readonly setLoading = this.updater((state, loading: boolean) => ({
-    ...state,
-    loading,
-  }));
-
   get handleError() {
-    return (error: FirebaseError) => {
-      console.log(
-        'null?,',
-        this.errorHelperService.firebaseErrorHandler(error)
-      );
-
-      return this.setError(this.errorHelperService.firebaseErrorHandler(error));
-    };
+    return (error: FirebaseError) =>
+      this.setError(this.errorHelperService.firebaseErrorHandler(error));
   }
 
   responseHandler(operator: OperatorFunction<any, any>) {

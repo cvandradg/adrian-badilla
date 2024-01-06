@@ -1,12 +1,12 @@
 import { OnStoreInit } from '@ngrx/component-store';
 import { ActivatedRoute } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
-import { ComponentStoreMixinHelper } from '@classes/component-store-helper';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 import { switchMap, tap, Observable } from 'rxjs';
 
 @Injectable()
 export class OobcodeCheckerStore
-  extends ComponentStoreMixinHelper<object>
+  extends ComponentStoreMixinHelper<Record<string, unknown>>
   implements OnStoreInit
 {
   route = inject(ActivatedRoute);
@@ -31,7 +31,7 @@ export class OobcodeCheckerStore
 
   get oobCodeCheck() {
     return {
-      next: (res: any) => {
+      next: (res: { operation: string }) => {
         switch (res.operation) {
           case 'VERIFY_EMAIL':
             this.router.navigate(['/email-verification'], {

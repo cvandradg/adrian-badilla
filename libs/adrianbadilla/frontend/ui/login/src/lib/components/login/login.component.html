@@ -1,9 +1,9 @@
 <div
   class="login-container"
   *ngrxLet="{
-    loading: loginStore.loading$ | ngrxPush,
-    userInfo: facade.userInfo$ | ngrxPush,
     error: loginStore.error$ | ngrxPush,
+    user: facade.user$ | ngrxPush,
+    loading: loginStore.loading$ | ngrxPush,
   } as vm"
 >
   <div class="container">
@@ -37,7 +37,7 @@
           </mat-form-field>
         </form>
 
-        <ng-container #loginComponents *ngrxLet="vm.userInfo?.user">
+        <ng-container #loginComponents *ngrxLet="vm.user">
           <adrianbadilla-primary-animated-button
             #loginButton
             (submitEvent)="loginStore.accessAccount$(credentials)"
@@ -53,7 +53,7 @@
             "
             [display]="
               !vm.loading &&
-              vm.userInfo?.user?.emailVerified === false &&
+              vm.user?.emailVerified === false &&
               !vm.error?.status
             "
           />

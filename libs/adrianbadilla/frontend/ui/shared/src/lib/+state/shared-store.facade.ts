@@ -1,16 +1,24 @@
-import { Injectable, inject } from '@angular/core';
+import { User } from 'firebase/auth';
 import { select, Store } from '@ngrx/store';
 
 import * as actions from './shared-store.actions';
+import { Injectable, inject } from '@angular/core';
 import * as selectors from './shared-store.selectors';
-import { Credentials, deepCopy, generalError } from '../types/types';
-import { UserCredential } from 'firebase/auth';
+import { AppError, Credentials, deepCopy } from '../types/general-types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedStoreFacade {
   private readonly store = inject(Store);
+
+  signOut() {
+    this.store.dispatch(actions.signOut());
+  }
+
+  getSession() {
+    this.store.dispatch(actions.getSession());
+  }
 
   showLoader() {
     this.store.dispatch(actions.showLoading());
@@ -24,10 +32,6 @@ export class SharedStoreFacade {
     this.store.dispatch(actions.toggleSidenavbar());
   }
 
-  getSession() {
-    this.store.dispatch(actions.getSession());
-  }
-
   accessAccount(credentials: Credentials) {
     this.store.dispatch(actions.accessAccount(credentials));
   }
@@ -36,21 +40,17 @@ export class SharedStoreFacade {
     this.store.dispatch(actions.requestPassReset({ email }));
   }
 
-  storeUserInfo(userInfo: UserCredential) {
-    userInfo = deepCopy(userInfo);
-    this.store.dispatch(actions.storeUserInfo({ userInfo }));
-  }
-
-  setError({ status, message, error }: generalError) {
+  setError({ status, message, error }: AppError) {
     this.store.dispatch(actions.actionFailure({ status, message, error }));
   }
 
-  signOut() {
-    this.store.dispatch(actions.signOut());
+  storeUser(user: User) {
+    user = deepCopy(user);
+    this.store.dispatch(actions.storeUser({ user }));
   }
 
+  user$ = this.store.pipe(select(selectors.user));
   error$ = this.store.pipe(select(selectors.error));
   loading$ = this.store.pipe(select(selectors.loading));
-  userInfo$ = this.store.pipe(select(selectors.userInfo));
   showSidenavbar$ = this.store.pipe(select(selectors.toogleSidenavbar));
 }
