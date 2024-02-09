@@ -146,10 +146,11 @@ mat-sidenav-container {
   background-color: transparent;
 }
 
-::ng-deep .mat-drawer-inner-container {
+:host ::ng-deep .mat-drawer-inner-container {
   overflow-x: hidden !important;
 }
-::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+
+:host ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
   background-color: transparent !important;
 }
 
