@@ -7,7 +7,6 @@ describe('EmptyStateMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmptyStateMessageComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EmptyStateMessageComponent);
