@@ -22,6 +22,8 @@ export const routes: Route[] = [
       { path: 'utilidades', component: UtilitiesComponent },
       { path: 'contactenos', component: ContactUsComponent },
       { path: 'suplementos', component: SuplementsComponent },
+
+      { path: '', redirectTo: 'perfil', pathMatch: 'full'}
     ],
   },
 ];
