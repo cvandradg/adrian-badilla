@@ -9,5 +9,4 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
 })
-export class EmptyStateMessageComponent { }
-
+export class EmptyStateMessageComponent {}

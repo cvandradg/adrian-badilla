@@ -7,7 +7,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   templateUrl: './food.component.html',
   styleUrls: ['./food.component.scss'],
   standalone: true,
-  imports: [CommonModule,  COMPONENTS],
+  imports: [CommonModule, COMPONENTS],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FoodComponent {}

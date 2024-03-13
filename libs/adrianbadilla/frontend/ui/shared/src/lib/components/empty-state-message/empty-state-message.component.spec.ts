@@ -6,8 +6,7 @@ describe('EmptyStateMessageComponent', () => {
   let fixture: ComponentFixture<EmptyStateMessageComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-    }).compileComponents();
+    await TestBed.configureTestingModule({}).compileComponents();
 
     fixture = TestBed.createComponent(EmptyStateMessageComponent);
     component = fixture.componentInstance;

@@ -1,1 +1,74 @@
-  <adrianbadilla-empty-state-message />
+<div
+  class="login-components-container"
+  *ngrxLet="{
+      error: {status: false, message: ''},
+      user: facade.user$ | ngrxPush,
+      loading: false,
+    } as vm"
+>
+  <div class="manual-login-inputs">
+    <form [formGroup]="loginInputForm" class="form-login-inputs">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          placeholder="Nombre sin apellidos"
+          type="text"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <input
+          matInput
+          placeholder="Apelldios sin el nombre"
+          type="text"
+          formControlName="lastnames"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Edad</mat-label>
+        <input matInput placeholder="Edad" type="text" formControlName="age" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estatura</mat-label>
+        <mat-select matNativeControl required>
+          @for (i of [].constructor(150); track i; let index = $index) {
+          <mat-option [value]="100 + index + ' cm'">
+            {{ 100 + index + ' cm' }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-radio-group aria-label="Sex al nacer">
+        <mat-radio-button value="1">Masculino</mat-radio-button>
+        <mat-radio-button value="2">Femenino</mat-radio-button>
+      </mat-radio-group>
+    </form>
+
+    <ng-container #loginComponents *ngrxLet="vm.user">
+      <adrianbadilla-primary-animated-button
+        #loginButton
+        [enable]="!loginInputForm.invalid"
+        [loading]="!vm.loading"
+        [buttonText]="'Accede a Tu Cuenta'"
+      />
+      <adrianbadilla-status-message
+        [type]="'warning'"
+        [icon]="['fal', 'envelope-circle-check']"
+        [message]="'Verifica tu cuenta, te hemos enviado un link al correo.'"
+        [display]="
+          !vm.loading && vm.user?.emailVerified === false && !vm.error?.status
+        "
+      />
+
+      <adrianbadilla-status-message
+        [type]="'error'"
+        [icon]="['fas', 'xmark']"
+        [message]="vm.error?.message"
+        [display]="!vm.loading && vm.error?.status"
+      />
+    </ng-container>
+  </div>
+</div>
