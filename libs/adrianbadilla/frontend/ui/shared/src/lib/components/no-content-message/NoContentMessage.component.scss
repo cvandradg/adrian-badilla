@@ -1,0 +1,67 @@
+/* style.css */
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 62.5rem; /* 100vh */
+  font-family: sans-serif;
+  height: 100%;
+}
+
+
+.flex-item {
+  position: relative; /* Añadir posición relativa */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 12.5rem; /* 200px */
+  height: auto; /* 17.25rem */
+  padding: 1rem;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(249, 46, 46, 0.342), rgba(43, 43, 245, 0.167));
+  border-radius: 1.875rem; /* 30px */
+  text-align: center;
+  overflow: hidden;
+
+
+}
+
+// .flex-item::after{
+//   content: "";
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   right: 0px;
+//   bottom: 0px;
+//   border: 2px solid;
+//   border-image: linear-gradient(to right, red, blue) 30;
+//   border-radius: 1.875rem; /* 30px */
+//   transition: border-color 0.3s;
+//   z-index: 1; /* Para que esté detrás del contenido */
+
+// }
+
+
+
+
+
+h4{
+  margin-top: 1rem;
+  margin: 0;
+  font-weight: 780;
+}
+
+
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6.25rem; /*100px*/
+  margin-top: 2rem;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}

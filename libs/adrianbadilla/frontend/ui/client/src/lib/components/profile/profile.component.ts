@@ -1,3 +1,5 @@
+import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -6,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, COMPONENTS, MODULES],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent {}
