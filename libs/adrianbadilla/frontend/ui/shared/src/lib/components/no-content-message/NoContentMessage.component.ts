@@ -1,25 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { MODULES } from '../../exports/export-modules';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { faDumbbell } from '@fortawesome/pro-duotone-svg-icons';
-
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   standalone: true,
-  imports: [MODULES],
+  imports: [CommonModule, MODULES],
   selector: 'adrianbadilla-no-content-message',
   templateUrl: './NoContentMessage.component.html',
-  styleUrl: './NoContentMessage.component.scss',
+  styleUrls: ['./NoContentMessage.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class NoContentMessageComponent {
-
-@Input() message: string = '¡Estamos esculpiendo algo genial para ti!'
-
-
-  faDumbbell = faDumbbell;
-
-
+  @Input() message: string = '¡Estamos esculpiendo algo genial para ti!';
+  @Input() icon: IconProp = ['fas', 'user']; 
 }
-
-
