@@ -2,6 +2,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,6 +33,7 @@ export const MODULES = [
   MatRadioModule,
   MatInputModule,
   MatChipsModule,
+  MatSelectModule,
   MatDialogModule,
   MatButtonModule,
   MatToolbarModule,
