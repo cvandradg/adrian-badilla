@@ -15,6 +15,7 @@ import { Validators } from '@angular/forms';
 })
 export class ProfileComponent extends BaseComponent {
 
+  
   profileInputForm = this.formBuilder.group({
     age: ['', Validators.required],
     name: ['',Validators.required],
