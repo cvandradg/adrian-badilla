@@ -13,5 +13,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 })
 export class NoContentMessageComponent {
   @Input() message: string = '¡Estamos esculpiendo algo genial para ti!';
-  @Input() icon: IconProp = ['fas', 'user']; 
+  @Input() icon: IconProp = ['fas', 'person-dolly-empty'];
+  @Input() icon2: IconProp = ['fas', 'heart-pulse'];
 }

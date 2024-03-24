@@ -55,6 +55,8 @@ import {
   faCommentsQuestionCheck,
   faShirt,
   faTelescope,
+  faHeartPulse,
+  faPersonDollyEmpty
 } from '@fortawesome/pro-solid-svg-icons';
 import { faHouseTree } from '@fortawesome/pro-regular-svg-icons';
 
@@ -91,16 +93,18 @@ export class Fontawesome {
       faArrowRight,
       faXmarkSolid,
       faRotateBack,
+      faHeartPulse,
       faPersonDress,
       faCircleNotch,
       faSpinnerThird,
       faBookOpenCover,
       faPlateUtensils,
       faRightToBracket,
+      faPersonDollyEmpty,
       faClipboardQuestion,
       faMessageExclamation,
       faEnvelopeCircleCheck,
-      faCommentsQuestionCheck
+      faCommentsQuestionCheck,
     );
   }
 }
