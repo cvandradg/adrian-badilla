@@ -14,4 +14,4 @@ export * from './lib/shared/shared.component';
 
 export * from './lib/components/status-message/status-message.component';
 
-export * from './lib/components/empty-state-message/empty-state-message.component';
+export * from './lib/components/no-content-message/NoContentMessage.component';

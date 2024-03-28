@@ -10,4 +10,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [CommonModule, COMPONENTS],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SuplementsComponent { }
+export class SuplementsComponent {}

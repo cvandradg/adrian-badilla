@@ -47,6 +47,7 @@ export const appConfig: ApplicationConfig = {
       logOnly: !isDevMode(),
       trace: true,
       traceLimit: 70,
-    connectInZone: true}),
+      connectInZone: true,
+    }),
   ],
 };
