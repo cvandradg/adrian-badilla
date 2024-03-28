@@ -1,9 +1,13 @@
 <div class="flex-container">
   <div class="flex-item">
     <h4>{{ message }}</h4>
-    <span>
-      <fa-icon class="icon" [icon]="icon"></fa-icon>
-      <fa-icon [icon]="icon2" class="fa-fade" style="animation-duration: 2s;" ></fa-icon>
-    </span>
+    <div class="icons-container">
+      <fa-icon class="icon-person" [icon]="icon"></fa-icon>
+      <fa-icon
+        [icon]="icon2"
+        class="fa-fade icon-heart-specs"
+        style="animation-duration: 2s"
+      ></fa-icon>
+    </div>
   </div>
 </div>
