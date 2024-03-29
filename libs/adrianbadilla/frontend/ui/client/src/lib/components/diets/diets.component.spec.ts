@@ -12,7 +12,7 @@ import { MockComponentStore } from '@adrianbadilla/shared/classes/tests-helper';
   standalone: true,
   imports: [CommonModule, COMPONENTS],
 })
-export class DietsComponent extends BaseComponent { }
+export class DietsComponent extends BaseComponent {}
 
 describe('DietsComponent', () => {
   let component: DietsComponent;
@@ -36,6 +36,3 @@ describe('DietsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-
-

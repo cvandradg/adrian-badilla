@@ -14,7 +14,7 @@ export const COMPONENTS = [
   TertiaryAnimatedButtonComponent,
   StrengthMeterComponent,
   NavbarComponent,
-  NoContentMessageComponent
+  NoContentMessageComponent,
 ] as const;
 
 export * from '../components/status-message/status-message.component';

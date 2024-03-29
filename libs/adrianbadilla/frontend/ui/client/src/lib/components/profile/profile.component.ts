@@ -14,12 +14,9 @@ import { Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent extends BaseComponent {
-
-  
   profileInputForm = this.formBuilder.group({
     age: ['', Validators.required],
-    name: ['',Validators.required],
-    lastnames: ['',Validators.required],
+    name: ['', Validators.required],
+    lastnames: ['', Validators.required],
   });
-
 }

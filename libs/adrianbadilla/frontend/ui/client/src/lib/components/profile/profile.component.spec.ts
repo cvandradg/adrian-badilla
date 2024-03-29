@@ -12,7 +12,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { provideComponentStore } from '@ngrx/component-store';
 import { Validators } from '@angular/forms';
 
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   templateUrl: './profile.component.html',
