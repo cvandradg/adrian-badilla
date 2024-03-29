@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 import { CommonModule } from '@angular/common';
-import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { provideMockStore } from '@ngrx/store/testing';
 import { provideComponentStore } from '@ngrx/component-store';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { MockComponentStore } from '@adrianbadilla/shared/classes/tests-helper';
 
 @Component({
