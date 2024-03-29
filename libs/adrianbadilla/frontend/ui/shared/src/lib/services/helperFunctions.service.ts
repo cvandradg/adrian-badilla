@@ -67,5 +67,5 @@ export const verifiedTo = (redirect: string[]) =>
     map((emailVerified) => !emailVerified || redirect)
   );
 
-export const redirectLoggedIn = () => verifiedTo(['']);
-export const redirectUnauthorized = () => unverifiedTo(['login']);
+export const redirectLoggedIn = () => verifiedTo(['dashboard']);
+export const redirectUnauthorized = () => unverifiedTo(['']);
