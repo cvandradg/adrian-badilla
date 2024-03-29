@@ -59,7 +59,7 @@
         [icon]="['fal', 'envelope-circle-check']"
         [message]="'Verifica tu cuenta, te hemos enviado un link al correo.'"
         [display]="
-          !vm.loading && vm.user?.emailVerified === false && !vm.error.status
+          !vm.loading && vm.user?.emailVerified === false && !vm.error?.status
         "
       />
 
@@ -67,7 +67,7 @@
         [type]="'error'"
         [icon]="['fas', 'xmark']"
         [message]="vm.error.message"
-        [display]="!vm.loading && vm.error.status"
+        [display]="!vm.loading && vm.error?.status"
       />
     </ng-container>
   </div>
