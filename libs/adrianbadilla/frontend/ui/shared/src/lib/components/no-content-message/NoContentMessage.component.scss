@@ -1,0 +1,66 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 62.5rem;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+.flex-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 12.5rem;
+  height: auto;
+  padding: 1rem;
+  color: #fff;
+  background: linear-gradient(
+    to right,
+    rgba(249, 46, 46, 0.342),
+    rgba(43, 43, 245, 0.167)
+  );
+  border-radius: 1.875rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.icon-person {
+  font-size: 4rem;
+}
+
+.size {
+  font-size: 2rem;
+}
+
+.position {
+  position: absolute;
+  top: 67%;
+  left: 58%;
+  z-index: 1;
+}
+
+.rotate {
+  transform: translate(-47%, -50%) rotate(-20deg);
+}
+
+.icon-heart-specs {
+  @extend .size;
+  @extend .position;
+  @extend .rotate;
+}
+
+h4 {
+  margin-top: 1rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6.25rem;
+  margin-top: 2rem;
+}
