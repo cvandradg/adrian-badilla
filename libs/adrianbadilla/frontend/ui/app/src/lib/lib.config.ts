@@ -44,13 +44,13 @@ export const appRoutes: Route[] = [
     ],
     children: [
       {
-        path: 'login',
+        path: '',
         loadChildren: () =>
           import('@adrianbadilla/login').then((r) => r.loginRoutes),
         ...canActivate(redirectLoggedIn),
       },
       {
-        path: '',
+        path: 'dashboard',
         pathMatch: 'prefix',
         loadChildren: () =>
           import('@adrianbadilla/dashboard').then((r) => r.dashboardRoutes),
