@@ -17,11 +17,13 @@ import { User } from 'firebase/auth';
 import { TypedAction } from '@ngrx/store/src/models';
 import { FirebaseError } from 'firebase/app';
 import { createAction } from '@ngrx/store';
+import { firestoreDatabaseService } from '../services/firestore-database.service';
 
 @Injectable()
 export class SharedStoreEffects implements OnInitEffects {
   private auth = inject(AuthService);
-  private actions$ = inject(Actions);
+  private actions = inject(Actions);
+  private firestore = inject(firestoreDatabaseService)
   private errorHelperService = inject(ErrorHandlerService);
 
   ngrxOnInitEffects() {
@@ -29,7 +31,7 @@ export class SharedStoreEffects implements OnInitEffects {
   }
 
   getSession$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       ofType(actions.getSession),
       concatMap(() => this.auth.authState$),
       map((user: NothingOr<User>) => {
@@ -45,7 +47,7 @@ export class SharedStoreEffects implements OnInitEffects {
   );
 
   passReset$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       ofType(actions.requestPassReset),
       switchMap((action) => this.auth.recoverPassword(action.email)),
       map(() => createAction('')),
@@ -58,7 +60,7 @@ export class SharedStoreEffects implements OnInitEffects {
   );
 
   hideLoading$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       filter((action) => {
         const validAction = Object.values(actions).some(
           (ObjAction) => ObjAction.type === action.type
@@ -82,8 +84,25 @@ export class SharedStoreEffects implements OnInitEffects {
     )
   );
 
+  // storeUser$ = createEffect(() =>
+  //   this.actions.pipe(
+  //     ofType(actions.storeUser),
+  //     filter((action) => {
+  //       console.log('filtrado el null del storeUser effect')
+  //       return action.user !== null
+  //     }),
+  //     switchMap((action) => this.firestore.setUser(action.user as User)),
+  //     map(() => createAction('')),
+  //     catchSwitchMapError((error) =>
+  //       actions.actionFailure(
+  //         this.errorHelperService.firebaseErrorHandler(error)
+  //       )
+  //     )
+  //   )
+  // );
+
   signOut$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       ofType(actions.signOut),
       switchMap(() => this.auth.signOut()),
       map(() => actions.storeUser({ user: null })),

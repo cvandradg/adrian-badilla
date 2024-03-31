@@ -36,7 +36,7 @@ export class LoginStore extends ComponentStoreMixinHelper<
             this.authService.login(credentials).pipe(
               tapResponse((user: UserCredential) => {
                 this.facade.storeUser(user.user);
-
+                
                 if (user.user.emailVerified) {
                   this.router.navigate(['dashboard']);
                   return;

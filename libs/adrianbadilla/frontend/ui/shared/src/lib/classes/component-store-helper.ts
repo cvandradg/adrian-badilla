@@ -7,6 +7,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { AuthService } from '../services/auth-service.service';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { ErrorHandlerService } from '../services/error-handler.service';
+import { firestoreDatabaseService } from '../services/firestore-database.service';
 
 export interface GenericState extends Record<string, unknown> {
   error?: AppError | null;
@@ -18,8 +19,9 @@ export class ComponentStoreMixinHelper<
   T extends GenericState
 > extends ComponentStore<T> {
   router = inject(Router);
-  facade = inject(SharedStoreFacade);
   authService = inject(AuthService);
+  facade = inject(SharedStoreFacade);
+  firestore = inject(firestoreDatabaseService);
   errorHelperService = inject(ErrorHandlerService);
 
   readonly error$ = this.select((state) => state.error);

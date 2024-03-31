@@ -46,6 +46,7 @@ export class SharedStoreFacade {
 
   storeUser(user: User) {
     user = deepCopy(user);
+    console.log('Store user,', user);
     this.store.dispatch(actions.storeUser({ user }));
   }
 

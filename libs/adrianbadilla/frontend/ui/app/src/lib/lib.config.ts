@@ -6,6 +6,7 @@ import { environment } from '@environments/environment';
 import { canActivate } from '@angular/fire/auth-guard';
 
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { StoreModule, StoreRootModule } from '@ngrx/store';
 import { AppComponent } from './components/app/app.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -34,8 +35,9 @@ export const appRoutes: Route[] = [
           fromSharedStore.SHARED_STORE_FEATURE_KEY,
           fromSharedStore.sharedStoreReducer
         ),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-        provideAuth(() => getAuth())
       ),
       {
         provide: FIREBASE_OPTIONS,
