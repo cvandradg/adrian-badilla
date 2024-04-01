@@ -8,8 +8,6 @@ import {
   startWith,
   filter,
   concatMap,
-  tap,
-  from,
 } from 'rxjs';
 import * as actions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
@@ -19,13 +17,11 @@ import { User } from 'firebase/auth';
 import { TypedAction } from '@ngrx/store/src/models';
 import { FirebaseError } from 'firebase/app';
 import { createAction } from '@ngrx/store';
-import { firestoreDatabaseService } from '../services/firestore-database.service';
 
 @Injectable()
 export class SharedStoreEffects implements OnInitEffects {
   private auth = inject(AuthService);
   private actions = inject(Actions);
-  private firestore = inject(firestoreDatabaseService)
   private errorHelperService = inject(ErrorHandlerService);
 
   ngrxOnInitEffects() {
@@ -85,7 +81,7 @@ export class SharedStoreEffects implements OnInitEffects {
       })
     )
   );
-  
+
   signOut$ = createEffect(() =>
     this.actions.pipe(
       ofType(actions.signOut),
@@ -106,9 +102,9 @@ export const catchSwitchMapError =
       error: FirebaseError
     ) => TypedAction<'[SharedStore Page] On Action Failure'>
   ) =>
-    <T>(source: Observable<T>) =>
-      source.pipe(
-        catchError((error, innerSource) =>
-          innerSource.pipe(startWith(errorAction(error)))
-        )
-      );
+  <T>(source: Observable<T>) =>
+    source.pipe(
+      catchError((error, innerSource) =>
+        innerSource.pipe(startWith(errorAction(error)))
+      )
+    );

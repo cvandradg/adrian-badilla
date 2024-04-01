@@ -17,13 +17,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   templateUrl: './profile.component.html',
   standalone: true,
-  imports: [CommonModule, RouterModule, MODULES],
+  imports: [CommonModule, RouterModule, MODULES, COMPONENTS],
 })
 export class ProfileComponent extends BaseComponent {
   profileInputForm = this.formBuilder.group({
-    age: Validators.required,
-    name: Validators.required,
-    lastnames: Validators.required,
+    age: ['', Validators.required],
+    name: ['', Validators.required],
+    weight: ['', Validators.required],
+    height: ['', Validators.required],
+    lastnames: ['', Validators.required],
   });
   loginStore = inject(MockComponentStore);
 }
