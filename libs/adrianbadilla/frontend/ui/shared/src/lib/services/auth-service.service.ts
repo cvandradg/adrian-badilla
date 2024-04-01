@@ -1,4 +1,4 @@
-import { from, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { Credentials } from '../types/general-types';
 import { Injectable, inject } from '@angular/core';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
@@ -35,7 +35,6 @@ export class AuthService {
   readonly user$ = user(this.auth);
   readonly authState$ = authState(this.auth);
 
-  private facade = inject(SharedStoreFacade);
   private firestore = inject(firestoreDatabaseService);
 
   getCurrentUser() {
@@ -46,16 +45,12 @@ export class AuthService {
     return this.authState$;
   }
 
-  deleteUser(user: User) {
-    this.firestore.deleteUser(user);
-    return deleteUser(user);
-  }
-
   signOut() {
     return from(signOut(this.auth));
   }
 
   additionalUserInfo(user: UserCredential) {
+    if (!this.auth.currentUser) return;
     return getAdditionalUserInfo(user);
   }
 
@@ -89,5 +84,15 @@ export class AuthService {
 
   createAccount({ user, pass }: Credentials): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, user, pass));
+  }
+
+  deleteUser() {
+    if (!this.auth.currentUser) return;
+
+    return from(this.firestore.deleteUser(this.auth.currentUser)).pipe(
+      map(
+        () => this.auth.currentUser && from(deleteUser(this.auth.currentUser))
+      )
+    );
   }
 }

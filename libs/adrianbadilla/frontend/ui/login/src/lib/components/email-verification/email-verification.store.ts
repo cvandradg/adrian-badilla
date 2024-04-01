@@ -1,4 +1,4 @@
-import { OnStoreInit } from '@ngrx/component-store';
+import { OnStoreInit, tapResponse } from '@ngrx/component-store';
 import { ActivatedRoute } from '@angular/router';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
@@ -9,7 +9,8 @@ import { User } from 'firebase/auth';
 @Injectable()
 export class EmailVerificationStore
   extends ComponentStoreMixinHelper<Record<string, unknown>>
-  implements OnStoreInit {
+  implements OnStoreInit
+{
   route = inject(ActivatedRoute);
 
   constructor() {
@@ -25,10 +26,7 @@ export class EmailVerificationStore
       this.responseHandler(
         switchMap((oobCode) =>
           from(this.authService.verifyEmail(oobCode)).pipe(
-            tap({
-              next: () => this.checkUserEmailVerified$(),
-              error: this.handleError,
-            })
+            tapResponse(() => this.checkUserEmailVerified$(), this.handleError)
           )
         )
       )
