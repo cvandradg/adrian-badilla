@@ -39,6 +39,8 @@ export type TertiaryButton = {
   path: string | string[];
 };
 
+export const emptyCallback: () => void = () => {return};
+
 export const initialClient = {
   age: 0,
   name: '',

@@ -8,6 +8,8 @@ import {
   startWith,
   filter,
   concatMap,
+  tap,
+  from,
 } from 'rxjs';
 import * as actions from './shared-store.actions';
 import { AuthService } from '../services/auth-service.service';
@@ -83,24 +85,7 @@ export class SharedStoreEffects implements OnInitEffects {
       })
     )
   );
-
-  // storeUser$ = createEffect(() =>
-  //   this.actions.pipe(
-  //     ofType(actions.storeUser),
-  //     filter((action) => {
-  //       console.log('filtrado el null del storeUser effect')
-  //       return action.user !== null
-  //     }),
-  //     switchMap((action) => this.firestore.setUser(action.user as User)),
-  //     map(() => createAction('')),
-  //     catchSwitchMapError((error) =>
-  //       actions.actionFailure(
-  //         this.errorHelperService.firebaseErrorHandler(error)
-  //       )
-  //     )
-  //   )
-  // );
-
+  
   signOut$ = createEffect(() =>
     this.actions.pipe(
       ofType(actions.signOut),
@@ -121,9 +106,9 @@ export const catchSwitchMapError =
       error: FirebaseError
     ) => TypedAction<'[SharedStore Page] On Action Failure'>
   ) =>
-  <T>(source: Observable<T>) =>
-    source.pipe(
-      catchError((error, innerSource) =>
-        innerSource.pipe(startWith(errorAction(error)))
-      )
-    );
+    <T>(source: Observable<T>) =>
+      source.pipe(
+        catchError((error, innerSource) =>
+          innerSource.pipe(startWith(errorAction(error)))
+        )
+      );

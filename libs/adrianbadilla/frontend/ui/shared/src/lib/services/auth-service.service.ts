@@ -7,6 +7,7 @@ import {
   confirmPasswordReset,
   sendEmailVerification,
   sendPasswordResetEmail,
+  AdditionalUserInfo,
 } from 'firebase/auth';
 import {
   Auth,
@@ -16,11 +17,14 @@ import {
   authState,
   checkActionCode,
   createUserWithEmailAndPassword,
+  getAdditionalUserInfo,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   user,
+  deleteUser,
 } from '@angular/fire/auth';
+import { firestoreDatabaseService } from './firestore-database.service';
 
 @Injectable({
   providedIn: null,
@@ -31,7 +35,8 @@ export class AuthService {
   readonly user$ = user(this.auth);
   readonly authState$ = authState(this.auth);
 
-  facade = inject(SharedStoreFacade);
+  private facade = inject(SharedStoreFacade);
+  private firestore = inject(firestoreDatabaseService);
 
   getCurrentUser() {
     return this.user$;
@@ -41,8 +46,17 @@ export class AuthService {
     return this.authState$;
   }
 
+  deleteUser(user: User) {
+    this.firestore.deleteUser(user);
+    return deleteUser(user);
+  }
+
   signOut() {
     return from(signOut(this.auth));
+  }
+
+  additionalUserInfo(user: UserCredential) {
+    return getAdditionalUserInfo(user);
   }
 
   sendEmailVerification(user: User) {

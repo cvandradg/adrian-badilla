@@ -1,21 +1,31 @@
 import { User } from 'firebase/auth';
-import { Observable, concatMap, distinctUntilChanged, first, from, last, map, skip, take, tap } from 'rxjs';
-import { setDoc, doc, collection, DocumentSnapshot, SnapshotOptions, onSnapshot, getDoc } from 'firebase/firestore';
+import { setDoc, doc, deleteDoc } from 'firebase/firestore';
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collectionData, docData, } from '@angular/fire/firestore';
-import { NothingOr, client, initialClient } from '../types/general-types';
+import { Firestore } from '@angular/fire/firestore';
+import { client, deepCopy, initialClient } from '../types/general-types';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 
 @Injectable({
   providedIn: 'any',
 })
 export class firestoreDatabaseService {
-  private facade = inject(SharedStoreFacade);
   private firestore: Firestore = inject(Firestore);
+  private facade = inject(SharedStoreFacade);
 
-  setUser(user: User) {
-    console.log('se llama set user?')
-    return from(setDoc(doc(this.firestore, 'users', user?.uid), user));
+  async setUser(user: User, profileData?: typeof initialClient) {
+    const client: client = deepCopy({
+      ...user,
+      ...(profileData || initialClient),
+    });
+    const docRef = doc(this.firestore, 'users', client.uid);
+    return await setDoc(docRef, client).then(() =>
+      this.facade.storeUser(client)
+    );
+  }
+
+  async deleteUser(user: User | client) {
+    const docRef = doc(this.firestore, 'users', user.uid);
+    return await deleteDoc(docRef);
   }
 
   user$() {
@@ -32,15 +42,12 @@ export class firestoreDatabaseService {
     //     }
     //   )
     // );
-
     // return onSnapshot(
     //   doc(this.firestore, 'users', 'soporte@adrianbadilla.com'),
     //   (doc) => {console.log('doc?,',doc)}
     // )
-
     // const docRef = doc(this.firestore, "users", "soporte@adrianbadilla.com");
     // const docSnap = getDoc(docRef);
     // return from(docSnap)
-
   }
 }

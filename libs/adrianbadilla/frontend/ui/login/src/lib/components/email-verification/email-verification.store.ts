@@ -9,8 +9,7 @@ import { User } from 'firebase/auth';
 @Injectable()
 export class EmailVerificationStore
   extends ComponentStoreMixinHelper<Record<string, unknown>>
-  implements OnStoreInit
-{
+  implements OnStoreInit {
   route = inject(ActivatedRoute);
 
   constructor() {
@@ -51,8 +50,9 @@ export class EmailVerificationStore
       next: async (user: User | null) => {
         await user?.reload();
         if (user?.emailVerified) {
-          this.facade.storeUser(user);
-          this.router.navigate(['/dashboard']);
+          this.firestore
+            .setUser(user)
+            .then(() => this.router.navigate(['/dashboard']));
           return;
         }
       },

@@ -2,9 +2,10 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RegisterStore } from './register.store';
 import { Subject, map, combineLatest } from 'rxjs';
-import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { provideComponentStore } from '@ngrx/component-store';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 
 @Component({
@@ -14,7 +15,7 @@ import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterModule, COMPONENTS, MODULES],
-  providers: [RegisterStore],
+  providers: [provideComponentStore(RegisterStore)],
 })
 export class RegisterComponent extends BaseComponent {
   readonly registerStore = inject(RegisterStore);

@@ -33,8 +33,12 @@ export class RegisterStore extends ComponentStoreMixinHelper<{
             tapResponse((user: UserCredential) => {
               formGroup.controls['pass'].disable();
               formGroup.controls['user'].disable();
-              this.setUser(user);
-              this.facade.storeUser(user.user);
+
+              this.firestore.setUser(user.user).then(() => {
+                this.setUser(user);
+                this.router.navigate(['dashboard']);
+              });
+
               this.authService.sendEmailVerification(user.user);
             }, this.handleError)
           )

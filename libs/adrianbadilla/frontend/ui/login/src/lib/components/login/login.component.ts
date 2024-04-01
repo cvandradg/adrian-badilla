@@ -4,6 +4,7 @@ import { PassResetComponent } from '../pass-reset/pass-reset.component';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
+import { provideComponentStore } from '@ngrx/component-store';
 
 @Component({
   selector: 'adrianbadilla-ws-login',
@@ -12,7 +13,7 @@ import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [PassResetComponent, COMPONENTS, MODULES],
-  providers: [LoginStore],
+  providers: [provideComponentStore(LoginStore)],
 })
 export class LoginComponent extends BaseComponent {
   readonly loginStore = inject(LoginStore);

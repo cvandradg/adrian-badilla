@@ -131,12 +131,17 @@ export class ErrorHandlerService implements ErrorHandler {
           error
         );
       default:
-        throw new Error(
+        console.info(new Error(
           'Error code not handled. \n' +
             ' Error code. \n ' +
             error.code +
             '\n Error trace. ' +
             error
+        ));
+        return this.errorObject(
+          true,
+          'Ocurrió un error, si continúa pasando contáctate con nosotros.',
+          error
         );
     }
   }
