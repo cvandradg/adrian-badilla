@@ -23,7 +23,7 @@ export class ErrorHandlerService implements ErrorHandler {
     console.warn('Error is been handled by our global error handler.\n', error);
   }
 
-  firebaseErrorHandler(error: FirebaseError) {
+  firebaseErrorHandler(error: FirebaseError ) {
     console.info(error.code);
 
     switch (error.code) {

@@ -1,9 +1,10 @@
-import { User } from 'firebase/auth';
-import { setDoc, doc, deleteDoc } from 'firebase/firestore';
+import { from, tap } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { client, deepCopy, initialClient } from '../types/general-types';
+import { User, UserCredential } from 'firebase/auth';
+import { setDoc, doc, deleteDoc } from 'firebase/firestore';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
+import { client, clientDeclaration } from '../types/general-types';
 
 @Injectable({
   providedIn: 'any',
@@ -12,14 +13,12 @@ export class firestoreDatabaseService {
   private firestore: Firestore = inject(Firestore);
   private facade = inject(SharedStoreFacade);
 
-  async setUser(user: User, profileData?: typeof initialClient) {
-    const client: client = deepCopy({
-      ...user,
-      ...(profileData || initialClient),
-    });
+  setUser(user: UserCredential) {
+    const client: client = clientDeclaration(user.user);
     const docRef = doc(this.firestore, 'users', client.uid);
-    return await setDoc(docRef, client).then(() =>
-      this.facade.storeUser(client)
+
+    return from(setDoc(docRef, client)).pipe(
+      tap(() => this.facade.storeUser(client))
     );
   }
 

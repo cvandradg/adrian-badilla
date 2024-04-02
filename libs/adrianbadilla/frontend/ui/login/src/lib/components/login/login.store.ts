@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User, UserCredential } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
+import { UserCredential } from 'firebase/auth';
 import { tapResponse } from '@ngrx/component-store';
-import { Observable, switchMap, pipe, concatMap, from, map } from 'rxjs';
 import { Credentials } from '@adrianbadilla/shared/types/general-types';
+import { Observable, switchMap, pipe, concatMap, from, map, tap } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
@@ -13,17 +14,22 @@ export class LoginStore extends ComponentStoreMixinHelper<
     super({});
   }
 
+  readonly onSigninError$ = this.effect<void>(
+    pipe(this.responseHandler(tap(() => this.authService.deleteCurrentUser())))
+  );
+
   readonly googleSignin$ = this.effect<void>(
     pipe(
       this.responseHandler(
         switchMap(() =>
           this.authService.googleSignin().pipe(
-            concatMap((user: UserCredential) =>
-              this.firestore.setUser(user.user)
-            ),
+            concatMap((user: UserCredential) => this.firestore.setUser(user)),
             tapResponse(
               () => this.router.navigate(['dashboard']),
-              this.handleError
+              (error: FirebaseError) => {
+                this.onSigninError$();
+                this.handleError(error);
+              }
             )
           )
         )
@@ -37,17 +43,20 @@ export class LoginStore extends ComponentStoreMixinHelper<
         this.responseHandler(
           switchMap((credentials: Credentials) =>
             this.authService.login(credentials).pipe(
-              tapResponse((user: UserCredential) => {
-                from(this.firestore.setUser(user.user)).pipe(
-                  map(() => {
-                    if (user.user.emailVerified) {
-                      this.router.navigate(['dashboard']);
-                      return;
-                    }
-                    this.authService.sendEmailVerification(user.user);
-                  })
-                );
-              }, this.handleError)
+              tapResponse(
+                (user: UserCredential) => {
+                  from(this.firestore.setUser(user)).pipe(
+                    map(() => {
+                      if (user.user.emailVerified) {
+                        this.router.navigate(['dashboard']);
+                        return;
+                      }
+                      this.authService.sendEmailVerification(user.user);
+                    })
+                  );
+                },
+                (error: FirebaseError) => this.handleError(error)
+              )
             )
           )
         )

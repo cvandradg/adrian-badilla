@@ -1,13 +1,11 @@
 import { from, map, Observable } from 'rxjs';
 import { Credentials } from '../types/general-types';
 import { Injectable, inject } from '@angular/core';
-import { SharedStoreFacade } from '../+state/shared-store.facade';
 import {
   UserCredential,
   confirmPasswordReset,
   sendEmailVerification,
   sendPasswordResetEmail,
-  AdditionalUserInfo,
 } from 'firebase/auth';
 import {
   Auth,
@@ -24,7 +22,6 @@ import {
   user,
   deleteUser,
 } from '@angular/fire/auth';
-import { firestoreDatabaseService } from './firestore-database.service';
 
 @Injectable({
   providedIn: null,
@@ -34,8 +31,6 @@ export class AuthService {
 
   readonly user$ = user(this.auth);
   readonly authState$ = authState(this.auth);
-
-  private firestore = inject(firestoreDatabaseService);
 
   getCurrentUser() {
     return this.user$;
@@ -86,13 +81,11 @@ export class AuthService {
     return from(createUserWithEmailAndPassword(this.auth, user, pass));
   }
 
-  deleteUser() {
+  deleteCurrentUser() {
     if (!this.auth.currentUser) return;
 
-    return from(this.firestore.deleteUser(this.auth.currentUser)).pipe(
-      map(
-        () => this.auth.currentUser && from(deleteUser(this.auth.currentUser))
-      )
+    return from(deleteUser(this.auth.currentUser)).pipe(
+      map(() => 'deletedUser')
     );
   }
 }

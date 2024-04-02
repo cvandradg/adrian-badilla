@@ -39,16 +39,23 @@ export type TertiaryButton = {
   path: string | string[];
 };
 
-export const emptyCallback: () => void = () => {return};
+export const emptyCallback: () => void = () => {
+  return;
+};
 
-export const initialClient = {
+export const initialClientState = {
   age: 0,
   name: '',
   lastnames: '',
   weight: '',
   height: '',
-}
+};
 
-export type client = User & typeof initialClient
+export const clientDeclaration = (user: User) => {
+  return deepCopy({
+    ...user,
+    ...initialClientState,
+  });
+};
 
-
+export type client = User & typeof initialClientState;

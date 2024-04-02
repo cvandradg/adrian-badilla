@@ -38,9 +38,8 @@ export class ComponentStoreMixinHelper<
     error,
   }));
 
-  get handleError() {
-    return (error: FirebaseError) =>
-      this.setError(this.errorHelperService.firebaseErrorHandler(error));
+  handleError(error: FirebaseError) {
+    return this.setError(this.errorHelperService.firebaseErrorHandler(error));
   }
 
   responseHandler(operator: OperatorFunction<any, any>) {

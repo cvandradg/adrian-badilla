@@ -6,7 +6,7 @@ import {
   Credentials,
   NothingOr,
 } from '@adrianbadilla/shared/types/general-types';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, firstValueFrom, switchMap } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class RegisterStore extends ComponentStoreMixinHelper<{
               formGroup.controls['pass'].disable();
               formGroup.controls['user'].disable();
 
-              this.firestore.setUser(user.user).then(() => {
+              firstValueFrom(this.firestore.setUser(user)).then(() => {
                 this.setUser(user);
                 this.router.navigate(['dashboard']);
               });

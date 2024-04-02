@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 import { Injectable, inject } from '@angular/core';
-import { switchMap, from, tap, Observable, pipe } from 'rxjs';
-import { User } from 'firebase/auth';
+import { switchMap, from, tap, Observable, pipe, firstValueFrom } from 'rxjs';
+import { User, UserCredential } from 'firebase/auth';
 
 @Injectable()
 export class EmailVerificationStore
@@ -48,8 +48,8 @@ export class EmailVerificationStore
       next: async (user: User | null) => {
         await user?.reload();
         if (user?.emailVerified) {
-          this.firestore
-            .setUser(user)
+          firstValueFrom(this.firestore
+            .setUser({user: user} as UserCredential))
             .then(() => this.router.navigate(['/dashboard']));
           return;
         }
