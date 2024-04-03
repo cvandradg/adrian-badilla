@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FirebaseError } from 'firebase/app';
-import { UserCredential } from 'firebase/auth';
 import { tapResponse } from '@ngrx/component-store';
+import { User, UserCredential } from 'firebase/auth';
 import { Credentials } from '@adrianbadilla/shared/types/general-types';
-import { Observable, switchMap, pipe, concatMap, from, map, tap } from 'rxjs';
+import { Observable, switchMap, pipe, catchError, EMPTY, forkJoin } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
@@ -14,23 +13,20 @@ export class LoginStore extends ComponentStoreMixinHelper<
     super({});
   }
 
-  readonly onSigninError$ = this.effect<void>(
-    pipe(this.responseHandler(tap(() => this.authService.deleteCurrentUser())))
-  );
-
   readonly googleSignin$ = this.effect<void>(
     pipe(
       this.responseHandler(
         switchMap(() =>
           this.authService.googleSignin().pipe(
-            concatMap((user: UserCredential) => this.firestore.setUser(user)),
-            tapResponse(
-              () => this.router.navigate(['dashboard']),
-              (error: FirebaseError) => {
-                this.onSigninError$();
-                this.handleError(error);
-              }
-            )
+            switchMap((user: UserCredential) =>
+              this.firestore.setUser(user).pipe(
+                catchError((error) => {
+                  this.onSigninError$(user);
+                  throw error;
+                })
+              )
+            ),
+            tapResponse(this.onSuccess, this.handleError)
           )
         )
       )
@@ -43,23 +39,34 @@ export class LoginStore extends ComponentStoreMixinHelper<
         this.responseHandler(
           switchMap((credentials: Credentials) =>
             this.authService.login(credentials).pipe(
-              tapResponse(
-                (user: UserCredential) => {
-                  from(this.firestore.setUser(user)).pipe(
-                    map(() => {
-                      if (user.user.emailVerified) {
-                        this.router.navigate(['dashboard']);
-                        return;
-                      }
-                      this.authService.sendEmailVerification(user.user);
-                    })
-                  );
-                },
-                (error: FirebaseError) => this.handleError(error)
-              )
+              switchMap((user: UserCredential) => this.firestore.setUser(user)),
+              tapResponse(this.onSuccess, this.handleError)
             )
           )
         )
       )
   );
+
+  readonly onSigninError$ = this.effect((user$: Observable<UserCredential>) =>
+    user$.pipe(
+      switchMap((user: UserCredential) => {
+        return this.authService.additionalUserInfo(user)?.isNewUser
+          ? forkJoin([
+              this.authService.deleteCurrentUser(user.user),
+              this.firestore.deleteUser(user.user),
+            ])
+          : EMPTY;
+      })
+    )
+  );
+
+  get onSuccess() {
+    return (user: User) => {
+      if (user.emailVerified) {
+        this.router.navigate(['dashboard']);
+        return;
+      }
+      this.authService.sendEmailVerification(user);
+    };
+  }
 }

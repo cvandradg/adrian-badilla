@@ -1,16 +1,23 @@
-import { from, tap } from 'rxjs';
+import { from, map, tap } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { User, UserCredential } from 'firebase/auth';
-import { setDoc, doc, deleteDoc } from 'firebase/firestore';
+import {
+  setDoc,
+  doc,
+  deleteDoc,
+  CollectionReference,
+} from 'firebase/firestore';
 import { SharedStoreFacade } from '../+state/shared-store.facade';
 import { client, clientDeclaration } from '../types/general-types';
+import { AuthService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class firestoreDatabaseService {
-  private firestore: Firestore = inject(Firestore);
+  private auth = inject(AuthService);
+  private firestore = inject(Firestore);
   private facade = inject(SharedStoreFacade);
 
   setUser(user: UserCredential) {
@@ -18,13 +25,14 @@ export class firestoreDatabaseService {
     const docRef = doc(this.firestore, 'users', client.uid);
 
     return from(setDoc(docRef, client)).pipe(
-      tap(() => this.facade.storeUser(client))
+      tap(() => this.facade.storeUser(user.user)),
+      map(() => user.user)
     );
   }
 
-  async deleteUser(user: User | client) {
-    const docRef = doc(this.firestore, 'users', user.uid);
-    return await deleteDoc(docRef);
+  deleteUser(user: User | client) {
+    const docRef = doc(this.firestore, `users/${user.uid}`);
+    return from(deleteDoc(docRef));
   }
 
   user$() {

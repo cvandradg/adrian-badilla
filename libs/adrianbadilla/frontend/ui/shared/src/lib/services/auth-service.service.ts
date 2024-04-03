@@ -1,4 +1,4 @@
-import { from, map, Observable } from 'rxjs';
+import { from, map, Observable, tap } from 'rxjs';
 import { Credentials } from '../types/general-types';
 import { Injectable, inject } from '@angular/core';
 import {
@@ -40,12 +40,15 @@ export class AuthService {
     return this.authState$;
   }
 
+  deleteCurrentUser(user: User) {
+    return from(deleteUser(user));
+  }
+
   signOut() {
     return from(signOut(this.auth));
   }
 
   additionalUserInfo(user: UserCredential) {
-    if (!this.auth.currentUser) return;
     return getAdditionalUserInfo(user);
   }
 
@@ -79,13 +82,5 @@ export class AuthService {
 
   createAccount({ user, pass }: Credentials): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, user, pass));
-  }
-
-  deleteCurrentUser() {
-    if (!this.auth.currentUser) return;
-
-    return from(deleteUser(this.auth.currentUser)).pipe(
-      map(() => 'deletedUser')
-    );
   }
 }

@@ -38,8 +38,11 @@ export class ComponentStoreMixinHelper<
     error,
   }));
 
-  handleError(error: FirebaseError) {
-    return this.setError(this.errorHelperService.firebaseErrorHandler(error));
+  get handleError() {
+    return (error: FirebaseError) =>
+      {
+        console.log('este es 2')
+        return this.setError(this.errorHelperService.firebaseErrorHandler(error));}
   }
 
   responseHandler(operator: OperatorFunction<any, any>) {
