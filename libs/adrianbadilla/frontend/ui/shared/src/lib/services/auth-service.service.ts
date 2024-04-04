@@ -1,6 +1,6 @@
-import { from, map, Observable, tap } from 'rxjs';
-import { Credentials } from '../types/general-types';
+import { from, Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
+import { Credentials } from '../types/general-types';
 import {
   UserCredential,
   confirmPasswordReset,
@@ -9,18 +9,18 @@ import {
 } from 'firebase/auth';
 import {
   Auth,
-  GoogleAuthProvider,
   User,
-  applyActionCode,
+  user,
+  signOut,
   authState,
+  deleteUser,
+  applyActionCode,
   checkActionCode,
-  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
   getAdditionalUserInfo,
   signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  user,
-  deleteUser,
+  createUserWithEmailAndPassword,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -40,12 +40,12 @@ export class AuthService {
     return this.authState$;
   }
 
-  deleteCurrentUser(user: User) {
-    return from(deleteUser(user));
-  }
-
   signOut() {
     return from(signOut(this.auth));
+  }
+
+  async deleteCurrentUser(user: User) {
+    return await deleteUser(user);
   }
 
   additionalUserInfo(user: UserCredential) {

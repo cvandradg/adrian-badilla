@@ -1,14 +1,14 @@
-import { User, UserCredential } from 'firebase/auth';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
+import { FirebaseError } from 'firebase/app';
 import { tapResponse } from '@ngrx/component-store';
+import { User, UserCredential } from 'firebase/auth';
+import { Observable, from, map, switchMap } from 'rxjs';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 import {
   Credentials,
   NothingOr,
 } from '@adrianbadilla/shared/types/general-types';
-import { Observable, firstValueFrom, switchMap } from 'rxjs';
-import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
-import { FirebaseError } from 'firebase/app';
 
 @Injectable()
 export class RegisterStore extends ComponentStoreMixinHelper<{
@@ -31,7 +31,9 @@ export class RegisterStore extends ComponentStoreMixinHelper<{
       this.responseHandler(
         switchMap((formGroup) =>
           this.authService.createAccount(formGroup.value as Credentials).pipe(
-            switchMap((user: UserCredential) => this.firestore.setUser(user)),
+            switchMap((user: UserCredential) =>
+              from(this.firestore.setUser(user)).pipe(map(() => user.user))
+            ),
             tapResponse(
               (user: User) => {
                 formGroup.controls.disable();

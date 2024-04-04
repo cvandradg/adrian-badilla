@@ -24,9 +24,9 @@ export class ErrorHandlerService implements ErrorHandler {
   }
 
   firebaseErrorHandler(error: FirebaseError ) {
-    console.info(error.code);
+    console.info(error?.code);
 
-    switch (error.code) {
+    switch (error?.code) {
       case 'auth/email-already-in-use':
         return this.errorObject(true, 'El usuario ya existe.', error);
       case 'auth/expired-action-code':
@@ -134,7 +134,7 @@ export class ErrorHandlerService implements ErrorHandler {
         console.info(new Error(
           'Error code not handled. \n' +
             ' Error code. \n ' +
-            error.code +
+            error?.code +
             '\n Error trace. ' +
             error
         ));

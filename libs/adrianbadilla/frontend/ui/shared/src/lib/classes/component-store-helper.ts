@@ -39,10 +39,9 @@ export class ComponentStoreMixinHelper<
   }));
 
   get handleError() {
-    return (error: FirebaseError) =>
-      {
-        console.log('este es 2')
-        return this.setError(this.errorHelperService.firebaseErrorHandler(error));}
+    return (error: FirebaseError) => {
+      return this.setError(this.errorHelperService.firebaseErrorHandler(error));
+    };
   }
 
   responseHandler(operator: OperatorFunction<any, any>) {

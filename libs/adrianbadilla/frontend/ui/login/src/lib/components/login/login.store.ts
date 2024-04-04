@@ -2,8 +2,18 @@ import { Injectable } from '@angular/core';
 import { tapResponse } from '@ngrx/component-store';
 import { User, UserCredential } from 'firebase/auth';
 import { Credentials } from '@adrianbadilla/shared/types/general-types';
-import { Observable, switchMap, pipe, catchError, EMPTY, forkJoin } from 'rxjs';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
+import {
+  map,
+  pipe,
+  from,
+  EMPTY,
+  forkJoin,
+  switchMap,
+  Observable,
+  catchError,
+  throwError,
+} from 'rxjs';
 
 @Injectable()
 export class LoginStore extends ComponentStoreMixinHelper<
@@ -19,14 +29,15 @@ export class LoginStore extends ComponentStoreMixinHelper<
         switchMap(() =>
           this.authService.googleSignin().pipe(
             switchMap((user: UserCredential) =>
-              this.firestore.setUser(user).pipe(
-                catchError((error) => {
-                  this.onSigninError$(user);
-                  throw error;
-                })
+              from(this.firestore.setUser(user)).pipe(
+                map(() => user.user),
+                catchError(() => throwError(() => ({ user })))
               )
             ),
-            tapResponse(this.onSuccess, this.handleError)
+            tapResponse(this.onSuccess, ({ error, user }) => {
+              this.onSigninError$(user);
+              this.handleError(error);
+            })
           )
         )
       )
@@ -39,7 +50,9 @@ export class LoginStore extends ComponentStoreMixinHelper<
         this.responseHandler(
           switchMap((credentials: Credentials) =>
             this.authService.login(credentials).pipe(
-              switchMap((user: UserCredential) => this.firestore.setUser(user)),
+              switchMap((user: UserCredential) =>
+                from(this.firestore.setUser(user)).pipe(map(() => user.user))
+              ),
               tapResponse(this.onSuccess, this.handleError)
             )
           )
@@ -52,8 +65,8 @@ export class LoginStore extends ComponentStoreMixinHelper<
       switchMap((user: UserCredential) => {
         return this.authService.additionalUserInfo(user)?.isNewUser
           ? forkJoin([
-              this.authService.deleteCurrentUser(user.user),
-              this.firestore.deleteUser(user.user),
+              from(this.firestore.deleteUser(user.user)),
+              from(this.authService.deleteCurrentUser(user.user)),
             ])
           : EMPTY;
       })
@@ -62,11 +75,10 @@ export class LoginStore extends ComponentStoreMixinHelper<
 
   get onSuccess() {
     return (user: User) => {
-      if (user.emailVerified) {
-        this.router.navigate(['dashboard']);
-        return;
-      }
-      this.authService.sendEmailVerification(user);
+      this.facade.storeUser(user);
+      user.emailVerified
+        ? this.router.navigate(['dashboard'])
+        : this.authService.sendEmailVerification(user);
     };
   }
 }

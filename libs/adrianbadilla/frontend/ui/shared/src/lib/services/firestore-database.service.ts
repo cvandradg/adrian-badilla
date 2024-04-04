@@ -1,4 +1,4 @@
-import { from, map, tap } from 'rxjs';
+import { catchError, from, map, of, tap, throwError } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { User, UserCredential } from 'firebase/auth';
@@ -20,19 +20,21 @@ export class firestoreDatabaseService {
   private firestore = inject(Firestore);
   private facade = inject(SharedStoreFacade);
 
-  setUser(user: UserCredential) {
+  // https://firebase.google.com/docs/firestore/manage-data/add-data
+  /*
+  Link importante para actualizar data en firestore
+  */
+
+  async setUser(user: UserCredential) {
     const client: client = clientDeclaration(user.user);
     const docRef = doc(this.firestore, 'users', client.uid);
 
-    return from(setDoc(docRef, client)).pipe(
-      tap(() => this.facade.storeUser(user.user)),
-      map(() => user.user)
-    );
+    return await setDoc(docRef, client);
   }
 
-  deleteUser(user: User | client) {
+  async deleteUser(user: User | client) {
     const docRef = doc(this.firestore, `users/${user.uid}`);
-    return from(deleteDoc(docRef));
+    return await deleteDoc(docRef);
   }
 
   user$() {
