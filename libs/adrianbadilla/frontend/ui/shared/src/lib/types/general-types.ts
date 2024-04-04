@@ -52,7 +52,7 @@ export const initialClientState = {
 };
 
 export const clientDeclaration = (user: User) => {
-  return ({
+  return deepCopy({
     ...user,
     ...initialClientState,
   });
