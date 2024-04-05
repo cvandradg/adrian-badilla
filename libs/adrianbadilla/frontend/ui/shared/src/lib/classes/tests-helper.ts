@@ -13,7 +13,7 @@ export interface GenericState extends Record<string, unknown> {
 @Injectable({
   providedIn: 'root',
 })
-export class SharedStoreFacade {
+export class SharedStoreFacadeTest {
   user$ = of({ user: { emailVerified: true } });
 
   error$ = of({ status: 404, message: 'error', error: 'error' });
@@ -27,7 +27,7 @@ export class ComponentStoreMixinHelper<
   T extends GenericState
 > extends ComponentStore<T> {
   router = inject(Router);
-  facade = inject(SharedStoreFacade);
+  facade = inject(SharedStoreFacadeTest);
 
   readonly error$ = this.select((state) => state.error);
   readonly loading$ = this.select((state) => state.loading);
@@ -62,5 +62,5 @@ export class MockComponentStore
 export class BaseComponent {
   router = inject(Router);
   formBuilder = inject(FormBuilder);
-  facade = inject(SharedStoreFacade);
+  facade = inject(SharedStoreFacadeTest);
 }

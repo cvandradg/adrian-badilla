@@ -6,7 +6,8 @@
     "test": "npx nx run-many -t test",
     "build:only": "npx nx build adrianbadilla",
     "build": "npx nx build adrianbadilla && npx nx run-many -t test",
-    "s": "npx nx build adrianbadilla && npx nx run-many -t test && npx nx serve adrianbadilla"
+    "s": "npx nx build adrianbadilla && npx nx run-many -t test && npx nx serve adrianbadilla",
+    "r": "npx nx serve adrianbadilla"
   },
   "private": true,
   "dependencies": {

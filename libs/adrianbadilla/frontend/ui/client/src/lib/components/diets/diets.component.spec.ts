@@ -8,6 +8,7 @@ import { BaseComponent } from '@adrianbadilla/shared/classes/base-component';
 import { MockComponentStore } from '@adrianbadilla/shared/classes/tests-helper';
 
 @Component({
+  selector: 'adrianbadilla-diets-tests',
   templateUrl: './diets.component.html',
   standalone: true,
   imports: [CommonModule, COMPONENTS],

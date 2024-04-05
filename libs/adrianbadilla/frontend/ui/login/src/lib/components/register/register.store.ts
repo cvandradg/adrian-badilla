@@ -1,17 +1,26 @@
-import { UserCredential } from 'firebase/auth';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { tapResponse } from '@ngrx/component-store';
-import {
-  Credentials,
-  NothingOr,
-} from '@adrianbadilla/shared/types/general-types';
-import { Observable, switchMap } from 'rxjs';
+import { User, UserCredential } from 'firebase/auth';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
+import {
+  map,
+  from,
+  EMPTY,
+  forkJoin,
+  switchMap,
+  catchError,
+  Observable,
+  throwError,
+} from 'rxjs';
+import {
+  NothingOr,
+  Credentials,
+} from '@adrianbadilla/shared/types/general-types';
 
 @Injectable()
 export class RegisterStore extends ComponentStoreMixinHelper<{
-  user: NothingOr<UserCredential>;
+  user: NothingOr<User>;
 }> {
   constructor() {
     super({ user: null });
@@ -19,7 +28,7 @@ export class RegisterStore extends ComponentStoreMixinHelper<{
 
   readonly user$ = this.select((state) => state.user);
 
-  readonly setUser = this.updater((state, user: UserCredential) => ({
+  readonly setUser = this.updater((state, user: User) => ({
     ...state,
     loading: false,
     user,
@@ -28,18 +37,45 @@ export class RegisterStore extends ComponentStoreMixinHelper<{
   readonly createAccount$ = this.effect((formGroup$: Observable<FormGroup>) => {
     return formGroup$.pipe(
       this.responseHandler(
-        switchMap((formGroup) =>
+        switchMap((formGroup: FormGroup) =>
           this.authService.createAccount(formGroup.value as Credentials).pipe(
-            tapResponse((user: UserCredential) => {
-              formGroup.controls['pass'].disable();
-              formGroup.controls['user'].disable();
-              this.setUser(user);
-              this.facade.storeUser(user.user);
-              this.authService.sendEmailVerification(user.user);
-            }, this.handleError)
+            switchMap((user: UserCredential) =>
+              from(this.firestore.setUser(user)).pipe(
+                map(() => user.user),
+                catchError(() => throwError(() => ({ user })))
+              )
+            ),
+            tapResponse(this.onSuccess(formGroup), ({ error, user }) => {
+              this.handleError(error);
+              this.onSigninError$(user);
+            })
           )
         )
       )
     );
   });
+
+  onSuccess(formGroup: FormGroup) {
+    return (user: User) => {
+      formGroup.controls['user'].disable();
+      formGroup.controls['pass'].disable();
+
+      this.setUser(user);
+
+      this.authService.sendEmailVerification(user);
+    };
+  }
+
+  readonly onSigninError$ = this.effect((user$: Observable<UserCredential>) =>
+    user$.pipe(
+      switchMap((user: UserCredential) => {
+        return this.authService.additionalUserInfo(user)?.isNewUser
+          ? forkJoin([
+              from(this.firestore.deleteUser(user.user)),
+              from(this.authService.deleteCurrentUser(user.user)),
+            ])
+          : EMPTY;
+      })
+    )
+  );
 }

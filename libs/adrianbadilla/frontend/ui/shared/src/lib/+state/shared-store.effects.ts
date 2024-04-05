@@ -21,7 +21,7 @@ import { createAction } from '@ngrx/store';
 @Injectable()
 export class SharedStoreEffects implements OnInitEffects {
   private auth = inject(AuthService);
-  private actions$ = inject(Actions);
+  private actions = inject(Actions);
   private errorHelperService = inject(ErrorHandlerService);
 
   ngrxOnInitEffects() {
@@ -29,7 +29,7 @@ export class SharedStoreEffects implements OnInitEffects {
   }
 
   getSession$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       ofType(actions.getSession),
       concatMap(() => this.auth.authState$),
       map((user: NothingOr<User>) => {
@@ -45,7 +45,7 @@ export class SharedStoreEffects implements OnInitEffects {
   );
 
   passReset$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       ofType(actions.requestPassReset),
       switchMap((action) => this.auth.recoverPassword(action.email)),
       map(() => createAction('')),
@@ -58,7 +58,7 @@ export class SharedStoreEffects implements OnInitEffects {
   );
 
   hideLoading$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       filter((action) => {
         const validAction = Object.values(actions).some(
           (ObjAction) => ObjAction.type === action.type
@@ -83,7 +83,7 @@ export class SharedStoreEffects implements OnInitEffects {
   );
 
   signOut$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions.pipe(
       ofType(actions.signOut),
       switchMap(() => this.auth.signOut()),
       map(() => actions.storeUser({ user: null })),

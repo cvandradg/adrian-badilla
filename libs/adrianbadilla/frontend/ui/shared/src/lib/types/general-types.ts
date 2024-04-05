@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { Validators } from '@angular/forms';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FirebaseError } from 'firebase/app';
@@ -37,3 +38,24 @@ export type TertiaryButton = {
   icon: IconProp;
   path: string | string[];
 };
+
+export const emptyCallback: () => void = () => {
+  return;
+};
+
+export const initialClientState = {
+  age: 0,
+  name: '',
+  lastnames: '',
+  weight: '',
+  height: '',
+};
+
+export const clientDeclaration = (user: User) => {
+  return deepCopy({
+    ...user,
+    ...initialClientState,
+  });
+};
+
+export type client = User & typeof initialClientState;

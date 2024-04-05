@@ -1,10 +1,9 @@
-import { OnStoreInit } from '@ngrx/component-store';
 import { ActivatedRoute } from '@angular/router';
-import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
-
 import { Injectable, inject } from '@angular/core';
+import { User, UserCredential } from 'firebase/auth';
 import { switchMap, from, tap, Observable, pipe } from 'rxjs';
-import { User } from 'firebase/auth';
+import { OnStoreInit, tapResponse } from '@ngrx/component-store';
+import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 
 @Injectable()
 export class EmailVerificationStore
@@ -26,10 +25,7 @@ export class EmailVerificationStore
       this.responseHandler(
         switchMap((oobCode) =>
           from(this.authService.verifyEmail(oobCode)).pipe(
-            tap({
-              next: () => this.checkUserEmailVerified$(),
-              error: this.handleError,
-            })
+            tapResponse(() => this.checkUserEmailVerified$(), this.handleError)
           )
         )
       )
@@ -51,8 +47,9 @@ export class EmailVerificationStore
       next: async (user: User | null) => {
         await user?.reload();
         if (user?.emailVerified) {
-          this.facade.storeUser(user);
-          this.router.navigate(['/dashboard']);
+          this.firestore
+            .setUser({ user: user } as UserCredential)
+            .then(() => this.router.navigate(['/dashboard']));
           return;
         }
       },

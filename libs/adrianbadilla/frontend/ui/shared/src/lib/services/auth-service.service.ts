@@ -1,7 +1,6 @@
 import { from, Observable } from 'rxjs';
-import { Credentials } from '../types/general-types';
 import { Injectable, inject } from '@angular/core';
-import { SharedStoreFacade } from '../+state/shared-store.facade';
+import { Credentials } from '../types/general-types';
 import {
   UserCredential,
   confirmPasswordReset,
@@ -10,16 +9,18 @@ import {
 } from 'firebase/auth';
 import {
   Auth,
-  GoogleAuthProvider,
   User,
-  applyActionCode,
-  authState,
-  checkActionCode,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
   user,
+  signOut,
+  authState,
+  deleteUser,
+  applyActionCode,
+  checkActionCode,
+  signInWithPopup,
+  GoogleAuthProvider,
+  getAdditionalUserInfo,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -31,8 +32,6 @@ export class AuthService {
   readonly user$ = user(this.auth);
   readonly authState$ = authState(this.auth);
 
-  facade = inject(SharedStoreFacade);
-
   getCurrentUser() {
     return this.user$;
   }
@@ -43,6 +42,14 @@ export class AuthService {
 
   signOut() {
     return from(signOut(this.auth));
+  }
+
+  async deleteCurrentUser(user: User) {
+    return await deleteUser(user);
+  }
+
+  additionalUserInfo(user: UserCredential) {
+    return getAdditionalUserInfo(user);
   }
 
   sendEmailVerification(user: User) {
