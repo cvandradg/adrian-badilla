@@ -1,9 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { User, UserCredential } from 'firebase/auth';
-import { setDoc, doc, deleteDoc, collection } from 'firebase/firestore';
+import { setDoc, doc, deleteDoc } from 'firebase/firestore';
 import { client, clientDeclaration } from '../types/general-types';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'any',

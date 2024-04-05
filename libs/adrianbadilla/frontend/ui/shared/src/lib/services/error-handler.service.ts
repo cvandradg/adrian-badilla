@@ -23,7 +23,7 @@ export class ErrorHandlerService implements ErrorHandler {
     console.warn('Error is been handled by our global error handler.\n', error);
   }
 
-  firebaseErrorHandler(error: FirebaseError ) {
+  firebaseErrorHandler(error: FirebaseError) {
     console.info(error?.code);
 
     switch (error?.code) {
@@ -131,13 +131,15 @@ export class ErrorHandlerService implements ErrorHandler {
           error
         );
       default:
-        console.info(new Error(
-          'Error code not handled. \n' +
-            ' Error code. \n ' +
-            error?.code +
-            '\n Error trace. ' +
-            error
-        ));
+        console.info(
+          new Error(
+            'Error code not handled. \n' +
+              ' Error code. \n ' +
+              error?.code +
+              '\n Error trace. ' +
+              error
+          )
+        );
         return this.errorObject(
           true,
           'Ocurrió un error, si continúa pasando contáctate con nosotros.',
