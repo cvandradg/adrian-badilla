@@ -1,24 +1,15 @@
-import { catchError, from, map, of, tap, throwError } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, collectionData } from '@angular/fire/firestore';
 import { User, UserCredential } from 'firebase/auth';
-import {
-  setDoc,
-  doc,
-  deleteDoc,
-  CollectionReference,
-} from 'firebase/firestore';
-import { SharedStoreFacade } from '../+state/shared-store.facade';
+import { setDoc, doc, deleteDoc, collection } from 'firebase/firestore';
 import { client, clientDeclaration } from '../types/general-types';
-import { AuthService } from './auth-service.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'any',
 })
 export class firestoreDatabaseService {
-  private auth = inject(AuthService);
   private firestore = inject(Firestore);
-  private facade = inject(SharedStoreFacade);
 
   // https://firebase.google.com/docs/firestore/manage-data/add-data
   /*
@@ -37,7 +28,7 @@ export class firestoreDatabaseService {
     return await deleteDoc(docRef);
   }
 
-  user$() {
+  updateUser$(client: client) {
     // return (this.facade.user$ as Observable<User>).pipe(
     //   tap((x) => console.log('user de facade')),
     //   concatMap(

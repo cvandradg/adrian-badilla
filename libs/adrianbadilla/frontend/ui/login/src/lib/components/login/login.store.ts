@@ -26,20 +26,7 @@ export class LoginStore extends ComponentStoreMixinHelper<
   readonly googleSignin$ = this.effect<void>(
     pipe(
       this.responseHandler(
-        switchMap(() =>
-          this.authService.googleSignin().pipe(
-            switchMap((user: UserCredential) =>
-              from(this.firestore.setUser(user)).pipe(
-                map(() => user.user),
-                catchError(() => throwError(() => ({ user })))
-              )
-            ),
-            tapResponse(this.onSuccess, ({ error, user }) => {
-              this.onSigninError$(user);
-              this.handleError(error);
-            })
-          )
-        )
+        switchMap(() => this.authService.googleSignin().pipe(this.onLogin))
       )
     )
   );
@@ -49,16 +36,35 @@ export class LoginStore extends ComponentStoreMixinHelper<
       credentials$.pipe(
         this.responseHandler(
           switchMap((credentials: Credentials) =>
-            this.authService.login(credentials).pipe(
-              switchMap((user: UserCredential) =>
-                from(this.firestore.setUser(user)).pipe(map(() => user.user))
-              ),
-              tapResponse(this.onSuccess, this.handleError)
-            )
+            this.authService.login(credentials).pipe(this.onLogin)
           )
         )
       )
   );
+
+  get onLogin() {
+    return pipe(
+      switchMap((user: UserCredential) =>
+        from(this.firestore.setUser(user)).pipe(
+          map(() => user.user),
+          catchError(() => throwError(() => ({ user })))
+        )
+      ),
+      tapResponse(this.onSuccess, ({ error, user }) => {
+        this.onSigninError$(user);
+        this.handleError(error);
+      })
+    );
+  }
+
+  get onSuccess() {
+    return (user: User) => {
+      this.facade.storeUser(user);
+      user.emailVerified
+        ? this.router.navigate(['dashboard'])
+        : this.authService.sendEmailVerification(user);
+    };
+  }
 
   readonly onSigninError$ = this.effect((user$: Observable<UserCredential>) =>
     user$.pipe(
@@ -72,13 +78,4 @@ export class LoginStore extends ComponentStoreMixinHelper<
       })
     )
   );
-
-  get onSuccess() {
-    return (user: User) => {
-      this.facade.storeUser(user);
-      user.emailVerified
-        ? this.router.navigate(['dashboard'])
-        : this.authService.sendEmailVerification(user);
-    };
-  }
 }
