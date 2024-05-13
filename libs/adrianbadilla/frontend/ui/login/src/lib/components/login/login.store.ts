@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { tapResponse } from '@ngrx/component-store';
+import { tapResponse } from '@ngrx/operators';
 import { User, UserCredential } from 'firebase/auth';
 import { Credentials } from '@adrianbadilla/shared/types/general-types';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
