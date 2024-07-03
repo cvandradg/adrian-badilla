@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { AdrianbadillaFrontendLandingComponent } from './adrianbadilla-frontend-landing/adrianbadilla-frontend-landing.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 export const adrianbadillaFrontendLandingRoutes: Route[] = [
-  { path: '', component: AdrianbadillaFrontendLandingComponent },
+  { path: '', component: LandingComponent },
 ];

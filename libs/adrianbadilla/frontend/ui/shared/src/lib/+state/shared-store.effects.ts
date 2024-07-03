@@ -14,7 +14,7 @@ import { AuthService } from '../services/auth-service.service';
 import { ErrorHandlerService } from '../services/error-handler.service';
 import { NothingOr, deepCopy } from '../types/general-types';
 import { User } from 'firebase/auth';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store/src/models';
 import { FirebaseError } from 'firebase/app';
 import { createAction } from '@ngrx/store';
 
@@ -100,7 +100,7 @@ export const catchSwitchMapError =
   (
     errorAction: (
       error: FirebaseError
-    ) => TypedAction<'[SharedStore Page] On Action Failure'>
+    ) => Action<'[SharedStore Page] On Action Failure'>
   ) =>
   <T>(source: Observable<T>) =>
     source.pipe(

@@ -41,7 +41,7 @@
       <mat-form-field>
         <mat-label>Estatura en cm</mat-label>
         <mat-select formControlName="height">
-          @for (i of [].constructor(150); track i; let index = $index) {
+          @for (i of [].constructor(150); let index = $index; track index; ) {
           <mat-option [value]="100 + index + ' cm'">
             {{ 100 + index + ' cm' }}
           </mat-option>
