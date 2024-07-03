@@ -21,6 +21,13 @@ import {
 
 export const appRoutes: Route[] = [
   {
+    path: 'adrianbadilla-frontend-landing',
+    loadChildren: () =>
+      import('@adrian-badilla-ws/adrianbadilla-frontend-landing').then(
+        (m) => m.adrianbadillaFrontendLandingRoutes
+      ),
+  },
+  {
     path: '',
     pathMatch: 'prefix',
     component: AppComponent,

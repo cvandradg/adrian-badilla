@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { tapResponse } from '@ngrx/component-store';
+import { tapResponse } from '@ngrx/operators';
 import { User, UserCredential } from 'firebase/auth';
 import { ComponentStoreMixinHelper } from '@adrianbadilla/shared/classes/component-store-helper';
 import {
