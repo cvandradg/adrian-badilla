@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@adrian-badilla-ws/adrianbadilla-frontend-landing": [
+        "libs/adrianbadilla/frontend/ui/landing/src/index.ts"
+      ],
       "@adrianbadilla/app": ["libs/adrianbadilla/frontend/ui/app/src/index.ts"],
       "@adrianbadilla/client": [
         "libs/adrianbadilla/frontend/ui/client/src/index.ts"
