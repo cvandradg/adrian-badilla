@@ -6,10 +6,18 @@
   background-color: transparent;
   height: 100vh;
   max-height: 67rem;
-  // background-color: rgba(128, 0, 128, 0.473);
-  // background-image: linear-gradient(to bottom right,  rgba(207, 23, 224, 0.685), rgba(209, 110, 28, 0.747)),  url('../../../../../../assets/img/adrian_jessica.jpg'); //works
-  background-image: linear-gradient(to bottom right,  rgba(207, 23, 224, 0.685), rgba(209, 110, 28, 0.747)),  url('/global/assets/img/adrian_jessica.jpg'); //words
+  background-image: url('/global/assets/img/opacity_background_5.png');
+  background-size: 169rem 67rem;
+  background-color: rgba(0, 0, 0, 0.658);
+}
 
+.overlapping-background {
+  height: 100%;
+  background: linear-gradient(
+    to top right,
+    #ff2e176e,
+    #595b6188
+  );
 }
 
 .content-hero-container {
@@ -55,11 +63,12 @@
   font-weight: 500;
   line-height: 4rem;
   letter-spacing: 0.2rem;
+  text-shadow: 0.05rem 0.03rem black;
   padding: 3.5rem 1rem 1rem 0rem;
+  text-transform: capitalize;
 }
 
 .green {
-
   background-color: transparent;
   width: 100%;
 }
