@@ -20,7 +20,12 @@
           {
             "glob": "**/*",
             "input": "apps/adrianbadilla/src/assets/",
-            "output": "/app/"
+            "output": "/app"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/adrianbadilla/frontend/assets/",
+            "output": "/global/assets"
           }
         ],
         "styles": [
