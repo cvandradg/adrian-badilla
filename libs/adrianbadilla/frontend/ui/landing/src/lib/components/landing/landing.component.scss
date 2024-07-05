@@ -3,9 +3,12 @@
 }
 
 .hero-container {
-  background-color: pink;
+  background-color: transparent;
   height: 100vh;
   max-height: 67rem;
+  // background-color: rgba(128, 0, 128, 0.473);
+  background-image: linear-gradient(to bottom right,  rgba(207, 23, 224, 0.685), rgba(209, 110, 28, 0.747)),  url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2knxOb8YYbryjHkf5AchdAHOqTvRen4sH2w&s');
+
 }
 
 .content-hero-container {
@@ -16,14 +19,14 @@
   margin: auto;
   height: 100%;
   min-height: 40rem;
-  background-color: red;
+  background-color: transparent;
 }
 
 .content-sections {
   display: flex;
   justify-content: space-between;
   height: 100%;
-  background-color: red;
+  background-color: transparent;
 }
 
 .beta {
@@ -46,7 +49,7 @@
 
 .title-hero {
   margin: 0;
-  color: rgb(204, 204, 204);
+  color: white;
   font-size: 3.5rem;
   font-weight: 500;
   line-height: 4rem;
@@ -55,7 +58,8 @@
 }
 
 .green {
-  background-color: green;
+
+  background-color: transparent;
   width: 100%;
 }
 
@@ -63,7 +67,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgb(9, 77, 9);
+  background-color: transparent;
   width: 100%;
   height: 100%;
   padding: 8.6rem 0 0 0;
@@ -73,9 +77,10 @@
   width: 100%;
   height: 90%;
   color: white;
+  border-top: white 2px solid;
   padding: 0.6rem 0 0 0;
   letter-spacing: 0.1rem;
-  background-color: rgb(78, 12, 12);
+  background-color: transparent;
 }
 
 .hero-sub-header-content {
@@ -101,11 +106,12 @@
 
 .aquamarine {
   height: 4rem;
-  background-color: aquamarine;
+  background-color: transparent;
   width: 100%;
   display: flex;
   padding: 0 0 3rem 0;
   font-size: 1.3rem;
+  color: white;
   letter-spacing: 0.04rem;
   justify-content: center;
 }
