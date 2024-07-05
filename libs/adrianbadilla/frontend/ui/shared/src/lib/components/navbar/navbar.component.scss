@@ -1,8 +1,10 @@
 @import 'general-styles.scss';
 
 mat-toolbar {
-  background-color: transparent;
+  display: flex;
   color: #fff;
+  justify-content: space-between;
+  background-color: transparent;
 }
 
 .container {
@@ -30,20 +32,7 @@ mat-toolbar {
 span {
   cursor: pointer;
 }
-// background: #4285f4;
-// animation: bgFade 16s infinite;
 
-//   @keyframes bgFade {
-//     0% {
-//       background: #4285f4;
-//     }
-//     25% {
-//       background: #f4b400;
-//     }
-//     50% {
-//       background: #0f9d58;
-//     }
-//     75% {
-//       background: #db4437;
-//     }
-//  }
+.login-btn {
+  font-size: 0.9rem;
+}

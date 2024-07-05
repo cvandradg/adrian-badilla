@@ -17,7 +17,7 @@
         "tsConfig": "apps/adrianbadilla/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/adrianbadilla/src/dbicon.ico",
+          "apps/adrianbadilla/src/dbicon.png",
           "apps/adrianbadilla/src/assets"
         ],
         "styles": [

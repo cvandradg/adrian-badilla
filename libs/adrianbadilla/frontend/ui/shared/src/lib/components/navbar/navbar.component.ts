@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  OnInit,
+  inject,
+  Component,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { BaseComponent } from '../../classes/base-component';
 import { MODULES } from '../../exports/export-modules';
+import { BaseComponent } from '../../classes/base-component';
+import { AuthService } from '../../services/auth-service.service';
 
 @Component({
   standalone: true,
@@ -13,6 +19,8 @@ import { MODULES } from '../../exports/export-modules';
   imports: [CommonModule, MODULES, RouterModule],
 })
 export class NavbarComponent extends BaseComponent implements OnInit {
+  authService = inject(AuthService);
+
   screenWidth = 0;
 
   ngOnInit(): void {
