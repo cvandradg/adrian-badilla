@@ -8,16 +8,12 @@
   max-height: 67rem;
   background-image: url('/global/assets/img/opacity_background_5.png');
   background-size: 169rem 67rem;
-  background-color: rgba(0, 0, 0, 0.658);
+  background-color: rgba(0, 0, 0, 0.37);
 }
 
 .overlapping-background {
   height: 100%;
-  background: linear-gradient(
-    to top right,
-    #ff2e176e,
-    #595b6188
-  );
+  background: linear-gradient(to right, #6b23233b, #595b6156);
 }
 
 .content-hero-container {
@@ -63,7 +59,7 @@
   font-weight: 500;
   line-height: 4rem;
   letter-spacing: 0.2rem;
-  text-shadow: 0.05rem 0.03rem black;
+  text-shadow: 0.07rem 0.07rem black;
   padding: 3.5rem 1rem 1rem 0rem;
   text-transform: capitalize;
 }
@@ -100,12 +96,13 @@
   font-weight: 500;
   letter-spacing: 0.02rem;
   margin-top: 5rem;
+  text-transform: uppercase;
 }
 
 .button {
   background: white;
   padding: 1.65rem 1rem;
-  color: black;
+  color: #63160dbb;
   border-radius: 0.5rem;
   font-size: 1.7rem;
   font-weight: 500;
