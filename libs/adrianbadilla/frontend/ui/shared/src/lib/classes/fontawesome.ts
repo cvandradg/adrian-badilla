@@ -40,6 +40,7 @@ import {
   faGoogle,
   faTwitter,
   faFacebookF,
+  faInstagram
 } from '@fortawesome/free-brands-svg-icons';
 
 import {
@@ -90,6 +91,7 @@ export class Fontawesome {
       faTelescope,
       faFacebookF,
       faHouseTree,
+      faInstagram,
       faCaretRight,
       faArrowRight,
       faXmarkSolid,
