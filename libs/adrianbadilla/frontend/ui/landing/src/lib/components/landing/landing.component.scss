@@ -468,7 +468,6 @@ fa-icon {
 ///
 
 @media screen and (max-width: 968px) {
-  .motivational-speech-container,
   .trainer-info-container,
   .products-to-buy-container,
   .contact-us-container,
@@ -558,6 +557,24 @@ fa-icon {
             width: 5rem;
           }
         }
+      }
+    }
+  }
+
+  .motivational-speech-container {
+    height: 36rem;
+    .motivational-speech-overlapping-background {
+      .motivational-speech-title {
+        padding: 0 2rem 2rem;
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 0;
+      }
+
+      p {
+        font-size: 0.8rem;
+        padding: 0 3rem;
+        line-height: 1.5rem;
       }
     }
   }
