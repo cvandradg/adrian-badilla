@@ -112,7 +112,7 @@
   width: 57%;
 }
 
-.aquamarine {
+.hero-footer {
   height: 4rem;
   background-color: transparent;
   width: 100%;
@@ -444,4 +444,96 @@ fa-icon {
 .contact-us-footer {
   font-size: 1.3rem;
   color: rgb(77, 77, 77);
+}
+
+//////////////////////
+/// //////////
+/// //////////
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+/// ////////////////////
+/// ////////////////////
+/// ////////////////////
+///
+///
+///
+
+@media screen and (max-width: 968px) {
+  .features-list,
+  .motivational-speech-container,
+  .trainer-info-container,
+  .products-to-buy-container,
+  .contact-us-container,
+  .green {
+    display: none;
+  }
+
+  .container {
+    height: initial;
+  }
+
+  .hero-container {
+    padding: 0;
+    .content-hero-container {
+      width: 100%;
+      padding: 0;
+      .content-sections {
+        justify-content: center;
+        .red {
+          .hero-header {
+            padding: 4rem 0 0 0;
+            .beta {
+              font-size: 0.7rem;
+            }
+            .title-hero {
+              padding: 1rem 1rem 0;
+              font-size: 2rem;
+              letter-spacing: 0.1rem;
+              line-height: auto;
+              line-height: 3rem;
+            }
+          }
+
+          .hero-sub-header {
+            margin: 0;
+            padding: 0;
+            .button {
+              padding: 1.4rem 0.5rem;
+              font-size: 1.3rem;
+              width: 90%;
+              margin: 3rem auto;
+              border-radius: 0.2rem;
+            }
+            .hero-sub-header-content {
+              padding: 2rem 1rem 0;
+              margin: 0;
+              p {
+                font-size: 0.8rem;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+      .hero-footer {
+        padding: 0;
+        margin: auto;
+        font-size: 0.8rem;
+        font-weight: 200;
+        line-height: initial;
+        .hero-footer-content {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
