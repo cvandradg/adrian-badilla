@@ -17,8 +17,16 @@
         "tsConfig": "apps/adrianbadilla/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/adrianbadilla/src/dbicon.ico",
-          "apps/adrianbadilla/src/assets"
+          {
+            "glob": "**/*",
+            "input": "apps/adrianbadilla/src/assets/",
+            "output": "/app"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/adrianbadilla/frontend/assets/",
+            "output": "/global/assets"
+          }
         ],
         "styles": [
           "@angular/material/prebuilt-themes/indigo-pink.css",
@@ -42,8 +50,8 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "3kb",
-              "maximumError": "4kb"
+              "maximumWarning": "7kb",
+              "maximumError": "8kb"
             }
           ],
           "outputHashing": "all"

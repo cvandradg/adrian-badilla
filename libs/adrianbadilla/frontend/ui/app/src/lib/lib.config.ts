@@ -21,13 +21,6 @@ import {
 
 export const appRoutes: Route[] = [
   {
-    path: 'adrianbadilla-frontend-landing',
-    loadChildren: () =>
-      import('@adrian-badilla-ws/adrianbadilla-frontend-landing').then(
-        (m) => m.adrianbadillaFrontendLandingRoutes
-      ),
-  },
-  {
     path: '',
     pathMatch: 'prefix',
     component: AppComponent,
@@ -53,6 +46,11 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
+        loadChildren: () =>
+          import('@adrianbadilla/landing').then((r) => r.landingRoutes),
+      },
+      {
+        path: 'login',
         loadChildren: () =>
           import('@adrianbadilla/login').then((r) => r.loginRoutes),
         ...canActivate(redirectLoggedIn),

@@ -1,0 +1,447 @@
+.container {
+  height: 90rem;
+}
+
+.hero-container {
+  background-color: transparent;
+  height: 100vh;
+  max-height: 67rem;
+  background-image: url('/global/assets/img/opacity_background_5.png');
+  background-size: 169rem 67rem;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+
+.overlapping-background {
+  height: 100%;
+  background: linear-gradient(to right, #6b23233b, #595b6156);
+}
+
+.content-hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 51%;
+  margin: auto;
+  height: 100%;
+  min-height: 40rem;
+  background-color: transparent;
+}
+
+.content-sections {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  background-color: transparent;
+}
+
+.beta {
+  color: white;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  background-color: black;
+  border-radius: 0.4rem;
+  max-width: fit-content;
+  padding: 0.7rem 1.3rem;
+}
+
+.red {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-hero {
+  margin: 0;
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 4rem;
+  letter-spacing: 0.2rem;
+  text-shadow: 0.07rem 0.07rem black;
+  padding: 3.5rem 1rem 1rem 0rem;
+  text-transform: capitalize;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.green {
+  // background-image: url('/global/assets/img/output-onlinepngtools.png');
+  width: 100%;
+}
+
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 8.6rem 0 0 0;
+}
+
+.hero-sub-header {
+  width: 100%;
+  height: 90%;
+  color: white;
+  border-top: white 2px solid;
+  padding: 0.6rem 0 0 0;
+  letter-spacing: 0.1rem;
+  background-color: transparent;
+}
+
+.hero-sub-header-content {
+  font-weight: 500;
+  margin-top: 5rem;
+  font-size: 1.2rem;
+  padding-bottom: 0rem;
+  margin-bottom: 3.3rem;
+  letter-spacing: 0.02rem;
+  text-transform: uppercase;
+}
+
+.button {
+  background: white;
+  padding: 1.65rem 1rem;
+  color: #63160dbb;
+  border-radius: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  width: 57%;
+}
+
+.aquamarine {
+  height: 4rem;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  padding: 0 0 3rem 0;
+  font-size: 1.3rem;
+  color: white;
+  letter-spacing: 0.04rem;
+  justify-content: center;
+}
+/////////////////////////////////////////////////////////////
+/// //////////////////////////////////////////////////////////
+
+.features-list {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 7rem;
+  align-items: center;
+  height: 36rem;
+}
+
+.feature-list-title {
+  font-size: 4rem;
+  font-weight: 500;
+  color: rgb(39, 39, 39);
+  letter-spacing: 0.1rem;
+  margin: 0 0 4rem 0;
+}
+
+.features-list-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 85rem;
+  gap: 3rem;
+}
+
+.feature-group {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+}
+
+.feature-option {
+  gap: 3rem;
+  width: 70%;
+  display: flex;
+  color: #7b7f7d;
+  font-size: 1.3rem;
+  align-items: flex-start;
+  line-height: 2rem;
+  text-transform: capitalize;
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
+}
+
+fa-icon {
+  line-height: 3rem;
+}
+
+//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+.motivational-speech-container {
+  display: flex;
+  height: 40rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: purple;
+  justify-content: flex-start;
+  background-color: transparent;
+  justify-content: center;
+  max-height: 67rem;
+  background-size: 169rem 57rem;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+
+.motivational-speech-overlapping-background {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #a72d2d6e, #6d7280b9);
+  font-size: 1.5rem;
+
+  p {
+    color: white;
+    max-width: 60rem;
+    letter-spacing: 0.1rem;
+    line-height: 2rem;
+    text-align: center;
+  }
+}
+
+.motivational-speech-title {
+  color: white;
+  font-weight: 500;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  margin: 0 0 4rem 0;
+}
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+.trainer-info-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 7rem;
+  align-items: center;
+  height: 50rem;
+  gap: 5rem;
+
+  .trainer-info-title {
+    font-size: 4rem;
+    font-weight: 500;
+    text-transform: capitalize;
+
+    color: #611515e7;
+    letter-spacing: 0.1rem;
+  }
+
+  .trainer-info-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 85rem;
+    gap: 6rem;
+
+    .trainer-avatar {
+      gap: 3rem;
+      width: fit-content;
+      display: flex;
+      color: #7b7f7d;
+      font-size: 1.3rem;
+      align-items: flex-start;
+      line-height: 2rem;
+      text-transform: capitalize;
+      padding: 1rem 1.5rem;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .trainer-social-media {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .trainer-photo {
+        width: 20rem;
+        border-radius: 10rem;
+        // height: 50rem;
+        // align-items: center;
+        // flex-direction: column;
+        // background-color: purple;
+        // background-color: transparent;
+        // max-height: 67rem;
+        // background-image: url('/global/assets/img/opacity_background_5.png');
+        // background-size: 0 0;
+        // background-color: rgba(0, 0, 0, 0.37);
+      }
+    }
+
+    .trainer-information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+
+      .trainer-name {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #b62727c4;
+        letter-spacing: 0.2rem;
+      }
+
+      .trainer-description {
+        gap: 3rem;
+        width: 70%;
+        display: flex;
+        color: #7b7f7d;
+        font-size: 1.3rem;
+        align-items: flex-start;
+        line-height: 2rem;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+.products-to-buy-container {
+  display: flex;
+  height: 50rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: purple;
+  justify-content: flex-start;
+  background-color: transparent;
+  max-height: 67rem;
+  background-image: url('/global/assets/img/opacity_background_5.png');
+  background-size: 169rem 57rem;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+
+.products-to-buy-overlapping-background {
+  height: 100%;
+  width: 100%;
+  padding: 6.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #a72d2d6e, #6d728083);
+}
+
+.products-to-buy-title {
+  color: white;
+  font-weight: 500;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  margin: 0 0 4rem 0;
+}
+
+.products {
+  display: flex;
+  gap: 5rem;
+  height: 30rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  border-radius: 0.5rem;
+  width: 24rem;
+  background-color: white;
+  text-transform: capitalize;
+
+  .product-target {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 2rem 0 0 0;
+    color: #b92525d3;
+  }
+
+  .product-description {
+    font-size: 1.7rem;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .buy-button {
+    background-color: #b92525d3;
+    padding: 2rem 2.4rem;
+    color: white;
+    border-radius: 0.81rem;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+.contact-us-container {
+  display: flex;
+  height: 40rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: purple;
+  justify-content: flex-start;
+  background-color: transparent;
+  justify-content: center;
+  max-height: 67rem;
+  background-size: 169rem 57rem;
+  background-color: white;
+}
+
+.contact-us-overlapping-background {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+
+  fa-icon {
+    margin: 0 1rem;
+  }
+
+  p {
+    color: black;
+    max-width: 60rem;
+    letter-spacing: 0.1rem;
+    line-height: 2rem;
+    text-align: center;
+  }
+}
+
+.contact-us-title {
+  color: rgb(77, 77, 77);
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  margin: 0 0 4rem 0;
+  text-transform: uppercase;
+}
+
+.contact-us-footer {
+  font-size: 1.3rem;
+  color: rgb(77, 77, 77);
+}

@@ -40,6 +40,7 @@ import {
   faGoogle,
   faTwitter,
   faFacebookF,
+  faInstagram
 } from '@fortawesome/free-brands-svg-icons';
 
 import {
@@ -59,6 +60,7 @@ import {
   faPersonDollyEmpty,
 } from '@fortawesome/pro-solid-svg-icons';
 import { faHouseTree } from '@fortawesome/pro-regular-svg-icons';
+import { faWhatsappSquare } from "@fortawesome/free-brands-svg-icons";
 
 @Directive()
 export class Fontawesome {
@@ -89,6 +91,7 @@ export class Fontawesome {
       faTelescope,
       faFacebookF,
       faHouseTree,
+      faInstagram,
       faCaretRight,
       faArrowRight,
       faXmarkSolid,
@@ -100,6 +103,7 @@ export class Fontawesome {
       faBookOpenCover,
       faPlateUtensils,
       faRightToBracket,
+      faWhatsappSquare,
       faPersonDollyEmpty,
       faClipboardQuestion,
       faMessageExclamation,
