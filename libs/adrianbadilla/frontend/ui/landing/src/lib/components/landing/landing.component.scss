@@ -468,7 +468,6 @@ fa-icon {
 ///
 
 @media screen and (max-width: 968px) {
-  .features-list,
   .motivational-speech-container,
   .trainer-info-container,
   .products-to-buy-container,
@@ -532,6 +531,32 @@ fa-icon {
         line-height: initial;
         .hero-footer-content {
           text-align: center;
+        }
+      }
+    }
+  }
+
+  .features-list {
+    height: initial;
+
+    .feature-list-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .features-list-options {
+      .feature-group {
+        flex-direction: column;
+        padding: 1rem;
+
+        .feature-option {
+          align-self: center;
+          font-size: 1.1rem;
+          gap: 1rem;
+
+          fa-icon {
+            width: 5rem;
+          }
         }
       }
     }
