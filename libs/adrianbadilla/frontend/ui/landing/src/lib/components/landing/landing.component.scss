@@ -109,6 +109,7 @@
   font-weight: 500;
   display: flex;
   justify-content: center;
+  margin: 2.2rem auto;
   width: 57%;
 }
 
@@ -520,18 +521,19 @@ fa-icon {
               font-size: 1.05rem;
               font-weight: 700;
               width: 90%;
-              margin: 2.2rem auto;
+              margin: 2.7rem auto;
               border-radius: 0.4rem;
               font-family: 'Open Sans', sans-serif;
               letter-spacing: 0.01rem;
             }
             .hero-sub-header-content {
               padding: 2.2rem 1rem 0;
-              margin: 0;
+              margin: 1rem 0;
               p {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
                 font-weight: 300;
                 letter-spacing: 0.01rem;
+                line-height: 0.7rem;
               }
             }
           }
