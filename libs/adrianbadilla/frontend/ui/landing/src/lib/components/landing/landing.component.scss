@@ -468,7 +468,6 @@ fa-icon {
 ///
 
 @media screen and (max-width: 968px) {
-  .trainer-info-container,
   .products-to-buy-container,
   .contact-us-container,
   .green {
@@ -575,6 +574,47 @@ fa-icon {
         font-size: 0.8rem;
         padding: 0 3rem;
         line-height: 1.5rem;
+      }
+    }
+  }
+
+  .trainer-info-container {
+    height: fit-content;
+    padding-top: 4rem;
+    gap: 2rem;
+    .trainer-info-title {
+      font-size: 2rem;
+    }
+    .trainer-info-content {
+      flex-direction: column;
+      gap: 2rem;
+      .trainer-avatar {
+        padding: 0;
+        margin: auto;
+        gap: 1.5rem;
+        .trainer-photo {
+          width: 17rem;
+        }
+        .trainer-social-media {
+          gap: 2rem;
+          fa-icon {
+            font-size: 1.7rem;
+          }
+        }
+      }
+      .trainer-information {
+        margin: auto;
+        width: 70%;
+        .trainer-name {
+          font-size: 1.3rem;
+          margin: auto;
+          text-align: left;
+        }
+        .trainer-description {
+          font-size: 1rem;
+          margin: auto;
+          width: initial;
+        }
       }
     }
   }
