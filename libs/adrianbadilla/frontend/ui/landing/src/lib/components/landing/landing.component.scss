@@ -66,8 +66,15 @@
 }
 
 .green {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   // background-image: url('/global/assets/img/output-onlinepngtools.png');
   width: 100%;
+  img {
+    backdrop-filter: blur(0.68rem);
+    border-radius: 11rem;
+  }
 }
 
 .hero-header {
@@ -272,6 +279,7 @@ fa-icon {
       .trainer-photo {
         width: 20rem;
         border-radius: 10rem;
+
         // height: 50rem;
         // align-items: center;
         // flex-direction: column;
