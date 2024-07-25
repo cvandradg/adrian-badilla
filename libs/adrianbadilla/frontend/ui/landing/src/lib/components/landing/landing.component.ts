@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
 @Component({
