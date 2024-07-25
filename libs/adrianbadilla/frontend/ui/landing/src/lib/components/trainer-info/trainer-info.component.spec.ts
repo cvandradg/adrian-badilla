@@ -1,5 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TrainerInfoComponent } from './trainer-info.component';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { Fontawesome } from '@adrianbadilla/shared/classes/fontawesome';
+
+
+@Component({
+  templateUrl: './trainer-info.component.html',
+  standalone: true,
+  imports: [CommonModule, MODULES],
+})
+export class TrainerInfoComponent extends Fontawesome {}
+
 
 describe('TrainerInfoComponent', () => {
   let component: TrainerInfoComponent;
