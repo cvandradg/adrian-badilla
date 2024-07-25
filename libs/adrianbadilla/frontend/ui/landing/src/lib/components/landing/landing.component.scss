@@ -6,54 +6,7 @@
 /////////////////////////////////////////////////////////////
 /// //////////////////////////////////////////////////////////
 
-.features-list {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  padding-top: 7rem;
-  align-items: center;
-  height: 36rem;
-}
 
-.feature-list-title {
-  font-size: 4rem;
-  font-weight: 500;
-  color: rgb(39, 39, 39);
-  letter-spacing: 0.1rem;
-  margin: 0 0 4rem 0;
-}
-
-.features-list-options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  max-width: 85rem;
-  gap: 3rem;
-}
-
-.feature-group {
-  display: flex;
-  gap: 3rem;
-  width: 100%;
-}
-
-.feature-option {
-  gap: 3rem;
-  width: 70%;
-  display: flex;
-  color: #7b7f7d;
-  font-size: 1.3rem;
-  align-items: flex-start;
-  line-height: 2rem;
-  text-transform: capitalize;
-  padding: 1rem 1.5rem;
-  justify-content: space-between;
-}
-
-fa-icon {
-  line-height: 3rem;
-}
 
 //////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -102,95 +55,6 @@ fa-icon {
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-.trainer-info-container {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  padding-top: 7rem;
-  align-items: center;
-  height: 50rem;
-  gap: 5rem;
-
-  .trainer-info-title {
-    font-size: 4rem;
-    font-weight: 500;
-    text-transform: capitalize;
-
-    color: #611515e7;
-    letter-spacing: 0.1rem;
-  }
-
-  .trainer-info-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 85rem;
-    gap: 6rem;
-
-    .trainer-avatar {
-      gap: 3rem;
-      width: fit-content;
-      display: flex;
-      color: #7b7f7d;
-      font-size: 1.3rem;
-      align-items: flex-start;
-      line-height: 2rem;
-      text-transform: capitalize;
-      padding: 1rem 1.5rem;
-      justify-content: space-between;
-      flex-direction: column;
-
-      .trainer-social-media {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-      }
-
-      .trainer-photo {
-        width: 20rem;
-        border-radius: 10rem;
-
-        // height: 50rem;
-        // align-items: center;
-        // flex-direction: column;
-        // background-color: purple;
-        // background-color: transparent;
-        // max-height: 67rem;
-        // background-image: url('/global/assets/img/opacity_background_5.png');
-        // background-size: 0 0;
-        // background-color: rgba(0, 0, 0, 0.37);
-      }
-    }
-
-    .trainer-information {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 2rem;
-
-      .trainer-name {
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #b62727c4;
-        letter-spacing: 0.2rem;
-      }
-
-      .trainer-description {
-        gap: 3rem;
-        width: 70%;
-        display: flex;
-        color: #7b7f7d;
-        font-size: 1.3rem;
-        align-items: flex-start;
-        line-height: 2rem;
-        justify-content: space-between;
-      }
-    }
-  }
-}
 
 
 @media screen and (max-width: 968px) {
@@ -203,31 +67,6 @@ fa-icon {
     height: initial;
   }
 
-  .features-list {
-    height: initial;
-
-    .feature-list-title {
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
-    .features-list-options {
-      .feature-group {
-        flex-direction: column;
-        padding: 1rem;
-
-        .feature-option {
-          align-self: center;
-          font-size: 1.1rem;
-          gap: 1rem;
-
-          fa-icon {
-            width: 5rem;
-          }
-        }
-      }
-    }
-  }
 
   .motivational-speech-container {
     height: 36rem;

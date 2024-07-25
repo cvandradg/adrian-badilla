@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
 @Component({
-  selector: 'adrianbadilla-trainer-info',
   standalone: true,
+  selector: 'adrianbadilla-first-section',
+  styleUrl: './first-section.component.scss',
+  templateUrl: './first-section.component.html',
   imports: [CommonModule, MODULES],
-  templateUrl: './trainer-info.component.html',
-  styleUrl: './trainer-info.component.scss',
 })
-export class TrainerInfoComponent {}
+export class FirstSectionComponent {}

@@ -75,3 +75,40 @@
     }
   }
 }
+
+@media screen and (max-width: 968px) {
+
+  .products-to-buy-container  {
+    height: initial;
+    max-height: initial;
+    .products-to-buy-overlapping-background {
+      .products-to-buy-title {
+        text-align: center;
+      }
+      .products {
+        display: flex;
+        height: initial;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0 5rem 0;
+
+        .product-card {
+          padding: 0 0 2rem 0;
+          gap: 1.5rem;
+          width: 85%;
+
+          .product-description {
+            font-size: 1.3rem;
+          }
+
+          .buy-button {
+            padding: 1rem 1.4rem;
+            border-radius: 0.35rem;
+          }
+        }
+      }
+    }
+  }
+
+}

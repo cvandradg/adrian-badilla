@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -10,4 +11,6 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
   imports: [CommonModule, NgOptimizedImage, MODULES],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroComponent {}
+export class HeroComponent {
+  router = inject(Router);
+}

@@ -5,6 +5,7 @@ import { ProductsComponent } from '../products/products.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { TrainerInfoComponent } from '../trainer-info/trainer-info.component';
+import { FirstSectionComponent } from '../first-section/first-section.component';
 
 @Component({
   selector: 'adrianbadilla-landing',
@@ -19,6 +20,7 @@ import { TrainerInfoComponent } from '../trainer-info/trainer-info.component';
     NgOptimizedImage,
     ProductsComponent,
     TrainerInfoComponent,
+    FirstSectionComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -6,22 +6,22 @@ import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 import { Fontawesome } from '@adrianbadilla/shared/classes/fontawesome';
 
 @Component({
-  templateUrl: './footer.component.html',
+  templateUrl: './first-section.component.html',
   standalone: true,
   imports: [CommonModule, RouterModule, NgOptimizedImage, MODULES],
 })
-export class FooterComponent extends Fontawesome {}
+export class FirstSectionComponent extends Fontawesome {}
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('FirstSectionComponent', () => {
+  let component: FirstSectionComponent;
+  let fixture: ComponentFixture<FirstSectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterComponent],
+      imports: [FirstSectionComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(FirstSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
