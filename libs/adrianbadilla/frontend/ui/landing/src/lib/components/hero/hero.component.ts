@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
 @Component({
-  selector: 'adrianbadilla-hero',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './hero.component.html',
+  selector: 'adrianbadilla-hero',
   styleUrl: './hero.component.scss',
+  templateUrl: './hero.component.html',
+  imports: [CommonModule, NgOptimizedImage, MODULES],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroComponent {}

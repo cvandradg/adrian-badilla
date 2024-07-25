@@ -1,0 +1,50 @@
+.contact-us-container {
+  display: flex;
+  height: 40rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: purple;
+  justify-content: flex-start;
+  background-color: transparent;
+  justify-content: center;
+  max-height: 67rem;
+  background-size: 169rem 57rem;
+  background-color: white;
+
+  .contact-us-overlapping-background {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+
+    fa-icon {
+      margin: 0 1rem;
+    }
+
+    p {
+      color: black;
+      max-width: 60rem;
+      letter-spacing: 0.1rem;
+      line-height: 2rem;
+      text-align: center;
+    }
+
+    .contact-us-title {
+      color: rgb(77, 77, 77);
+      font-weight: 500;
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+      margin: 0 0 4rem 0;
+      text-transform: uppercase;
+    }
+
+    .contact-us-footer {
+      font-size: 1.3rem;
+      color: rgb(77, 77, 77);
+    }
+  }
+}

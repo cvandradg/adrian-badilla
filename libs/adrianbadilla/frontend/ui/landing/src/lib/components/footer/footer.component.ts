@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
 
 @Component({
-  selector: 'adrianbadilla-footer',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './footer.component.html',
+  selector: 'adrianbadilla-footer',
   styleUrl: './footer.component.scss',
+  templateUrl: './footer.component.html',
+  imports: [CommonModule, MODULES],
 })
 export class FooterComponent {}
