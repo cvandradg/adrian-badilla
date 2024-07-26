@@ -1,14 +1,27 @@
+import { HeroComponent } from '../hero/hero.component';
+import { FooterComponent } from '../footer/footer.component';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { ProductsComponent } from '../products/products.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { COMPONENTS } from '@adrianbadilla/shared/exports/export-components';
 import { MODULES } from '@adrianbadilla/shared/exports/export-modules';
+import { TrainerInfoComponent } from '../trainer-info/trainer-info.component';
+import { FirstSectionComponent } from '../first-section/first-section.component';
 
 @Component({
   selector: 'adrianbadilla-landing',
-  standalone: true,
-  imports: [CommonModule, MODULES],
-  templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
+  templateUrl: './landing.component.html',
+  standalone: true,
+  imports: [
+    MODULES,
+    CommonModule,
+    HeroComponent,
+    FooterComponent,
+    NgOptimizedImage,
+    ProductsComponent,
+    TrainerInfoComponent,
+    FirstSectionComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingComponent {}

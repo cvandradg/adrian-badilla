@@ -1,0 +1,48 @@
+<div class="hero-container">
+  <div class="overlapping-background">
+    <div class="content-hero-container">
+      <div class="content-sections">
+        <div class="red">
+          <div class="hero-header">
+            <div class="beta">BETA TESTING</div>
+            <h2 class="title-hero">
+              Consigue tu rutina y dieta personalizadas por
+            </h2>
+            <h2 class="title-hero">Adrian Badilla</h2>
+          </div>
+          <div class="hero-sub-header">
+            <div class="hero-sub-header-content">
+              <p>accede a todos los servicios de</p>
+              <p>Adrian Badilla</p>
+            </div>
+
+            <div class="button" [routerLink]="['login']">Accede Ahora</div>
+          </div>
+        </div>
+        <div class="green">
+          <img
+            class="trainer-photo"
+            width="360"
+            height="330"
+            [ngSrc]="'/global/assets/img/ab-logo-circle.svg'"
+            alt="adrian_logo"
+            priority
+          />
+        </div>
+      </div>
+      <div class="hero-footer">
+        <div class="hero-footer-content">
+          <div>
+            Si tienes dudas relacionadas a nuestros servicios contactamos via
+            whatsapp
+            <fa-icon
+              [icon]="['fab', 'square-whatsapp']"
+              class="icon fa-xl fa-shake"
+              style="--fa-animation-iteration-count: 2"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

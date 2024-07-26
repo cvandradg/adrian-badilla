@@ -1,0 +1,112 @@
+.products-to-buy-container {
+  display: flex;
+  height: 50rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: purple;
+  justify-content: flex-start;
+  background-color: transparent;
+  max-height: 67rem;
+  background-image: url('/global/assets/img/opacity_background_5.png');
+  background-size: 169rem 57rem;
+  background-color: rgba(0, 0, 0, 0.37);
+
+  .products-to-buy-overlapping-background {
+    height: 100%;
+    width: 100%;
+    padding: 6.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, #a72d2d6e, #6d728083);
+
+    .products-to-buy-title {
+      color: white;
+      font-weight: 500;
+      font-size: 3rem;
+      letter-spacing: 0.1rem;
+      margin: 0 0 4rem 0;
+    }
+
+    .products {
+      display: flex;
+      gap: 5rem;
+      height: 30rem;
+
+      .product-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+        border-radius: 0.5rem;
+        width: 24rem;
+        background-color: white;
+        text-transform: capitalize;
+
+        .product-target {
+          font-size: 1.5rem;
+          font-weight: 500;
+          padding: 2rem 0 0 0;
+          color: #b92525d3;
+        }
+
+        .product-description {
+          font-size: 1.7rem;
+          padding: 1rem;
+          text-align: center;
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 500;
+        }
+
+        .product-price {
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+
+        .buy-button {
+          background-color: #4b2626d3;
+          padding: 2rem 2.4rem;
+          color: white;
+          border-radius: 0.81rem;
+          font-family: 'Open Sans', sans-serif;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .products-to-buy-container {
+    height: initial;
+    max-height: initial;
+    .products-to-buy-overlapping-background {
+      .products-to-buy-title {
+        text-align: center;
+      }
+      .products {
+        display: flex;
+        height: initial;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0 5rem 0;
+
+        .product-card {
+          padding: 0 0 2rem 0;
+          gap: 1.5rem;
+          width: 85%;
+
+          .product-description {
+            font-size: 1.3rem;
+          }
+
+          .buy-button {
+            padding: 1rem 1.4rem;
+            border-radius: 0.35rem;
+          }
+        }
+      }
+    }
+  }
+}
