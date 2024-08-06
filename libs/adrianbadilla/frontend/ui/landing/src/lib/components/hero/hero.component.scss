@@ -1,11 +1,11 @@
 .hero-container {
   background-color: transparent;
-  height: 100vh;
   max-height: 67rem;
-  background-image: url('/global/assets/img/opacity_background_5.png');
   background-size: 169rem 67rem;
-  background-color: rgba(0, 0, 0, 0.37);
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
 }
+
 
 .overlapping-background {
   height: 100%;
