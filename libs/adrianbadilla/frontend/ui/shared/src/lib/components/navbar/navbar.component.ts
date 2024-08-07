@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { MODULES } from '../../exports/export-modules';
 import { BaseComponent } from '../../classes/base-component';
 import { AuthService } from '../../services/auth-service.service';
@@ -16,7 +15,7 @@ import { AuthService } from '../../services/auth-service.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MODULES, RouterModule],
+  imports: [CommonModule, MODULES],
 })
 export class NavbarComponent extends BaseComponent implements OnInit {
   authService = inject(AuthService);
