@@ -1,4 +1,11 @@
 <div class="hero-container">
+  <img
+    [ngSrc]="'/global/assets/img/hero_image_background.png'"
+    alt="hero_image"
+    fill
+    class="hero-image"
+    priority
+  />
   <div class="overlapping-background">
     <div class="content-hero-container">
       <div class="content-sections">
@@ -6,7 +13,7 @@
           <div class="hero-header">
             <div class="beta">BETA TESTING</div>
             <h2 class="title-hero">
-              Consigue tu rutina y dieta personalizadas por
+              Consigue tu rutina y dieta personalizada por
             </h2>
             <h2 class="title-hero">Adrian Badilla</h2>
           </div>
@@ -16,7 +23,7 @@
               <p>Adrian Badilla</p>
             </div>
 
-            <div class="button" [routerLink]="['login']">Accede Ahora</div>
+            <div class="button" [routerLink]="['/login']">Accede Ahora</div>
           </div>
         </div>
         <div class="green">
