@@ -1,10 +1,11 @@
 <div class="hero-container">
   <img
-    [ngSrc]="'/global/assets/img/hero_image_background.webp'"
+    [ngSrc]="'/global/assets/img/hero_image_background.png'"
     alt="hero_image"
     fill
     class="hero-image"
-    priority
+    loading="eager"
+    fetchpriority="high"
   />
   <div class="overlapping-background">
     <div class="content-hero-container">
