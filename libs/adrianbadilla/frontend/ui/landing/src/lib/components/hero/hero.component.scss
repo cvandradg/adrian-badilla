@@ -4,8 +4,12 @@
   background-size: 169rem 67rem;
   background-color: rgba(0, 0, 0, 0);
   position: relative;
-}
 
+  .hero-image {
+    object-fit: fill;
+    opacity: 0.08;
+  }
+}
 
 .overlapping-background {
   height: 100%;
@@ -132,6 +136,9 @@
     padding: 0;
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.767);
+    .hero-image {
+      object-fit: cover;
+    }
     .content-hero-container {
       width: 100%;
       padding: 0;
